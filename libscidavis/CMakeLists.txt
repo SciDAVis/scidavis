@@ -366,6 +366,7 @@ target_link_libraries( libscidavis
   Qt5::PrintSupport
   Qt5::OpenGL
   Qt5::Svg
+  m
   )
 
 target_include_directories( libscidavis PUBLIC ${MUPARSER_INCLUDE_DIR} )
