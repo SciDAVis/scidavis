@@ -167,7 +167,7 @@ void ExpDecayDialog::activateCurve(const QString &curveName)
 
     int precision = app->fit_output_precision;
     double start, end;
-    graph->range(graph->curveIndex(curveName), &start, &end);
+    graph->range(graph->curveIndex(curveName), start, end);
     boxStart->setText(QString::number(qMin(start, end)));
     boxYOffset->setText(QString::number(c->minYValue(), 'g', precision));
     if (slopes < 2)

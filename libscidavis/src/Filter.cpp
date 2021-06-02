@@ -152,7 +152,7 @@ bool Filter::setDataFromCurve(const QString &curveTitle, Graph *g)
         return false;
     }
 
-    d_graph->range(index, &d_from, &d_to);
+    d_graph->range(index, d_from, d_to);
     setDataCurve(index, d_from, d_to);
     return true;
 }

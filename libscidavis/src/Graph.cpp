@@ -2751,19 +2751,17 @@ int Graph::curveIndex(QwtPlotCurve *c) const
     return plotItemIndex(c);
 }
 
-int Graph::range(int index, double *start, double *end)
+int Graph::range(const int index, double& start, double& end) const
 {
     if (d_range_selector && d_range_selector->selectedCurve() == curve(index)) {
-        *start = d_range_selector->minXValue();
-        *end = d_range_selector->maxXValue();
+        start = d_range_selector->minXValue();
+        end = d_range_selector->maxXValue();
         return d_range_selector->dataSize();
     } else {
-        QwtPlotCurve *c = curve(index);
-        if (!c)
-            return 0;
-
-        *start = c->x(0);
-        *end = c->x(c->dataSize() - 1);
+    QwtPlotCurve *c = curve(index);
+        if (!c) return 0;
+        start = c->minXValue();
+        end = c->maxXValue();
         return c->dataSize();
     }
 }

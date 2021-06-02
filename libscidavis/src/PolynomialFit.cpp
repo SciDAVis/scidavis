@@ -252,16 +252,15 @@ void LinearFit::fit()
 
     double c0, c1, cov00, cov01, cov11;
 
-    double *weights = new double[d_n];
+    std::vector<double> weights(d_n);
     for (unsigned i = 0; i < d_n; i++)
         weights[i] = 1.0 / pow(d_y_errors[i], 2);
 
     if (d_y_error_source == UnknownErrors)
         gsl_fit_linear(d_x, 1, d_y, 1, d_n, &c0, &c1, &cov00, &cov01, &cov11, &chi_2);
     else
-        gsl_fit_wlinear(d_x, 1, weights, 1, d_y, 1, d_n, &c0, &c1, &cov00, &cov01, &cov11, &chi_2);
+        gsl_fit_wlinear(d_x, 1, weights.data(), 1, d_y, 1, d_n, &c0, &c1, &cov00, &cov01, &cov11, &chi_2);
 
-    delete[] weights;
 
     d_results[0] = c0;
     d_results[1] = c1;
