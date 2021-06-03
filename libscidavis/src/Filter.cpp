@@ -96,6 +96,23 @@ void Filter::setDataCurve(int curve, double start, double end)
 
     d_init_err = false;
     d_curve = d_graph->curve(curve);
+    if (nullptr == d_curve) {
+        d_init_err = true;
+        return;
+    }
+    QList<Graph::AxisType> axType = d_graph->axesType();
+    for (const auto &type : axType)
+        if (Graph::AxisType::Numeric != type) {
+            auto ret = QMessageBox::warning((ApplicationWindow *)parent(),
+                                            tr("SciDAVis") + " - " + tr("Warning"),
+                                            tr("At least one of the axis is not numerical!"),
+                                            QMessageBox::Abort | QMessageBox::Ignore);
+            if (QMessageBox::Abort == ret) {
+                d_init_err = true;
+                return;
+            } else
+                break;
+        }
     if (d_sort_data)
         d_n = sortedCurveData(d_curve, start, end, &d_x, &d_y);
     else
