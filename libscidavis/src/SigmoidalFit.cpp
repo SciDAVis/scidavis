@@ -88,14 +88,14 @@ bool SigmoidalFit::calculateFitCurveData(const vector<double> &par, std::vector<
 
 void SigmoidalFit::guessInitialValues()
 {
-    gsl_vector_view x = gsl_vector_view_array(d_x, d_n);
-    gsl_vector_view y = gsl_vector_view_array(d_y, d_n);
+    gsl_vector_view x = gsl_vector_view_array(d_x.data(), d_n());
+    gsl_vector_view y = gsl_vector_view_array(d_y.data(), d_n());
 
     double min_out, max_out;
     gsl_vector_minmax(&y.vector, &min_out, &max_out);
 
     gsl_vector_set(d_param_init, 0, min_out);
     gsl_vector_set(d_param_init, 1, max_out);
-    gsl_vector_set(d_param_init, 2, gsl_vector_get(&x.vector, d_n / 2));
+    gsl_vector_set(d_param_init, 2, gsl_vector_get(&x.vector, d_n() / 2));
     gsl_vector_set(d_param_init, 3, 1.0);
 }

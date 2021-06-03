@@ -57,7 +57,7 @@ void SmoothFilter::init(int m)
 {
     setObjectName(tr("Smoothed"));
     setMethod(m);
-    d_points = d_n;
+    d_points = d_n();
     d_right_points = 2;
     d_left_points = 2;
     d_polynom_order = 2;
@@ -103,22 +103,22 @@ void SmoothFilter::calculateOutputData(double *x, double *y)
 
 void SmoothFilter::smoothFFT(double *x, double *y)
 {
-    gsl_fft_real_workspace *work = gsl_fft_real_workspace_alloc(d_n);
-    gsl_fft_real_wavetable *real = gsl_fft_real_wavetable_alloc(d_n);
-    gsl_fft_real_transform(y, 1, d_n, real, work); // FFT forward
+    gsl_fft_real_workspace *work = gsl_fft_real_workspace_alloc(d_n());
+    gsl_fft_real_wavetable *real = gsl_fft_real_wavetable_alloc(d_n());
+    gsl_fft_real_transform(y, 1, d_n(), real, work); // FFT forward
     gsl_fft_real_wavetable_free(real);
 
     double df = 1.0 / (double)(x[1] - x[0]);
     double lf = df / (double)d_right_points; // frequency cutoff
-    df = 0.5 * df / (double)d_n;
+    df = 0.5 * df / (double)d_n();
 
-    for (unsigned i = 0; i < d_n; i++) {
+    for (unsigned i = 0; i < d_n(); i++) {
         x[i] = d_x[i];
         y[i] = i * df > lf ? 0 : y[i]; // filtering frequencies
     }
 
-    gsl_fft_halfcomplex_wavetable *hc = gsl_fft_halfcomplex_wavetable_alloc(d_n);
-    gsl_fft_halfcomplex_inverse(y, 1, d_n, hc, work); // FFT inverse
+    gsl_fft_halfcomplex_wavetable *hc = gsl_fft_halfcomplex_wavetable_alloc(d_n());
+    gsl_fft_halfcomplex_inverse(y, 1, d_n(), hc, work); // FFT inverse
     gsl_fft_halfcomplex_wavetable_free(hc);
     gsl_fft_real_workspace_free(work);
 }
@@ -128,7 +128,7 @@ void SmoothFilter::smoothAverage(double *, double *y)
     int p2 = d_right_points / 2;
     double m = double(2 * p2 + 1);
     double aux = 0.0;
-    double *s = new double[d_n];
+    double *s = new double[d_n()];
 
     s[0] = y[0];
     for (int i = 1; i < p2; i++) {
@@ -138,23 +138,23 @@ void SmoothFilter::smoothAverage(double *, double *y)
 
         s[i] = aux / (double)(2 * i + 1);
     }
-    for (unsigned i = p2; i < d_n - p2; i++) {
+    for (unsigned i = p2; i < d_n() - p2; i++) {
         aux = 0.0;
         for (int j = -p2; j <= p2; j++)
             aux += y[i + j];
 
         s[i] = aux / m;
     }
-    for (unsigned i = d_n - p2; i < d_n - 1; i++) {
+    for (unsigned i = d_n() - p2; i < d_n() - 1; i++) {
         aux = 0.0;
-        for (int j = (int)(i + 1 - d_n); j < (int)(d_n - i); j++)
+        for (int j = (int)(i + 1 - d_n()); j < (int)(d_n() - i); j++)
             aux += y[i + j];
 
-        s[i] = aux / (double)(2 * (d_n - i - 1) + 1);
+        s[i] = aux / (double)(2 * (d_n() - i - 1) + 1);
     }
-    s[d_n - 1] = y[d_n - 1];
+    s[d_n() - 1] = y[d_n() - 1];
 
-    for (unsigned i = 0; i < d_n; i++)
+    for (unsigned i = 0; i < d_n(); i++)
         y[i] = s[i];
 
     delete[] s;
@@ -253,12 +253,12 @@ void SmoothFilter::smoothSavGol(double *, double *y_inout)
         return;
     }
 
-    if (d_n < unsigned(points)) {
+    if (d_n() < unsigned(points)) {
         QMessageBox::critical(
                 (ApplicationWindow *)parent(), tr("SciDAVis") + " - " + tr("Error"),
                 tr("Tried to smooth over more points (left+right+1=%1) than given as input (%2).")
                         .arg(points)
-                        .arg(d_n));
+                        .arg(d_n()));
         return;
     }
 
@@ -274,7 +274,7 @@ void SmoothFilter::smoothSavGol(double *, double *y_inout)
 
     // allocate memory for the result (temporary; don't overwrite y_inout while we still read from
     // it)
-    QVector<double> result(d_n);
+    QVector<double> result(d_n());
 
     // near left edge: use interpolation of (points) left-most input values
     // i.e. we deviate from the specified left/right points to use
@@ -294,7 +294,7 @@ void SmoothFilter::smoothSavGol(double *, double *y_inout)
         result[i] = convolution;
     }
     // central part: convolve with fixed row of h (as given by number of left points to use)
-    for (unsigned i = d_left_points; i < d_n - d_right_points; i++) {
+    for (unsigned i = d_left_points; i < d_n() - d_right_points; i++) {
         double convolution = 0.0;
         for (int k = 0; k < points; k++)
             convolution += gsl_matrix_get(h, d_left_points, k) * y_inout[i - d_left_points + k];
@@ -303,17 +303,17 @@ void SmoothFilter::smoothSavGol(double *, double *y_inout)
     // near right edge: use interpolation of (points) right-most input values
     // i.e. we deviate from the specified left/right points to use
     /*
-    for (int i=d_n-d_right_points; i<d_n; i++) {
+    for (int i=d_n()-d_right_points; i<d_n(); i++) {
             double convolution = 0.0;
             for (int k=0; k<points; k++)
-                    convolution += gsl_matrix_get(h, points-d_n+i, k) * y_inout[d_n-points+k];
+                    convolution += gsl_matrix_get(h, points-d_n()+i, k) * y_inout[d_n()-points+k];
             result[i] = convolution;
     }
     */
     // legacy behaviour: handle right edge by zero padding
-    for (unsigned i = d_n - d_right_points; i < d_n; i++) {
+    for (unsigned i = d_n() - d_right_points; i < d_n(); i++) {
         double convolution = 0.0;
-        for (unsigned k = 0; i - d_left_points + k < d_n; k++)
+        for (unsigned k = 0; i - d_left_points + k < d_n(); k++)
             convolution += gsl_matrix_get(h, d_left_points, k) * y_inout[i - d_left_points + k];
         result[i] = convolution;
     }
@@ -347,7 +347,7 @@ void SmoothFilter::smoothModifiedSavGol(double *x_in, double *y_inout)
     }
 
     // allocate memory for the result
-    QVector<double> result(d_n);
+    QVector<double> result(d_n());
 
     // allocate memory for the linear algegra computations
     // Vandermonde matrix for x values of points in the current smoothing window
@@ -359,14 +359,14 @@ void SmoothFilter::smoothModifiedSavGol(double *x_in, double *y_inout)
     // residual of the (least-squares) approximation (by-product of GSL's algorithm)
     gsl_vector *residual = gsl_vector_alloc(points);
 
-    for (unsigned target_index = 0; target_index < d_n; target_index++) {
+    for (unsigned target_index = 0; target_index < d_n(); target_index++) {
         int offset = target_index - d_left_points;
         // use a fixed number of points; near left/right borders, use offset to change
         // effective number of left/right points considered
         if (target_index < unsigned(d_left_points))
             offset += d_left_points - target_index;
-        else if (unsigned(target_index + d_right_points) >= d_n)
-            offset += d_n - 1 - (target_index + d_right_points);
+        else if (unsigned(target_index + d_right_points) >= d_n())
+            offset += d_n() - 1 - (target_index + d_right_points);
 
         // fill Vandermonde matrix
         for (int i = 0; i < points; ++i) {

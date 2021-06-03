@@ -59,7 +59,6 @@ Filter::Filter(ApplicationWindow *parent, Table *t, QString name) : QObject(pare
 
 void Filter::init()
 {
-    d_n = 0;
     d_curveColor = ColorButton::color(1);
     d_tolerance = 1e-4;
     d_points = 100;
@@ -84,15 +83,10 @@ void Filter::setInterval(double from, double to)
     setDataFromCurve(d_curve->title().text(), from, to);
 }
 
-void Filter::setDataCurve(int curve, double start, double end)
+void Filter::setDataCurve(const int curve, double start, double end)
 {
     if (start > end)
         qSwap(start, end);
-
-    if (d_n > 0) { // delete previousely allocated memory
-        delete[] d_x;
-        delete[] d_y;
-    }
 
     d_init_err = false;
     d_curve = d_graph->curve(curve);
@@ -114,9 +108,9 @@ void Filter::setDataCurve(int curve, double start, double end)
                 break;
         }
     if (d_sort_data)
-        d_n = sortedCurveData(d_curve, start, end, &d_x, &d_y);
+        sortedCurveData(d_curve, start, end, d_x, d_y);
     else
-        d_n = curveData(d_curve, start, end, &d_x, &d_y);
+        curveData(d_curve, start, end, d_x, d_y);
 
     if (!isDataAcceptable()) {
         d_init_err = true;
@@ -124,15 +118,17 @@ void Filter::setDataCurve(int curve, double start, double end)
     }
 
     // ensure range is within data range
-    if (d_n > 0) {
-        d_from = max(start, *min_element(d_x, d_x + d_n));
-        d_to = min(end, *max_element(d_x, d_x + d_n));
+    if (!d_x.empty()) {
+        auto minMax = std::minmax_element(d_x.cbegin(), d_x.cend());
+        d_from = *(minMax.first);
+        d_to = *(minMax.second);
     }
 }
 
-bool Filter::isDataAcceptable()
+bool Filter::isDataAcceptable() const
 {
-    if (d_n < unsigned(d_min_points)) {
+
+    if (d_n() < unsigned(d_min_points)) {
         QMessageBox::critical((ApplicationWindow *)parent(), tr("SciDAVis") + " - " + tr("Error"),
                               tr("You need at least %1 points in order to perform this operation!")
                                       .arg(d_min_points));
@@ -141,7 +137,7 @@ bool Filter::isDataAcceptable()
     return true;
 }
 
-int Filter::curveIndex(const QString &curveTitle, Graph *g)
+int Filter::curveIndex(const QString &curveTitle, Graph *const g)
 {
     if (curveTitle.isEmpty()) {
         QMessageBox::critical((ApplicationWindow *)parent(), tr("Filter Error"),
@@ -161,7 +157,7 @@ int Filter::curveIndex(const QString &curveTitle, Graph *g)
     return d_graph->curveIndex(curveTitle);
 }
 
-bool Filter::setDataFromCurve(const QString &curveTitle, Graph *g)
+bool Filter::setDataFromCurve(const QString &curveTitle, Graph *const g)
 {
     int index = curveIndex(curveTitle, g);
     if (index < 0) {
@@ -174,7 +170,8 @@ bool Filter::setDataFromCurve(const QString &curveTitle, Graph *g)
     return true;
 }
 
-bool Filter::setDataFromCurve(const QString &curveTitle, double from, double to, Graph *g)
+bool Filter::setDataFromCurve(const QString &curveTitle, const double from, const double to,
+                              Graph *const g)
 {
     int index = curveIndex(curveTitle, g);
     if (index < 0) {
@@ -239,18 +236,19 @@ bool Filter::run()
 
 void Filter::output()
 {
-    vector<double> X(d_points);
-    vector<double> Y(d_points);
+    std::vector<double> X(d_points);
+    std::vector<double> Y(d_points);
 
     // do the data analysis
-    calculateOutputData(&X[0], &Y[0]);
+    calculateOutputData(X, Y);
 
-    addResultCurve(&X[0], &Y[0]);
+    addResultCurve(X, Y);
 }
 
-int Filter::sortedCurveData(QwtPlotCurve *c, double start, double end, double **x, double **y)
+int Filter::sortedCurveData(QwtPlotCurve const *const c, const double start, const double end,
+                            std::vector<double> &x, std::vector<double> &y)
 {
-    if (!c || c->rtti() != QwtPlotItem::Rtti_PlotCurve)
+    if ((nullptr == c) || c->rtti() != QwtPlotItem::Rtti_PlotCurve)
         return 0;
 
     // start/end finding only works on nondecreasing data, so sort first
@@ -273,19 +271,19 @@ int Filter::sortedCurveData(QwtPlotCurve *c, double start, double end, double **
 
     // make result arrays
     int n = i_end - i_start + 1;
-    // TODO refactor caller code to make this mroe RAII.
-    (*x) = new double[n];
-    (*y) = new double[n];
+    x.resize(n);
+    y.resize(n);
     for (int j = 0, i = i_start; i <= i_end; i++, j++) {
-        (*x)[j] = c->x(static_cast<int>(p[i]));
-        (*y)[j] = c->y(static_cast<int>(p[i]));
+        x[j] = c->x(static_cast<int>(p[i]));
+        y[j] = c->y(static_cast<int>(p[i]));
     }
     return n;
 }
 
-int Filter::curveData(QwtPlotCurve *c, double start, double end, double **x, double **y)
+int Filter::curveData(QwtPlotCurve const *const c, const double start, const double end,
+                      std::vector<double> &x, std::vector<double> &y)
 {
-    if (!c || c->rtti() != QwtPlotItem::Rtti_PlotCurve)
+    if ((nullptr == c) || c->rtti() != QwtPlotItem::Rtti_PlotCurve)
         return 0;
 
     int datasize = c->dataSize();
@@ -298,18 +296,17 @@ int Filter::curveData(QwtPlotCurve *c, double start, double end, double **x, dou
             break;
 
     int n = i_end - i_start + 1;
-    // TODO refactor caller code to make this mroe RAII.
-    (*x) = new double[n];
-    (*y) = new double[n];
+    x.resize(n);
+    y.resize(n);
 
     for (int j = 0, i = i_start; i <= i_end; i++, j++) {
-        (*x)[j] = c->x(i);
-        (*y)[j] = c->y(i);
+        x[j] = c->x(i);
+        y[j] = c->y(i);
     }
     return n;
 }
 
-QwtPlotCurve *Filter::addResultCurve(double *x, double *y)
+QwtPlotCurve *Filter::addResultCurve(const std::vector<double> &x, const std::vector<double> &y)
 {
     ApplicationWindow *app = (ApplicationWindow *)parent();
     const QString tableName = app->generateUniqueName(this->objectName());
@@ -328,18 +325,10 @@ QwtPlotCurve *Filter::addResultCurve(double *x, double *y)
                                    QList<Column *>() << xCol << yCol);
 
     DataCurve *c = new DataCurve(t, tableName + "_" + xCol->name(), tableName + "_" + yCol->name());
-    c->setData(x, y, d_points);
+    c->setData(x.data(), y.data(), d_points);
     c->setPen(QPen(d_curveColor, 1));
     d_graph->insertPlotItem(c, Graph::Line);
     d_graph->updatePlot();
 
     return (QwtPlotCurve *)c;
-}
-
-Filter::~Filter()
-{
-    if (d_n > 0) { // delete the memory allocated for the data
-        delete[] d_x;
-        delete[] d_y;
-    }
 }

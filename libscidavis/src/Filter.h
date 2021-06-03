@@ -45,14 +45,14 @@ class Filter : public QObject
 public:
     Filter(ApplicationWindow *parent, Table *t = 0, QString name = QString());
     Filter(ApplicationWindow *parent, Graph *g = 0, QString name = QString());
-    ~Filter();
 
     //! Actually does the job. Should be reimplemented in derived classes.
     virtual bool run();
 
-    virtual void setDataCurve(int curve, double start, double end);
-    bool setDataFromCurve(const QString &curveTitle, Graph *g = 0);
-    bool setDataFromCurve(const QString &curveTitle, double from, double to, Graph *g = 0);
+    virtual void setDataCurve(const int curve, double start, double end);
+    bool setDataFromCurve(const QString &curveTitle, Graph *const g = 0);
+    bool setDataFromCurve(const QString &curveTitle, const double from, const double to,
+                          Graph *const g = 0);
 
     //! Changes the data range if the source curve was already assigned. Provided for convenience.
     void setInterval(double from, double to);
@@ -82,7 +82,7 @@ public:
     virtual QString legendInfo() { return QString(); };
 
     //! Returns the size of the fitted data set
-    int dataSize() { return d_n; };
+    int dataSize() { return d_n(); };
 
     bool error() { return d_init_err; };
 
@@ -95,18 +95,20 @@ private:
      * \returns the number of points within range == size of x and y arrays.
      * Memory will be allocated with new double[].
      */
-    int curveData(QwtPlotCurve *c, double start, double end, double **x, double **y);
+    int curveData(QwtPlotCurve const *const c, const double start, const double end,
+                  std::vector<double> &x, std::vector<double> &y);
     //! Same as curveData, but sorts the points by their x value.
-    int sortedCurveData(QwtPlotCurve *c, double start, double end, double **x, double **y);
+    int sortedCurveData(QwtPlotCurve const *const c, const double start, const double end,
+                        std::vector<double> &x, std::vector<double> &y);
 
 protected:
-    virtual bool isDataAcceptable();
+    virtual bool isDataAcceptable() const;
 
     //! Adds the result curve to the target output plot window. Creates a hidden table and frees the input data from memory.
-    QwtPlotCurve *addResultCurve(double *x, double *y);
+    QwtPlotCurve *addResultCurve(const std::vector<double> &x, const std::vector<double> &y);
 
     //! Performs checks and returns the index of the source data curve if OK, -1 otherwise
-    int curveIndex(const QString &curveTitle, Graph *g);
+    int curveIndex(const QString &curveTitle, Graph *const g);
 
     //! Output string added to the log pannel of the application
     virtual QString logInfo() { return QString(); };
@@ -115,7 +117,7 @@ protected:
     virtual void output();
 
     //! Calculates the data for the output curve and store it in the X an Y vectors
-    virtual void calculateOutputData(double *X, double *Y)
+    virtual void calculateOutputData(std::vector<double> &X, std::vector<double> &Y)
     {
         Q_UNUSED(X)
         Q_UNUSED(Y)
@@ -128,13 +130,13 @@ protected:
     Table *d_table;
 
     //! Size of the data arrays
-    unsigned d_n;
+    size_t d_n() const { return d_x.size(); };
 
     //! x data set to be analysed
-    double *d_x;
+    std::vector<double> d_x;
 
     //! y data set to be analysed
-    double *d_y;
+    std::vector<double> d_y;
 
     //! GSL Tolerance, if ever needed...
     double d_tolerance;

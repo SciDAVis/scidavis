@@ -87,7 +87,7 @@ void Interpolation::setMethod(int m)
         return;
     }
     unsigned min_points = m + 3;
-    if (d_n < min_points) {
+    if (d_n() < min_points) {
         QMessageBox::critical((ApplicationWindow *)parent(), tr("SciDAVis") + " - " + tr("Error"),
                               tr("You need at least %1 points in order to perform this operation!")
                                       .arg(min_points));
@@ -114,8 +114,8 @@ void Interpolation::calculateOutputData(double *x, double *y)
         break;
     }
 
-    gsl_spline *interp = gsl_spline_alloc(method, d_n);
-    gsl_spline_init(interp, d_x, d_y, d_n);
+    gsl_spline *interp = gsl_spline_alloc(method, d_n());
+    gsl_spline_init(interp, d_x.data(), d_y.data(), d_n());
 
     double step = (d_to - d_from) / (double)(d_points - 1);
     for (int j = 0; j < d_points; j++) {
@@ -130,7 +130,7 @@ void Interpolation::calculateOutputData(double *x, double *y)
 bool Interpolation::isDataAcceptable()
 {
     // GSL interpolation routines fail with division by zero on such data
-    for (unsigned i = 1; i < d_n; i++)
+    for (unsigned i = 1; i < d_n(); i++)
         if (d_x[i - 1] == d_x[i]) {
             QMessageBox::critical((ApplicationWindow *)parent(),
                                   tr("SciDAVis") + " - " + tr("Error"),

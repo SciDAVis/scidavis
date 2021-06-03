@@ -72,9 +72,8 @@ void Integration::init()
 double Integration::trapezoid()
 {
     double sum = 0.0;
-    vector<double> result;
-    result.reserve(d_n);
-    int size = d_n - 1;
+    vector<double> result(d_n());
+    int size = d_n() - 1;
     for (int i = 0; i < size; i++) {
         int j = i + 1;
         result.push_back(sum);
@@ -82,8 +81,8 @@ double Integration::trapezoid()
     }
 
     result.push_back(sum);
-    d_points = d_n;
-    addResultCurve(d_x, &result[0]);
+    d_points = d_n();
+    addResultCurve(d_x, result);
     return sum;
 }
 
@@ -104,7 +103,7 @@ bool Integration::isDataAcceptable()
         return true;
     }
     // GSL interpolation routines fail with division by zero on such data
-    for (unsigned i = 1; i < d_n; i++)
+    for (unsigned i = 1; i < d_n(); i++)
         if (d_x[i - 1] == d_x[i]) {
             QMessageBox::critical((ApplicationWindow *)parent(),
                                   tr("SciDAVis") + " - " + tr("Error"),
@@ -137,7 +136,7 @@ QString Integration::logInfo()
         throw runtime_error("invalid method");
     }
 
-    if (d_n < gsl_interp_type_min_size(method_t)) {
+    if (d_n() < gsl_interp_type_min_size(method_t)) {
         QMessageBox::critical((ApplicationWindow *)parent(), tr("SciDAVis") + " - " + tr("Error"),
                               tr("You need at least %1 points in order to perform this operation!")
                                       .arg(gsl_interp_type_min_size(method_t)));
@@ -145,8 +144,8 @@ QString Integration::logInfo()
         return QString("");
     }
 
-    gsl_interp *interpolation = gsl_interp_alloc(method_t, d_n);
-    gsl_interp_init(interpolation, d_x, d_y, d_n);
+    gsl_interp *interpolation = gsl_interp_alloc(method_t, d_n());
+    gsl_interp_init(interpolation, d_x.data(), d_y.data(), d_n());
 
     QString logInfo = "[" + QLocale().toString(QDateTime::currentDateTime()) + "\t" + tr("Plot")
             + ": ''" + d_graph->parentPlotName() + "'']\n";
@@ -155,19 +154,19 @@ QString Integration::logInfo()
 
     ApplicationWindow *app = (ApplicationWindow *)parent();
     int prec = app->d_decimal_digits;
-    logInfo += tr("Points") + ": " + QString::number(d_n) + " " + tr("from")
+    logInfo += tr("Points") + ": " + QString::number(d_n()) + " " + tr("from")
             + " x = " + QLocale().toString(d_from, 'g', prec) + " ";
     logInfo += tr("to") + " x = " + QLocale().toString(d_to, 'g', prec) + "\n";
 
     // using GSL to find maximum value of data set
-    gsl_vector *aux = gsl_vector_alloc(d_n);
-    for (unsigned i = 0; i < d_n; i++)
+    gsl_vector *aux = gsl_vector_alloc(d_n());
+    for (unsigned i = 0; i < d_n(); i++)
         gsl_vector_set(aux, i, d_y[i]);
     int maxID = static_cast<int>(gsl_vector_max_index(aux));
     gsl_vector_free(aux);
 
     // calculate result
-    d_result = gsl_interp_eval_integ(interpolation, d_x, d_y, d_from, d_to, 0);
+    d_result = gsl_interp_eval_integ(interpolation, d_x.data(), d_y.data(), d_from, d_to, 0);
 
     logInfo += tr("Peak at") + " x = " + QLocale().toString(d_x[maxID], 'g', prec) + "\t";
     logInfo += "y = " + QLocale().toString(d_y[maxID], 'g', prec) + "\n";

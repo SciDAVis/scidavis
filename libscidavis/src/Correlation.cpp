@@ -66,45 +66,39 @@ void Correlation::setDataFromTable(Table *t, const QString &colName1, const QStr
         return;
     }
 
-    if (d_n > 0) { // delete previousely allocated memory
-        delete[] d_x;
-        delete[] d_y;
+    unsigned rows = d_table->numRows();
+    size_t td_n = 16; // tmp number of points
+    while (td_n < rows)
+        td_n *= 2;
+
+    try {
+        d_x.resize(td_n, 0.0);
+        d_y.resize(td_n, 0.0);
+    } catch (const std::bad_alloc &e) {
+        QMessageBox::critical((ApplicationWindow *)parent(), tr("SciDAVis") + " - " + tr("Error"),
+                              tr("Could not allocate memory, operation aborted!\n")
+                                      + tr("Allocator returned: ") + e.what());
+        d_init_err = true;
+        return;
     }
 
-    unsigned rows = d_table->numRows();
-    d_n = 16; // tmp number of points
-    while (d_n < rows)
-        d_n *= 2;
-
-    d_x = new double[d_n];
-    d_y = new double[d_n];
-
-    if (d_y && d_x) {
-        memset(d_x, 0, d_n * sizeof(double)); // zero-pad the two arrays...
-        memset(d_y, 0, d_n * sizeof(double));
-        for (unsigned i = 0; i < rows; i++) {
-            d_x[i] = d_table->cell(i, col1);
-            d_y[i] = d_table->cell(i, col2);
-        }
-    } else {
-        QMessageBox::critical((ApplicationWindow *)parent(), tr("SciDAVis") + " - " + tr("Error"),
-                              tr("Could not allocate memory, operation aborted!"));
-        d_init_err = true;
-        d_n = 0;
+    for (unsigned i = 0; i < rows; i++) {
+        d_x[i] = d_table->cell(i, col1);
+        d_y[i] = d_table->cell(i, col2);
     }
 }
 
 void Correlation::output()
 {
     // calculate the FFTs of the two functions
-    if (gsl_fft_real_radix2_transform(d_x, 1, d_n) == 0
-        && gsl_fft_real_radix2_transform(d_y, 1, d_n) == 0) {
+    if (gsl_fft_real_radix2_transform(d_x.data(), 1, d_n()) == 0
+        && gsl_fft_real_radix2_transform(d_y.data(), 1, d_n()) == 0) {
         // multiply the FFT by its complex conjugate
-        for (unsigned i = 0; i < d_n / 2; i++) {
-            if (i == 0 || i == (d_n / 2) - 1)
+        for (unsigned i = 0; i < d_n() / 2; i++) {
+            if (i == 0 || i == (d_n() / 2) - 1)
                 d_x[i] *= d_x[i];
             else {
-                int ni = d_n - i;
+                int ni = d_n() - i;
                 double dReal = d_x[i] * d_y[i] + d_x[ni] * d_y[ni];
                 double dImag = d_x[i] * d_y[ni] - d_x[ni] * d_y[i];
                 d_x[i] = dReal;
@@ -117,7 +111,7 @@ void Correlation::output()
         return;
     }
 
-    gsl_fft_halfcomplex_radix2_inverse(d_x, 1, d_n); // inverse FFT
+    gsl_fft_halfcomplex_radix2_inverse(d_x.data(), 1, d_n()); // inverse FFT
 
     addResultCurve();
 }
@@ -140,7 +134,7 @@ void Correlation::addResultCurve()
         x_temp[i] = i - n;
 
         if (i < n)
-            y_temp[i] = d_x[d_n - n + i];
+            y_temp[i] = d_x[d_n() - n + i];
         else
             y_temp[i] = d_x[i - n];
 
