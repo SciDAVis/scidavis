@@ -767,6 +767,9 @@ class QwtPlotCurve
 
 		void setSymbol(const QwtSymbol &s);
 		const QwtSymbol& symbol() const;
+%MethodCode
+	sipRes = sipCpp->symbol().clone();
+%End
 
 	 // convenience methods for scripting
 	 
