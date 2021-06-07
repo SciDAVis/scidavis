@@ -171,8 +171,8 @@ void MultiPeakFit::guessInitialValues()
     if (d_peaks > 1)
         return;
 
-    gsl_vector_view x = gsl_vector_view_array(d_x.data(), d_n());
-    gsl_vector_view y = gsl_vector_view_array(d_y.data(), d_n());
+    gsl_vector_view x = gsl_vector_view_array(d_x.data(), d_x.size());
+    gsl_vector_view y = gsl_vector_view_array(d_y.data(), d_y.size());
 
     double min_out, max_out;
     gsl_vector_minmax(&y.vector, &min_out, &max_out);
@@ -212,7 +212,7 @@ void MultiPeakFit::insertPeakFunctionCurve(std::vector<double> &x, std::vector<d
     c->setPen(QPen(d_peaks_color, 1));
     //"Set data by copying x- and y-values from specified memory blocks."
     c->setData(x.data(), y.data(), d_points);
-    c->setRange(d_x[0], d_x[d_n() - 1]);
+    c->setRange(d_x.front(), d_x.back());
 
     QString formula;
     for (int j = 0; j < 3; j++) {
@@ -232,7 +232,7 @@ void MultiPeakFit::generateFitCurve(const vector<double> &par)
 {
     ApplicationWindow *app = (ApplicationWindow *)parent();
     if (!d_gen_function)
-        d_points = d_n();
+        d_points = d_x.size();
 
     gsl_matrix *m = gsl_matrix_alloc(d_points, d_peaks);
     if (!m) {
@@ -249,7 +249,7 @@ void MultiPeakFit::generateFitCurve(const vector<double> &par)
         peaks_aux--;
 
     if (d_gen_function) {
-        double step = (d_x[d_n() - 1] - d_x[0]) / (d_points - 1);
+        double step = (d_x.back() - d_x.front()) / (d_points - 1);
         for (i = 0; i < d_points; i++) {
             X[i] = d_x[0] + i * step;
             double yi = 0;

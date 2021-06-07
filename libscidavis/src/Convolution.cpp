@@ -66,7 +66,7 @@ void Convolution::setDataFromTable(Table *t, const QString &signalColName,
         return;
     }
 
-    d_n_response = 0;
+    size_t d_n_response = 0;
     int rows = d_table->numRows();
     for (int i = 0; i < rows; i++) {
         if (!d_table->text(i, response_col).isEmpty())
@@ -88,13 +88,13 @@ void Convolution::setDataFromTable(Table *t, const QString &signalColName,
         return;
     }
 
-    d_n_signal = 16; // tmp number of points
+    size_t d_n_signal = 16; // tmp number of points
     while (unsigned(d_n_signal) < rows + d_n_response / 2)
         d_n_signal *= 2;
 
     try {
-        d_x.resize(d_n_signal); // signal
-        d_y.resize(d_n_response); // response
+        d_x.resize(d_n_signal);
+        d_y.resize(d_n_response);
     } catch (const std::bad_alloc &e) {
         QMessageBox::critical((ApplicationWindow *)parent(), tr("SciDAVis") + " - " + tr("Error"),
                               tr("Could not allocate memory, operation aborted!\n")
@@ -102,17 +102,17 @@ void Convolution::setDataFromTable(Table *t, const QString &signalColName,
         d_init_err = true;
         return;
     }
-    std::fill(d_x.begin(), d_x.end(), 0.0);
-    std::fill(d_y.begin(), d_y.end(), 0.0);
-    for (unsigned i = 0; i < d_n_signal; i++)
+
+    for (unsigned i = 0; i < rows; i++)
         d_x[i] = d_table->cell(i, signal_col);
+    std::fill(d_x.begin()+rows,d_x.end(),0.0);
     for (int i = 0; i < d_n_response; i++)
         d_y[i] = d_table->cell(i, response_col);
 }
 
 void Convolution::output()
 {
-    convlv(d_x.data(), d_n_signal, d_y.data(), d_n_response, 1);
+    convlv(d_x.data(), d_x.size(), d_y.data(), d_y.size(), 1);
     addResultCurve();
 }
 
@@ -127,8 +127,8 @@ void Convolution::addResultCurve()
 
     d_table->addCol();
     d_table->addCol();
-    std::vector<double> x_temp(d_n());
-    for (unsigned i = 0; i < d_n(); i++) {
+    std::vector<double> x_temp(d_x.size());
+    for (unsigned i = 0; i < d_x.size(); i++) {
         double x = i + 1;
         x_temp[i] = x;
 
@@ -149,7 +149,7 @@ void Convolution::addResultCurve()
         return;
 
     DataCurve *c = new DataCurve(d_table, d_table->colName(cols), d_table->colName(cols2));
-    c->setData(x_temp.data(), d_x.data(), d_n());
+    c->setData(x_temp.data(), d_x.data(), d_x.size());
     c->setPen(QPen(d_curveColor, 1));
     ml->activeGraph()->insertPlotItem(c, Graph::Line);
     ml->activeGraph()->updatePlot();
@@ -213,6 +213,6 @@ Deconvolution::Deconvolution(ApplicationWindow *parent, Table *t, const QString 
 
 void Deconvolution::output()
 {
-    convlv(d_x.data(), signalDataSize(), d_y.data(), responseDataSize(), -1);
+    convlv(d_x.data(), d_x.size(), d_y.data(), d_y.size(), -1);
     addResultCurve();
 }

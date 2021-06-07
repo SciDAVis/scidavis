@@ -53,11 +53,11 @@ public:
 
 private:
     void init(int m);
-    void calculateOutputData(double *x, double *y);
-    void smoothFFT(double *x, double *y);
-    void smoothAverage(double *x, double *y);
-    void smoothSavGol(double *x, double *y);
-    void smoothModifiedSavGol(double *x, double *y);
+    void calculateOutputData(std::vector<double>& x, std::vector<double>&  y) override;
+    void smoothFFT(std::vector<double>& x, std::vector<double>&  y);
+    void smoothAverage(std::vector<double>& x, std::vector<double>&  y);
+    void smoothSavGol(std::vector<double>& x, std::vector<double>&  y);
+    void smoothModifiedSavGol(std::vector<double>& x, std::vector<double>&  y);
     static int savitzkyGolayCoefficients(int points, int polynom_order, gsl_matrix *h);
 
     //! The smooth method.

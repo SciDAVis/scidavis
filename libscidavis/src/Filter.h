@@ -82,26 +82,22 @@ public:
     virtual QString legendInfo() { return QString(); };
 
     //! Returns the size of the fitted data set
-    int dataSize() { return d_n(); };
+    int dataSize() { return d_x.size(); };
 
     bool error() { return d_init_err; };
 
 private:
     void init();
 
-    /**
-     * \brief Sets x and y to the curve points between start and end.
-     *
-     * \returns the number of points within range == size of x and y arrays.
-     * Memory will be allocated with new double[].
-     */
-    int curveData(QwtPlotCurve const *const c, const double start, const double end,
-                  std::vector<double> &x, std::vector<double> &y);
-    //! Same as curveData, but sorts the points by their x value.
-    int sortedCurveData(QwtPlotCurve const *const c, const double start, const double end,
-                        std::vector<double> &x, std::vector<double> &y);
-
 protected:
+
+    //! returns either sorted or unsorted indices for data in range [start;end]
+    template <typename T>
+    std::vector<size_t> static getIndices(const std::vector<T>& data, const T start, const T end, const bool sorted);
+
+    //! holds either sorted or unsorted indices for further usage
+    std::vector<size_t> d_indices;
+
     virtual bool isDataAcceptable() const;
 
     //! Adds the result curve to the target output plot window. Creates a hidden table and frees the input data from memory.
@@ -129,9 +125,6 @@ protected:
     //! A table source of data
     Table *d_table;
 
-    //! Size of the data arrays
-    size_t d_n() const { return d_x.size(); };
-
     //! x data set to be analysed
     std::vector<double> d_x;
 
@@ -141,7 +134,7 @@ protected:
     //! GSL Tolerance, if ever needed...
     double d_tolerance;
 
-    //! Number of result points to de calculated and displayed in the output curve
+    //! Number of result points to be calculated and displayed in the output curve
     int d_points;
 
     //! Color index of the result curve
@@ -171,5 +164,31 @@ protected:
     //! String explaining the operation in the comment of the result table and in the project explorer
     QString d_explanation;
 };
+
+template <typename T>
+std::vector<size_t> Filter::getIndices(const std::vector<T>& data, const T start, const T end, const bool sorted)
+{
+    std::vector<size_t> result;
+    if (data.empty() || end < start)
+            return result;
+    if (sorted)
+    {
+        std::vector<std::pair<T,size_t>> tData(data.size());
+        size_t ii=0;
+        std::generate(tData.begin(), tData.end(), [&](){ auto pair = std::make_pair(data[ii],ii); ++ii; return pair; });
+        std::sort(tData.begin(),tData.end(),[](const std::pair<T,size_t>& a, std::pair<T,size_t>& b){ return a.second < b.second;});
+        auto first = std::find_if(tData.cbegin(),tData.cend(),[start](const std::pair<T,size_t>& a){return a.first>=start;});
+        auto last = std::find_if(first,tData.cend(),[end](const std::pair<T,size_t>& a){return a.first>end;});
+        std::transform(first,last,std::back_inserter(result),[](const std::pair<T,size_t>& a ){return a.second;});
+    }
+    else
+    {
+        size_t ii = 0;
+        for (auto it = data.cbegin(); data.cend() !=it; ++it)
+        if ((start <= *it)&&(end >= *it))
+            result.push_back(ii++);
+    }
+    return result;
+}
 
 #endif

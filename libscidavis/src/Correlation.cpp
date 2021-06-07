@@ -72,8 +72,8 @@ void Correlation::setDataFromTable(Table *t, const QString &colName1, const QStr
         td_n *= 2;
 
     try {
-        d_x.resize(td_n, 0.0);
-        d_y.resize(td_n, 0.0);
+        d_x.resize(td_n);
+        d_y.resize(td_n);
     } catch (const std::bad_alloc &e) {
         QMessageBox::critical((ApplicationWindow *)parent(), tr("SciDAVis") + " - " + tr("Error"),
                               tr("Could not allocate memory, operation aborted!\n")
@@ -86,19 +86,21 @@ void Correlation::setDataFromTable(Table *t, const QString &colName1, const QStr
         d_x[i] = d_table->cell(i, col1);
         d_y[i] = d_table->cell(i, col2);
     }
+std::fill(d_x.begin()+rows,d_x.end(),0.0);
+std::fill(d_y.begin()+rows,d_y.end(),0.0);
 }
 
 void Correlation::output()
 {
     // calculate the FFTs of the two functions
-    if (gsl_fft_real_radix2_transform(d_x.data(), 1, d_n()) == 0
-        && gsl_fft_real_radix2_transform(d_y.data(), 1, d_n()) == 0) {
+    if (gsl_fft_real_radix2_transform(d_x.data(), 1, d_x.size()) == 0
+        && gsl_fft_real_radix2_transform(d_y.data(), 1, d_y.size()) == 0) {
         // multiply the FFT by its complex conjugate
-        for (unsigned i = 0; i < d_n() / 2; i++) {
-            if (i == 0 || i == (d_n() / 2) - 1)
+        for (unsigned i = 0; i < d_x.size() / 2; i++) {
+            if (i == 0 || i == (d_x.size() / 2) - 1)
                 d_x[i] *= d_x[i];
             else {
-                int ni = d_n() - i;
+                int ni = d_x.size() - i;
                 double dReal = d_x[i] * d_y[i] + d_x[ni] * d_y[ni];
                 double dImag = d_x[i] * d_y[ni] - d_x[ni] * d_y[i];
                 d_x[i] = dReal;
@@ -111,7 +113,7 @@ void Correlation::output()
         return;
     }
 
-    gsl_fft_halfcomplex_radix2_inverse(d_x.data(), 1, d_n()); // inverse FFT
+    gsl_fft_halfcomplex_radix2_inverse(d_x.data(), 1, d_x.size()); // inverse FFT
 
     addResultCurve();
 }
@@ -134,7 +136,7 @@ void Correlation::addResultCurve()
         x_temp[i] = i - n;
 
         if (i < n)
-            y_temp[i] = d_x[d_n() - n + i];
+            y_temp[i] = d_x[d_x.size() - n + i];
         else
             y_temp[i] = d_x[i - n];
 
@@ -155,7 +157,7 @@ void Correlation::addResultCurve()
         return;
 
     DataCurve *c = new DataCurve(d_table, d_table->colName(cols), d_table->colName(cols2));
-    c->setData(&x_temp[0], &y_temp[0], rows);
+    c->setData(x_temp.data(), y_temp.data(), rows);
     c->setPen(QPen(d_curveColor, 1));
     ml->activeGraph()->insertPlotItem(c, Graph::Line);
     ml->activeGraph()->updatePlot();

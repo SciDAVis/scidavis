@@ -52,7 +52,7 @@ protected:
 
 private:
     void init(int m);
-    void calculateOutputData(double *x, double *y);
+    void calculateOutputData(std::vector<double>&  x, std::vector<double>& y) override;
 
     //! the interpolation method
     int d_method;

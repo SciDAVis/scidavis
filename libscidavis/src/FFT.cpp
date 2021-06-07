@@ -51,8 +51,8 @@ FFT::FFT(ApplicationWindow *parent, Graph *g, const QString &curveTitle) : Filte
     init();
     setDataFromCurve(curveTitle);
     // intersperse 0 imaginary components
-    std::vector<double> tmp(2 * d_n(), 0.0);
-    for (size_t i = 0; i < d_n(); ++i)
+    std::vector<double> tmp(2 * d_y.size(), 0.0);
+    for (size_t i = 0; i < d_y.size(); ++i)
         tmp[2 * i] = d_y[i];
     d_y = std::move(tmp);
 }
@@ -70,13 +70,15 @@ void FFT::init()
 
 QList<Column *> FFT::fftTable()
 {
+    std::vector<double> amp;    
+
     gsl_fft_complex_wavetable *wavetable = nullptr;
     gsl_fft_complex_workspace *workspace = nullptr;
-    std::vector<double> amp;
+
     try {
-        amp.resize(d_n());
-        wavetable = gsl_fft_complex_wavetable_alloc(d_n());
-        workspace = gsl_fft_complex_workspace_alloc(d_n());
+        amp.resize(d_x.size());
+        wavetable = gsl_fft_complex_wavetable_alloc(d_x.size());
+        workspace = gsl_fft_complex_workspace_alloc(d_x.size());
         if ((nullptr == wavetable) || (nullptr == workspace))
             throw std::bad_alloc();
     } catch (const std::bad_alloc &) {
@@ -86,35 +88,35 @@ QList<Column *> FFT::fftTable()
         return QList<Column *>();
     }
 
-    double df = 1.0 / (double)(d_n() * d_sampling); // frequency sampling
+    double df = 1.0 / (d_x.size() * d_sampling); // frequency sampling
     double aMax = 0.0; // max amplitude
     QList<Column *> columns;
     if (!d_inverse) {
         columns << new Column(tr("Frequency"), SciDAVis::ColumnMode::Numeric);
-        gsl_fft_complex_forward(d_y.data(), 1, d_n(), wavetable, workspace);
+        gsl_fft_complex_forward(d_y.data(), 1, d_y.size(), wavetable, workspace);
     } else {
         columns << new Column(tr("Time"), SciDAVis::ColumnMode::Numeric);
-        gsl_fft_complex_inverse(d_y.data(), 1, d_n(), wavetable, workspace);
+        gsl_fft_complex_inverse(d_y.data(), 1, d_y.size(), wavetable, workspace);
     }
 
     gsl_fft_complex_wavetable_free(wavetable);
     gsl_fft_complex_workspace_free(workspace);
 
     if (d_shift_order) {
-        int n2 = d_n() / 2;
-        for (int i = 0; i < int(d_n()); i++) {
+        int n2 = d_y.size() / 2;
+        for (int i = 0; i < d_y.size(); i++) {
             d_x[i] = (i - n2) * df;
-            int j = i + d_n();
+            int j = i + d_y.size();
             double aux = d_y[i];
             d_y[i] = d_y[j];
             d_y[j] = aux;
         }
     } else {
-        for (size_t i = 0; i < d_n(); i++)
+        for (size_t i = 0; i < d_x.size(); i++)
             d_x[i] = i * df;
     }
 
-    for (size_t i = 0; i < d_n(); i++) {
+    for (size_t i = 0; i < d_y.size(); i++) {
         size_t i2 = 2 * i;
         double a = sqrt(d_y[i2] * d_y[i2] + d_y[i2 + 1] * d_y[i2 + 1]);
         amp[i] = a;
@@ -126,7 +128,7 @@ QList<Column *> FFT::fftTable()
     columns << new Column(tr("Imaginary"), SciDAVis::ColumnMode::Numeric);
     columns << new Column(tr("Amplitude"), SciDAVis::ColumnMode::Numeric);
     columns << new Column(tr("Angle"), SciDAVis::ColumnMode::Numeric);
-    for (int i = 0; i < static_cast<int>(d_n()); i++) {
+    for (int i = 0; i < static_cast<int>(d_x.size()); i++) {
         int i2 = 2 * i;
         columns.at(0)->setValueAt(i, d_x[i]);
         columns.at(1)->setValueAt(i, d_y[i2]);
@@ -195,17 +197,17 @@ void FFT::setDataFromTable(Table *t, const QString &realColName, const QString &
     size_t rows = d_table->numRows();
     int n2 = 2 * rows;
     try {
-        d_y.resize(n2);
-        d_x.resize(rows);
+        d_y.reserve(n2);
+        d_x.reserve(rows);
     } catch (const std::bad_alloc &e) {
         QMessageBox::critical((ApplicationWindow *)parent(), tr("SciDAVis") + " - " + tr("Error"),
-                              tr("Could not allocate memory, operation aborted!"));
+                              tr("Could not allocate memory, operation aborted!\n")
+                                      + tr("Allocator returned: ") + e.what());
         d_init_err = true;
         return;
     }
 
-    std::fill(d_y.begin(), d_y.end(), 0.0);
-    for (unsigned i = 0; i < d_n(); i++) {
+    for (unsigned i = 0; i < d_x.size(); i++) {
         int i2 = 2 * i;
         d_y[i2] = d_table->cell(i, d_real_col);
         if (d_imag_col >= 0)
