@@ -107,10 +107,17 @@ void Filter::setDataCurve(const int curve, double start, double end)
             } else
                 break;
         }
+
+    std::vector<double> temp(d_curve->dataSize());
+    for (auto ii=0; d_curve->dataSize() > ii; ++ii )
+        temp[ii]=d_curve->x(ii);
+
+    d_indices = getIndices(temp, start, end, d_sort_data);
+
     try
     {
-        d_x.resize(d_curve->dataSize());
-        d_y.resize(d_curve->dataSize());
+        d_x.resize(d_indices.size());
+        d_y.resize(d_indices.size());
     }
     catch (const std::bad_alloc &e) {
         QMessageBox::critical((ApplicationWindow *)parent(), tr("SciDAVis") + " - " + tr("Error"),
@@ -120,11 +127,7 @@ void Filter::setDataCurve(const int curve, double start, double end)
         return;
     }
 
-    for (auto ii=0; d_curve->dataSize() > ii; ++ii )
-        d_x.push_back(d_curve->x(ii));
-
-    d_indices = getIndices(d_x, start, end, d_sort_data);
-    for (auto ii=0; d_curve->dataSize() > ii; ++ii )
+    for (auto ii=0; d_indices.size() > ii; ++ii )
     {
         d_x[ii]=d_curve->x(d_indices[ii]);
         d_y[ii]=d_curve->y(d_indices[ii]);

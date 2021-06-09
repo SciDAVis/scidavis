@@ -124,7 +124,7 @@ void FFTFilter::calculateOutputData(std::vector<double>& x, std::vector<double>&
     gsl_fft_real_workspace *work = gsl_fft_real_workspace_alloc(d_x.size());
     gsl_fft_real_wavetable *real = gsl_fft_real_wavetable_alloc(d_x.size());
 
-    gsl_fft_real_transform(y.data(), 1, d_y.size(), real, work);
+    gsl_fft_real_transform(y.data(), 1, d_x.size(), real, work);
     gsl_fft_real_wavetable_free(real);
 
     d_explanation = QLocale().toString(d_low_freq) + " ";
@@ -165,7 +165,7 @@ void FFTFilter::calculateOutputData(std::vector<double>& x, std::vector<double>&
     }
 
     gsl_fft_halfcomplex_wavetable *hc = gsl_fft_halfcomplex_wavetable_alloc(d_x.size());
-    gsl_fft_halfcomplex_inverse(y.data(), 1, d_y.size(), hc, work);
+    gsl_fft_halfcomplex_inverse(y.data(), 1, d_x.size(), hc, work);
     gsl_fft_halfcomplex_wavetable_free(hc);
     gsl_fft_real_workspace_free(work);
 }

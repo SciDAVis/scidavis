@@ -94,7 +94,7 @@ void Correlation::output()
 {
     // calculate the FFTs of the two functions
     if (gsl_fft_real_radix2_transform(d_x.data(), 1, d_x.size()) == 0
-        && gsl_fft_real_radix2_transform(d_y.data(), 1, d_y.size()) == 0) {
+        && gsl_fft_real_radix2_transform(d_y.data(), 1, d_x.size()) == 0) {
         // multiply the FFT by its complex conjugate
         for (unsigned i = 0; i < d_x.size() / 2; i++) {
             if (i == 0 || i == (d_x.size() / 2) - 1)

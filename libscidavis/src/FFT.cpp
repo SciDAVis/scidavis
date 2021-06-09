@@ -51,8 +51,8 @@ FFT::FFT(ApplicationWindow *parent, Graph *g, const QString &curveTitle) : Filte
     init();
     setDataFromCurve(curveTitle);
     // intersperse 0 imaginary components
-    std::vector<double> tmp(2 * d_y.size(), 0.0);
-    for (size_t i = 0; i < d_y.size(); ++i)
+    std::vector<double> tmp(2 * d_x.size(), 0.0);
+    for (size_t i = 0; i < d_x.size(); ++i)
         tmp[2 * i] = d_y[i];
     d_y = std::move(tmp);
 }
@@ -70,7 +70,7 @@ void FFT::init()
 
 QList<Column *> FFT::fftTable()
 {
-    std::vector<double> amp;    
+    std::vector<double> amp;
 
     gsl_fft_complex_wavetable *wavetable = nullptr;
     gsl_fft_complex_workspace *workspace = nullptr;
@@ -93,20 +93,20 @@ QList<Column *> FFT::fftTable()
     QList<Column *> columns;
     if (!d_inverse) {
         columns << new Column(tr("Frequency"), SciDAVis::ColumnMode::Numeric);
-        gsl_fft_complex_forward(d_y.data(), 1, d_y.size(), wavetable, workspace);
+        gsl_fft_complex_forward(d_y.data(), 1, d_x.size(), wavetable, workspace);
     } else {
         columns << new Column(tr("Time"), SciDAVis::ColumnMode::Numeric);
-        gsl_fft_complex_inverse(d_y.data(), 1, d_y.size(), wavetable, workspace);
+        gsl_fft_complex_inverse(d_y.data(), 1, d_x.size(), wavetable, workspace);
     }
 
     gsl_fft_complex_wavetable_free(wavetable);
     gsl_fft_complex_workspace_free(workspace);
 
     if (d_shift_order) {
-        int n2 = d_y.size() / 2;
-        for (int i = 0; i < d_y.size(); i++) {
+        int n2 = d_x.size() / 2;
+        for (int i = 0; i < d_x.size(); i++) {
             d_x[i] = (i - n2) * df;
-            int j = i + d_y.size();
+            int j = i + d_x.size();
             double aux = d_y[i];
             d_y[i] = d_y[j];
             d_y[j] = aux;
@@ -116,7 +116,7 @@ QList<Column *> FFT::fftTable()
             d_x[i] = i * df;
     }
 
-    for (size_t i = 0; i < d_y.size(); i++) {
+    for (size_t i = 0; i < d_x.size(); i++) {
         size_t i2 = 2 * i;
         double a = sqrt(d_y[i2] * d_y[i2] + d_y[i2 + 1] * d_y[i2 + 1]);
         amp[i] = a;
@@ -197,8 +197,8 @@ void FFT::setDataFromTable(Table *t, const QString &realColName, const QString &
     size_t rows = d_table->numRows();
     int n2 = 2 * rows;
     try {
-        d_y.reserve(n2);
-        d_x.reserve(rows);
+        d_y.resize(n2);
+        d_x.resize(rows);
     } catch (const std::bad_alloc &e) {
         QMessageBox::critical((ApplicationWindow *)parent(), tr("SciDAVis") + " - " + tr("Error"),
                               tr("Could not allocate memory, operation aborted!\n")
