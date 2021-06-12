@@ -49,5 +49,5 @@ Icon=scidavis
 Exec=scidavis
 Terminal=false
 MimeType=application/x-sciprj;
-Categories=Qt;Science;DataVisualization;
+Categories=Qt;Science;DataVisualization;Math;Education;
 X-KDE-SubstituteUID=false
