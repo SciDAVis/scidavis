@@ -106,7 +106,7 @@ void Convolution::setDataFromTable(Table *t, const QString &signalColName,
     for (unsigned i = 0; i < rows; i++)
         d_x[i] = d_table->cell(i, signal_col);
     std::fill(d_x.begin()+rows,d_x.end(),0.0);
-    for (int i = 0; i < d_n_response; i++)
+    for (int i = 0u; i < d_n_response; i++)
         d_y[i] = d_table->cell(i, response_col);
 }
 

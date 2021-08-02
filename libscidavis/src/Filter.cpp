@@ -127,7 +127,7 @@ void Filter::setDataCurve(const int curve, double start, double end)
         return;
     }
 
-    for (auto ii=0; d_indices.size() > ii; ++ii )
+    for (auto ii=0u; d_indices.size() > ii; ++ii )
     {
         d_x[ii]=d_curve->x(d_indices[ii]);
         d_y[ii]=d_curve->y(d_indices[ii]);

@@ -84,6 +84,10 @@ QList<Column *> FFT::fftTable()
     } catch (const std::bad_alloc &) {
         QMessageBox::critical((ApplicationWindow *)parent(), tr("SciDAVis") + " - " + tr("Error"),
                               tr("Could not allocate memory, operation aborted!"));
+        if (nullptr != wavetable)
+            gsl_fft_complex_wavetable_free(wavetable);
+        if (nullptr != workspace)
+            gsl_fft_complex_workspace_free(workspace);
         d_init_err = true;
         return QList<Column *>();
     }
@@ -104,7 +108,7 @@ QList<Column *> FFT::fftTable()
 
     if (d_shift_order) {
         int n2 = d_x.size() / 2;
-        for (int i = 0; i < d_x.size(); i++) {
+        for (int i = 0u; i < d_x.size(); i++) {
             d_x[i] = (i - n2) * df;
             int j = i + d_x.size();
             double aux = d_y[i];

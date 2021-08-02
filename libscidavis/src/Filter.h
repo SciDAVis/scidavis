@@ -45,7 +45,7 @@ class Filter : public QObject
 public:
     Filter(ApplicationWindow *parent, Table *t = 0, QString name = QString());
     Filter(ApplicationWindow *parent, Graph *g = 0, QString name = QString());
-
+    virtual ~Filter() {};
     //! Actually does the job. Should be reimplemented in derived classes.
     virtual bool run();
 
@@ -176,9 +176,11 @@ std::vector<size_t> Filter::getIndices(const std::vector<T>& data, const T start
         std::vector<std::pair<T,size_t>> tData(data.size());
         size_t ii=0;
         std::generate(tData.begin(), tData.end(), [&](){ auto pair = std::make_pair(data[ii],ii); ++ii; return pair; });
-        std::sort(tData.begin(),tData.end(),[](const std::pair<T,size_t>& a, std::pair<T,size_t>& b){ return a.second < b.second;});
-        auto first = std::find_if(tData.cbegin(),tData.cend(),[start](const std::pair<T,size_t>& a){return a.first>=start;});
-        auto last = std::find_if(first,tData.cend(),[end](const std::pair<T,size_t>& a){return a.first>end;});
+        std::sort(tData.begin(),tData.end(),[](const std::pair<T,size_t>& a, std::pair<T,size_t>& b){ return a.first < b.first;});
+        auto first = std::lower_bound(tData.cbegin(),tData.cend(),start,
+                                       [](const std::pair<T,size_t>& a, const T& value){return a.first < value;});
+        auto last  = std::upper_bound(tData.cbegin(),tData.cend(),end,
+                                       [](const T& value, const std::pair<T,size_t>& a){return value < a.first;});
         std::transform(first,last,std::back_inserter(result),[](const std::pair<T,size_t>& a ){return a.second;});
     }
     else
