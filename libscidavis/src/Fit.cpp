@@ -53,7 +53,6 @@ Fit::Fit(ApplicationWindow *parent, Graph *g, QString name)
     : Filter(parent, g, name), scripted(ScriptingLangManager::newEnv("muParser", parent))
 {
     d_p = 0;
-    d_n = 0;
     d_curveColor = ColorButton::color(1);
     d_solver = ScaledLevenbergMarquardt;
     d_tolerance = 1e-4;
@@ -77,12 +76,12 @@ vector<double> Fit::fitGslMultifit(int &iterations, int &status)
     vector<double> result(d_p);
 
     // declare input data
-    struct FitData data = { size_t(d_n), size_t(d_p), d_x, d_y, &d_y_errors[0], this };
+    struct FitData data = { d_x.size(), size_t(d_p), d_x.data(), d_y.data(), &d_y_errors[0], this };
     gsl_multifit_function_fdf f;
     f.f = d_f;
     f.df = d_df;
     f.fdf = d_fdf;
-    f.n = d_n;
+    f.n = d_x.size();
     f.p = d_p;
     f.params = &data;
 
@@ -98,7 +97,7 @@ vector<double> Fit::fitGslMultifit(int &iterations, int &status)
     default:
         break;
     }
-    gsl_multifit_fdfsolver *s = gsl_multifit_fdfsolver_alloc(T, d_n, d_p);
+    gsl_multifit_fdfsolver *s = gsl_multifit_fdfsolver_alloc(T, d_x.size(), d_p);
     status = gsl_multifit_fdfsolver_set(s, &f, d_param_init);
     if (status)
         return result;
@@ -122,7 +121,7 @@ vector<double> Fit::fitGslMultifit(int &iterations, int &status)
     gsl_multifit_covar(s->J, 0.0, covar);
 #else
     {
-        gsl_matrix *J = gsl_matrix_alloc(d_n, d_p);
+        gsl_matrix *J = gsl_matrix_alloc(d_x.size(), d_p);
         gsl_multifit_fdfsolver_jac(s, J);
         gsl_multifit_covar(J, 0.0, covar);
         gsl_matrix_free(J);
@@ -132,7 +131,7 @@ vector<double> Fit::fitGslMultifit(int &iterations, int &status)
         // multiply covar by variance of residuals, which is used as an estimate for the
         // statistical errors (this relies on the Y errors being set to 1.0, so that
         // s->f is properly normalized)
-        gsl_matrix_scale(covar, chi_2 / (d_n - d_p));
+        gsl_matrix_scale(covar, chi_2 / (d_x.size() - d_p));
     }
 
     // free memory allocated for fitting
@@ -146,7 +145,7 @@ vector<double> Fit::fitGslMultimin(int &iterations, int &status)
     vector<double> result(d_p);
 
     // declare input data
-    struct FitData data = { size_t(d_n), size_t(d_p), d_x, d_y, &d_y_errors[0], this };
+    struct FitData data = { d_x.size(), size_t(d_p), d_x.data(), d_y.data(), &d_y_errors[0], this };
     gsl_multimin_function f;
     f.f = d_fsimplex;
     f.n = d_p;
@@ -178,13 +177,13 @@ vector<double> Fit::fitGslMultimin(int &iterations, int &status)
     for (unsigned i = 0; i < d_p; i++)
         result[i] = gsl_vector_get(s_min->x, i);
     chi_2 = s_min->fval;
-    gsl_matrix *J = gsl_matrix_alloc(d_n, d_p);
+    gsl_matrix *J = gsl_matrix_alloc(d_x.size(), d_p);
     d_df(s_min->x, (void *)f.params, J);
     gsl_multifit_covar(J, 0.0, covar);
     if (d_y_error_source == UnknownErrors) {
         // multiply covar by variance of residuals, which is used as an estimate for the
         // statistical errors (this relies on the Y errors being set to 1.0)
-        gsl_matrix_scale(covar, chi_2 / (d_n - d_p));
+        gsl_matrix_scale(covar, chi_2 / (d_x.size() - d_p));
     }
 
     // free previously allocated memory
@@ -199,7 +198,6 @@ void Fit::setDataCurve(int curve, double start, double end)
 {
     Filter::setDataCurve(curve, start, end);
 
-    d_y_errors.resize(d_n);
     if (!setYErrorSource(AssociatedErrors, QString(), true))
         setYErrorSource(UnknownErrors);
 }
@@ -257,8 +255,8 @@ QString Fit::logFitInfo(const vector<double> &par, int iterations, int status,
     }
 
     info += tr("From x") + " = " + QLocale().toString(d_x[0], 'g', 15) + " " + tr("to x") + " = "
-            + QLocale().toString(d_x[d_n - 1], 'g', 15) + "\n";
-    double chi_2_dof = chi_2 / (d_n - d_p);
+            + QLocale().toString(d_x.back(), 'g', 15) + "\n";
+    double chi_2_dof = chi_2 / (d_x.size() - d_p);
     for (unsigned i = 0; i < d_p; i++) {
         info += d_param_names[i] + " " + d_param_explain[i] + " = "
                 + QLocale().toString(par[i], 'g', d_prec) + " +/- ";
@@ -289,18 +287,17 @@ double Fit::rSquare()
     double mean = 0.0, tss = 0.0, weights_sum = 0.0;
 
     if (d_y_error_source == UnknownErrors) {
-        for (unsigned i = 0; i < d_n; i++)
-            mean += d_y[i];
-        mean /= d_n;
-        for (unsigned i = 0; i < d_n; i++)
-            tss += (d_y[i] - mean) * (d_y[i] - mean);
+        std::accumulate(d_y.cbegin(), d_y.cend(), mean);
+        mean /= d_y.size();
+        for (auto it = d_y.cbegin(); d_y.cend()!=it;++it)
+            tss += (*it - mean) * (*it - mean);
     } else {
-        for (unsigned i = 0; i < d_n; i++) {
+        for (unsigned i = 0; i < d_y.size(); i++) {
             mean += d_y[i] / (d_y_errors[i] * d_y_errors[i]);
             weights_sum += 1.0 / (d_y_errors[i] * d_y_errors[i]);
         }
         mean /= weights_sum;
-        for (unsigned i = 0; i < d_n; i++)
+        for (unsigned i = 0; i < d_y.size(); i++)
             tss += (d_y[i] - mean) * (d_y[i] - mean) / (d_y_errors[i] * d_y_errors[i]);
     }
     return 1 - chi_2 / tss;
@@ -311,7 +308,7 @@ QString Fit::legendInfo()
     QString info = tr("Dataset") + ": " + d_curve->title().text() + "\n";
     info += tr("Function") + ": " + d_formula + "\n\n";
 
-    double chi_2_dof = chi_2 / (d_n - d_p);
+    double chi_2_dof = chi_2 / (d_x.size() - d_p);
     info += "Chi^2 = " + QLocale().toString(chi_2, 'g', d_prec) + "\n";
     info += tr("R^2") + " = " + QLocale().toString(rSquare(), 'g', d_prec) + "\n";
 
@@ -328,15 +325,29 @@ QString Fit::legendInfo()
 
 bool Fit::setYErrorSource(ErrorSource err, const QString &colName, bool fail_silently)
 {
+    try
+    {
+        d_y_errors.resize(d_x.size());
+    }
+    catch (const std::bad_alloc& e)
+    {
+        if (!fail_silently)
+         QMessageBox::critical((ApplicationWindow *)parent(), tr("SciDAVis") + " - " + tr("Error"),
+                              tr("Could not allocate memory, operation aborted!\n")
+                                      + tr("Allocator returned: ") + e.what());
+        d_init_err = true;
+        return false;
+    }
+
     d_y_error_source = err;
     switch (d_y_error_source) {
     case UnknownErrors: {
         d_y_error_dataset = QString();
         // using 1.0 here is important for correct error estimates,
         // cmp. Fit::fitGslMultifit and Fit::fitGslMultimin
-        for (unsigned i = 0; i < d_n; i++)
-            d_y_errors[i] = 1.0;
-    } break;
+        std::fill(d_y_errors.begin(),d_y_errors.end(),1.0);
+        break;
+    }
     case AssociatedErrors: {
         bool error = true;
         QwtErrorPlotCurve *er = 0;
@@ -358,15 +369,15 @@ bool Fit::setYErrorSource(ErrorSource err, const QString &colName, bool fail_sil
                                               .arg(d_curve->title().text()));
             return false;
         }
-        if (er) {
-            for (unsigned j = 0; j < d_n; j++)
-                d_y_errors[j] = er->errorValue(j);
-        }
-    } break;
+        if (er)
+            for (unsigned j = 0; j < d_y_errors.size(); j++)
+                d_y_errors[j]=er->errorValue(d_indices[j]);
+        break;
+    }
     case PoissonErrors: {
         d_y_error_dataset = d_curve->title().text();
 
-        for (unsigned i = 0; i < d_n; i++)
+        for (unsigned i = 0; i < d_y.size(); i++)
             d_y_errors[i] = sqrt(d_y[i]);
     } break;
     case CustomErrors: { // d_y_errors are equal to the values of the arbitrary dataset
@@ -377,7 +388,7 @@ bool Fit::setYErrorSource(ErrorSource err, const QString &colName, bool fail_sil
         if (!t)
             return false;
 
-        if (unsigned(t->numRows()) < d_n) {
+        if (unsigned(t->numRows()) < d_y_errors.size()) {
             if (!fail_silently)
                 QMessageBox::critical((ApplicationWindow *)parent(), tr("Error"),
                                       tr("The column %1 has less points than the fitted data set. "
@@ -389,8 +400,8 @@ bool Fit::setYErrorSource(ErrorSource err, const QString &colName, bool fail_sil
         d_y_error_dataset = colName;
 
         int col = t->colIndex(colName);
-        for (unsigned i = 0; i < d_n; i++)
-            d_y_errors[i] = t->cell(i, col);
+        for (unsigned i = 0; i < d_y_errors.size(); i++)
+            d_y_errors[i] = t->cell(d_indices[i], col);
     } break;
     }
     return true;
@@ -436,7 +447,7 @@ const vector<double> &Fit::errors()
 {
     if (d_result_errors.empty()) {
         d_result_errors.resize(d_p);
-        double chi_2_dof = chi_2 / (d_n - d_p);
+        double chi_2_dof = chi_2 / (d_x.size() - d_p);
         for (unsigned i = 0; i < d_p; i++) {
             if (d_scale_errors)
                 d_result_errors[i] = sqrt(chi_2_dof * gsl_matrix_get(covar, i, i));
@@ -452,7 +463,7 @@ void Fit::fit()
     if (!d_graph || d_init_err)
         return;
 
-    if (!d_n) {
+    if (d_x.empty()) {
         QMessageBox::critical((ApplicationWindow *)parent(), tr("Fit Error"),
                               tr("You didn't specify a valid data set for this fit operation. "
                                  "Operation aborted!"));
@@ -464,7 +475,7 @@ void Fit::fit()
                 tr("There are no parameters specified for this fit operation. Operation aborted!"));
         return;
     }
-    if (unsigned(d_p) > d_n) {
+    if (unsigned(d_p) > d_x.size()) {
         QMessageBox::critical(
                 (ApplicationWindow *)parent(), tr("Fit Error"),
                 tr("You need at least %1 data points for this fit operation. Operation aborted!")
@@ -514,7 +525,7 @@ int Fit::evaluate_f(const gsl_vector *x, gsl_vector *f)
     for (unsigned i = 0; i < d_p; i++) {
         d_script->setDouble(gsl_vector_get(x, i), d_param_names[i].toUtf8());
     }
-    for (unsigned j = 0; j < d_n; j++) {
+    for (unsigned j = 0; j < d_x.size(); j++) {
         if (!d_script->setDouble(d_x[j], "x"))
             return GSL_EINVAL;
         bool success;
@@ -533,7 +544,7 @@ double Fit::evaluate_d(const gsl_vector *x)
     double result = 0.0;
     for (unsigned i = 0; i < d_p; i++)
         d_script->setDouble(gsl_vector_get(x, i), d_param_names[i].toUtf8());
-    for (unsigned j = 0; j < d_n; j++) {
+    for (unsigned j = 0; j < d_x.size(); j++) {
         d_script->setDouble(d_x[j], "x");
         bool success;
         result += pow((d_script->eval().toDouble(&success) - d_y[j]) / d_y_errors[j], 2);
@@ -574,7 +585,7 @@ int Fit::evaluate_df(const gsl_vector *x, gsl_matrix *J)
     data.success = true;
     for (unsigned i = 0; i < d_p; i++)
         d_script->setDouble(gsl_vector_get(x, i), d_param_names[i].toUtf8());
-    for (unsigned i = 0; i < d_n; i++) {
+    for (unsigned i = 0; i < d_x.size(); i++) {
         d_script->setDouble(d_x[i], "x");
         for (unsigned j = 0; j < d_p; j++) {
             data.param = d_param_names[j];
@@ -590,7 +601,7 @@ int Fit::evaluate_df(const gsl_vector *x, gsl_matrix *J)
 void Fit::generateFitCurve(const vector<double> &par)
 {
     if (!d_gen_function)
-        d_points = d_n;
+        d_points = d_x.size();
 
     std::vector<double> X(d_points);
     std::vector<double> Y(d_points);
@@ -603,14 +614,8 @@ void Fit::generateFitCurve(const vector<double> &par)
     if (d_gen_function) {
         insertFitFunctionCurve(objectName() + tr("Fit"), X, Y);
         d_graph->replot();
-    } else {
-        auto x = new double[d_points];
-        std::copy(X.cbegin(), X.cend(), x);
-        auto y = new double[d_points];
-        std::copy(Y.cbegin(), Y.cend(), y);
-        // according to addFitCurve docstring "..and frees the input data from memory."
-        d_graph->addFitCurve(addResultCurve(x, y));
-    }
+    } else
+        d_graph->addFitCurve(addResultCurve(X, Y));
 }
 
 void Fit::insertFitFunctionCurve(const QString &name, std::vector<double> &x,
@@ -622,7 +627,7 @@ void Fit::insertFitFunctionCurve(const QString &name, std::vector<double> &x,
     c->setPen(QPen(d_curveColor, penWidth));
     // "Set data by copying x- and y-values from specified memory blocks."
     c->setData(x.data(), y.data(), d_points);
-    c->setRange(d_x[0], d_x[d_n - 1]);
+    c->setRange(d_x.front(), d_x.back());
 
     QString formula;
     for (unsigned j = 0; j < d_p; j++)
@@ -648,8 +653,8 @@ Fit::~Fit()
 void Fit::generateX(std::vector<double> &X) const
 {
     if (d_gen_function) {
-        double X0 = d_x[0];
-        double step = (d_x[d_n - 1] - X0) / (d_points - 1);
+        double X0 = d_x.front();
+        double step = (d_x.back() - X0) / (d_points - 1);
         for (int i = 0; i < d_points; i++)
             X[i] = X0 + i * step;
     } else

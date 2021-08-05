@@ -56,7 +56,7 @@ public:
 
 private:
     void init(int m);
-    void calculateOutputData(double *x, double *y);
+    void calculateOutputData(std::vector<double>& x, std::vector<double>& y) override;
 
     //! The filter type.
     FilterType d_filter_type;
