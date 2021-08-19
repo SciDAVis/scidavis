@@ -13727,3 +13727,9 @@ QSettings &ApplicationWindow::getSettings()
 
 // initialize singleton
 static auto &SciDavisSettingsSingleton = ApplicationWindow::getSettings();
+
+void ApplicationWindow::localeChanged()
+{
+    foreach (QObject *obj, findChildren<QWidget *>())
+        QApplication::postEvent(obj, new QEvent(QEvent::LocaleChange));
+}
