@@ -698,11 +698,6 @@ void Matrix::freeMatrixData(double **data, int rows)
     delete[] data;
 }
 
-void Matrix::updateDecimalSeparators()
-{
-    this->update();
-}
-
 void Matrix::copy(Matrix *m)
 {
     if (!m)
