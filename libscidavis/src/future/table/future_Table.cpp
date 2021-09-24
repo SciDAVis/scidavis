@@ -391,7 +391,11 @@ void Table::copySelection()
                 if (d_view->formulaModeActive()) {
                     output_str += col_ptr->formula(first_row + r);
                 } else if (col_ptr->dataType() == SciDAVis::TypeDouble) {
-                    Double2StringFilter *out_fltr =
+                    if ((col_ptr->isInvalid(first_row + r))
+                        || (col_ptr->rowCount() <= first_row + r))
+                        output_str += "-";
+                    else {
+                        Double2StringFilter *out_fltr =
                             static_cast<Double2StringFilter *>(col_ptr->outputFilter());
                     // create a copy of current locale
                     QLocale noSeparators;
@@ -402,6 +406,7 @@ void Table::copySelection()
                     output_str += noSeparators.toString(col_ptr->valueAt(first_row + r),
                                                         out_fltr->numericFormat(),
                                                         16); // copy with max. precision
+                    }
                 } else {
                     output_str += text(first_row + r, first_col + c);
                 }
@@ -436,7 +441,7 @@ void Table::pasteIntoSelection(const bool isTransposed)
 
     const QClipboard *clipboard = QApplication::clipboard();
     const QMimeData *mimeData = clipboard->mimeData();
-    ;
+
     if (mimeData->hasText()) {
         QString input_str = clipboard->text().trimmed();
         QList<QStringList> cell_texts;
@@ -529,10 +534,10 @@ void Table::pasteIntoSelection(const bool isTransposed)
             for (int c = 0; c < cols && c < input_col_count; c++) {
                 Column *col_ptr = d_table_private.column(first_col + c);
                 if (convertToTextColumn && (col_ptr->columnMode() == SciDAVis::ColumnMode::Numeric)) {
-                    auto filter = reinterpret_cast<String2DoubleFilter *>(col_ptr->inputFilter());
+                    auto filter = dynamic_cast<String2DoubleFilter *>(col_ptr->inputFilter());
                     if (nullptr != filter)
                         for (const auto &value : cols_texts.at(c))
-                            if (filter->isInvalid(value)) {
+                            if (("-" != value) && (filter->isInvalid(value))) {
                                 col_ptr->setColumnMode(SciDAVis::ColumnMode::Text);
                                 break;
                             }
