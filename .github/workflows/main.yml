@@ -200,10 +200,7 @@ jobs:
       - name: Install prerequisties
         run: |
          brew install muparser gsl gl2ps googletest
-         brew tap-new $USER/local-sip
-         brew extract --version=4.19.25 sip $USER/local-sip
-         brew install sip@4.19.25
-         pip install pyqt5 numpy
+         pip install pyqt5 numpy sip PyQt-builder
 
       - name: Configuring
         run: |
