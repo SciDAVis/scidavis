@@ -87,6 +87,7 @@ void Matrix::init(int, int)
 
     birthdate = QLocale().toString(d_future_matrix->creationTime());
 
+    setMinimumSize(400, 300);
     // this is not very nice but works for the moment
     ui.gridLayout2->removeWidget(ui.formula_box);
     delete ui.formula_box;

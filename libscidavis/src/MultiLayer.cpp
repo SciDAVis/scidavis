@@ -140,7 +140,7 @@ MultiLayer::MultiLayer(const QString &label, QWidget *parent, const QString name
     pal.setColor(QPalette::Window, QColor(Qt::white));
     d_main_widget->setPalette(pal);
 
-    setMinimumSize(200, 150);
+    setMinimumSize(400, 300);
     setGeometry(QRect(0, 0, graph_width, graph_height));
     setFocusPolicy(Qt::StrongFocus);
 }

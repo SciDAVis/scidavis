@@ -54,6 +54,7 @@
 #include "PlotCurve.h"
 #include "ApplicationWindow.h"
 #include "core/column/Column.h"
+#include "MultiLayer.h"
 
 #include <QApplication>
 #include <QBitmap>
@@ -3848,9 +3849,12 @@ bool Graph::addFunctionCurve(ApplicationWindow *parent, int type, const QStringL
     c_keys[n_curves - 1] = d_plot->insertCurve(c);
 
     addLegendItem(c->legend());
-    updatePlot();
+    auto ml = qobject_cast<MultiLayer *>(parent->d_workspace.activeSubWindow());
+    if (ml &&  ml->status() != MyWidget::Minimized) {
+        updatePlot();
 
-    emit modifiedGraph();
+        emit modifiedGraph();
+    }
     return true;
 }
 
