@@ -3752,6 +3752,7 @@ bool ApplicationWindow::loadProject(const QString &fn)
             QStringList graph = s.split("\t");
             QString caption = graph[0];
             plot = multilayerPlot(caption);
+            plot->mdiArea()->setActiveSubWindow(plot);
             plot->setCols(graph[1].toInt());
             plot->setRows(graph[2].toInt());
 
