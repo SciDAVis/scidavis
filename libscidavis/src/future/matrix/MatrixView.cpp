@@ -101,6 +101,7 @@ void MatrixView::init()
     connect(d_hide_button, SIGNAL(pressed()), this, SLOT(toggleControlTabBar()));
     d_control_tabs = new QWidget();
     ui.setupUi(d_control_tabs);
+    updateLocale();
 #if 0 // this seems not to work
 	ui.first_row_spinbox->setMaximum(std::numeric_limits<double>::max());
 	ui.first_row_spinbox->setMinimum(std::numeric_limits<double>::min());
@@ -205,6 +206,8 @@ void MatrixView::changeEvent(QEvent *event)
 {
     if (event->type() == QEvent::LanguageChange)
         retranslateStrings();
+    if (event->type() == QEvent::LocaleChange)
+        updateLocale();
     MyWidget::changeEvent(event);
 }
 
@@ -470,6 +473,22 @@ void MatrixView::applyFormat()
         }
         d_matrix->setDisplayedDigits(digits);
     }
+}
+
+void MatrixView::updateLocale()
+{
+    QLocale locale;
+    ui.first_col_spinbox->setLocale(locale);
+    ui.first_col_spinbox->setGroupSeparatorShown(!(locale.numberOptions() & QLocale::OmitGroupSeparator));
+
+    ui.last_col_spinbox->setLocale(locale);
+    ui.last_col_spinbox->setGroupSeparatorShown(!(locale.numberOptions() & QLocale::OmitGroupSeparator));
+
+    ui.first_row_spinbox->setLocale(locale);
+    ui.first_row_spinbox->setGroupSeparatorShown(!(locale.numberOptions() & QLocale::OmitGroupSeparator));
+
+    ui.last_row_spinbox->setLocale(locale);
+    ui.last_row_spinbox->setGroupSeparatorShown(!(locale.numberOptions() & QLocale::OmitGroupSeparator));
 }
 
 void MatrixView::handleHorizontalSectionResized(int logicalIndex, int, int newSize)

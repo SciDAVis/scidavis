@@ -4,7 +4,7 @@ set( CMAKE_AUTOUIC OFF )
 set( CMAKE_AUTORCC OFF )
 
 # minigzip: mini gzip implementation
-add_library( minigzip "minigzip/minigzip.c" )
+add_library( minigzip STATIC "minigzip/minigzip.c" )
 target_link_libraries( minigzip ZLIB::ZLIB )
 
 if (Qt5Gui_FOUND)

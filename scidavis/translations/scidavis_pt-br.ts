@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
 <TS version="2.1" language="pt_BR">
 <context>
     <name>AbstractAspect</name>
@@ -85,7 +87,7 @@
 <context>
     <name>ApplicationWindow</name>
     <message>
-        <source />
+        <source></source>
         <translation>Definir esquema</translation>
     </message>
     <message>
@@ -626,7 +628,9 @@ Varias partes deste arquivo podem não ser apresentadas como o esperado.</transl
         <source>Invalid WindowLabel line:
 '%1'
 in file %2.</source>
-        <translation type="unfinished" />
+        <translation>Linha WindowLabel inválida :
+'%1'
+no arquivo %2.</translation>
     </message>
     <message>
         <source>Script Error</source>
@@ -3117,6 +3121,105 @@ Aviso: esta operação irá reorganizar as camadas existentes!</translation>
     </message>
 </context>
 <context>
+    <name>ColorBox</name>
+    <message>
+        <source>black</source>
+        <translation>preto</translation>
+    </message>
+    <message>
+        <source>red</source>
+        <translation>vermelho</translation>
+    </message>
+    <message>
+        <source>green</source>
+        <translation>verde</translation>
+    </message>
+    <message>
+        <source>blue</source>
+        <translation>azul</translation>
+    </message>
+    <message>
+        <source>cyan</source>
+        <translation>ciano</translation>
+    </message>
+    <message>
+        <source>magenta</source>
+        <translation>magenta</translation>
+    </message>
+    <message>
+        <source>yellow</source>
+        <translation>amarelo</translation>
+    </message>
+    <message>
+        <source>dark yellow</source>
+        <translation>amarelo escuro</translation>
+    </message>
+    <message>
+        <source>navy</source>
+        <translation>azul marinho</translation>
+    </message>
+    <message>
+        <source>purple</source>
+        <translation>roxo</translation>
+    </message>
+    <message>
+        <source>wine</source>
+        <translation>vinho</translation>
+    </message>
+    <message>
+        <source>olive</source>
+        <translation>azeitona</translation>
+    </message>
+    <message>
+        <source>dark cyan</source>
+        <translation>ciano escuro</translation>
+    </message>
+    <message>
+        <source>royal</source>
+        <translation>royal</translation>
+    </message>
+    <message>
+        <source>orange</source>
+        <translation>laranja</translation>
+    </message>
+    <message>
+        <source>violet</source>
+        <translation>violeta</translation>
+    </message>
+    <message>
+        <source>pink</source>
+        <translation>rosa</translation>
+    </message>
+    <message>
+        <source>white</source>
+        <translation>branco</translation>
+    </message>
+    <message>
+        <source>light gray</source>
+        <translation>cinza claro</translation>
+    </message>
+    <message>
+        <source>gray</source>
+        <translation>cinza</translation>
+    </message>
+    <message>
+        <source>light yellow</source>
+        <translation>amarelo claro</translation>
+    </message>
+    <message>
+        <source>light cyan</source>
+        <translation>ciano claro</translation>
+    </message>
+    <message>
+        <source>light magenta</source>
+        <translation>magenta claro</translation>
+    </message>
+    <message>
+        <source>dark gray</source>
+        <translation>cinza escuro</translation>
+    </message>
+</context>
+<context>
     <name>ColorMapEditor</name>
     <message>
         <source>Level</source>
@@ -3477,11 +3580,11 @@ Os seguintes códigos podem ser usados:
     </message>
     <message>
         <source>Consider ',' and '.' interchangeable on input in numerical columns</source>
-        <translation type="unfinished" />
+        <translation>Considere ',' e '.' intercambiáveis na entrada em colunas numéricas</translation>
     </message>
     <message>
         <source>Convert numerical columns to text columns when pasting non-numeric values</source>
-        <translation type="unfinished" />
+        <translation>Converta colunas numéricas para colunas de texto quando colando valores não-numéricos</translation>
     </message>
     <message>
         <source>Decimal</source>
@@ -4903,11 +5006,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Fit failed</source>
-        <translation type="unfinished" />
+        <translation>Ajuste falhou</translation>
     </message>
     <message>
         <source>An error occurred during fit!</source>
-        <translation type="unfinished" />
+        <translation>Ocorreu um erro durante o ajuste</translation>
     </message>
     <message>
         <source>Fit</source>
@@ -5198,7 +5301,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>You can't define functions recursively!</source>
-        <translation type="unfinished" />
+        <translation>Você não pode definir funções recursivamente!</translation>
     </message>
     <message>
         <source>Fit with selected &amp;user function</source>
@@ -7082,7 +7185,8 @@ s-ésimo zero positivo x_s da função regular cilíndrica de Bessel de ordem n,
     <message>
         <source>(e1)?(e2):(e3):
  if e1 then e2 else e3.</source>
-        <translation type="unfinished" />
+        <translation>(e1)?(e2):(e3):
+ se e1 então e2 senão e3</translation>
     </message>
     <message>
         <source>ln(x):
@@ -7424,7 +7528,15 @@ s-ésimo zero positivo x_s da função regular cilíndrica de Bessel de ordem n,
     <name>NumericDateTimeBaseFilter</name>
     <message>
         <source>missing or invalid format attribute(s)</source>
-        <translation>falta(m) atributo(s) ou estão em formato inválido</translation>
+        <translation type="vanished">falta(m) atributo(s) ou estão em formato inválido</translation>
+    </message>
+    <message>
+        <source>NumericDateTimeBaseFilter: invalid unit, defaulting to years</source>
+        <translation>NumericDateTimeBaseFilter: unidade inválida, mudando para anos</translation>
+    </message>
+    <message>
+        <source>NumericDateTimeBaseFilter: invalid offset, defaulting to zero</source>
+        <translation>NumericDateTimeBaseFilter: desvio inválido, mudando para zero</translation>
     </message>
 </context>
 <context>
@@ -7491,7 +7603,7 @@ s-ésimo zero positivo x_s da função regular cilíndrica de Bessel de ordem n,
     </message>
     <message>
         <source>Codepage</source>
-        <translation type="unfinished" />
+        <translation>Página de código</translation>
     </message>
 </context>
 <context>
@@ -9073,7 +9185,7 @@ s-ésimo zero positivo x_s da função regular cilíndrica de Bessel de ordem n,
     </message>
     <message>
         <source>%1: set values for multiple cells</source>
-        <translation type="unfinished" />
+        <translation>%1: definir valores para múltiplas células</translation>
     </message>
     <message>
         <source>ASCII table</source>
@@ -9250,7 +9362,7 @@ Atualizado</translation>
     </message>
     <message>
         <source>Auto&amp;exec</source>
-        <translation>Autoexecutar</translation>
+        <translation>Executar automaticamente</translation>
     </message>
     <message>
         <source>&amp;Functions</source>
@@ -9651,6 +9763,17 @@ Atualizado</translation>
     <message>
         <source>%1: apply formula to column</source>
         <translation>%1: aplicar fórmula à coluna</translation>
+    </message>
+</context>
+<context>
+    <name>TableConfigPage</name>
+    <message>
+        <source>Form</source>
+        <translation>Formulário</translation>
+    </message>
+    <message>
+        <source>TODO</source>
+        <translation>AFAZER</translation>
     </message>
 </context>
 <context>
@@ -10510,7 +10633,7 @@ valores de ponto flutuante (float)
     </message>
     <message>
         <source>Paste transposed</source>
-        <translation type="unfinished" />
+        <translation>Colar transposto</translation>
     </message>
     <message>
         <source>&amp;Mask</source>

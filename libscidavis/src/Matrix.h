@@ -123,8 +123,6 @@ public:
     void customEvent(QEvent *e);
     void closeEvent(QCloseEvent *);
 
-    void updateDecimalSeparators();
-
     virtual QWidget *view() { return d_future_matrix->view(); }
 
 public slots:

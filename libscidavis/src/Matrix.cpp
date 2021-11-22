@@ -87,6 +87,7 @@ void Matrix::init(int, int)
 
     birthdate = QLocale().toString(d_future_matrix->creationTime());
 
+    setMinimumSize(400, 300);
     // this is not very nice but works for the moment
     ui.gridLayout2->removeWidget(ui.formula_box);
     delete ui.formula_box;
@@ -696,11 +697,6 @@ void Matrix::freeMatrixData(double **data, int rows)
         delete[] data[i];
 
     delete[] data;
-}
-
-void Matrix::updateDecimalSeparators()
-{
-    this->update();
 }
 
 void Matrix::copy(Matrix *m)

@@ -61,11 +61,13 @@ void Differentiation::init()
 
 void Differentiation::output()
 {
-    Column *xCol = new Column(tr("1", "differention table x column name"), SciDAVis::ColumnMode::Numeric);
-    Column *yCol = new Column(tr("2", "differention table y column name"), SciDAVis::ColumnMode::Numeric);
+    Column *xCol =
+            new Column(tr("1", "differention table x column name"), SciDAVis::ColumnMode::Numeric);
+    Column *yCol =
+            new Column(tr("2", "differention table y column name"), SciDAVis::ColumnMode::Numeric);
     xCol->setPlotDesignation(SciDAVis::X);
     yCol->setPlotDesignation(SciDAVis::Y);
-    for (unsigned i = 1; i < d_n - 1; i++) {
+    for (unsigned i = 1; i < d_x.size() - 1; i++) {
         xCol->setValueAt(i - 1, d_x[i]);
         yCol->setValueAt(i - 1,
                          0.5

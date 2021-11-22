@@ -1170,6 +1170,7 @@ void ConfigDialog::apply()
 
     if (QLocale() != locale) {
         QLocale::setDefault(locale);
+        app->localeChanged();
     }
 
     // general page: confirmations tab

@@ -72,10 +72,6 @@ if( SCRIPTING_PYTHON )
   file( COPY ../scidavis-logo.png DESTINATION ./tmp )
 
   file( GLOB pythonTests pythonTests/*.py )
-  # qwtPlotCurve segfault with sip5 or macos
-  if( SIP_VERSION VERSION_GREATER_EQUAL 5 OR APPLE OR MSYS )
-    list( REMOVE_ITEM pythonTests ${CMAKE_CURRENT_SOURCE_DIR}/pythonTests/qwtPlotCurve.py )
-  endif()
 
   foreach( pythonTest ${pythonTests} )
     get_filename_component( test_name ${pythonTest} NAME_WLE )

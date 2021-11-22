@@ -18,7 +18,8 @@ if( WIN32 )
     RUNTIME DESTINATION fitPlugins
     )
 else()
+  include(GNUInstallDirs)
   install( TARGETS exp_saturation explin fitRational0 fitRational1 planck_wavelength
-    LIBRARY DESTINATION lib/scidavis/plugins
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/scidavis/plugins
     )
 endif()
