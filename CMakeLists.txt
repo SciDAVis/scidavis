@@ -1,4 +1,5 @@
 cmake_minimum_required( VERSION 3.16 )
+include(GNUInstallDirs)
 
 # Target platform is Windows 10
 if( CMAKE_GENERATOR STREQUAL "Visual Studio 15 2017" OR
@@ -115,6 +116,7 @@ find_package( ZLIB "1.2.11" REQUIRED )
 find_package( OpenGL COMPONENTS OpenGL REQUIRED )
 
 # muParser
+if( SCRIPTING_MUPARSER )
 find_library( MUPARSER_LIB
   NAMES muparser
   REQUIRED
@@ -124,6 +126,7 @@ find_path( MUPARSER_INCLUDE_DIR
   REQUIRED
   )
 message( STATUS "Found muParser : ${MUPARSER_LIB} include: ${MUPARSER_INCLUDE_DIR}" )
+endif()
 
 add_subdirectory( 3rdparty )
 
@@ -149,7 +152,7 @@ set( DOC_FILES
 if( WIN32 )
   install( FILES ${DOC_FILES} DESTINATION . )
 else()
-  install( FILES ${DOC_FILES} DESTINATION share/doc/scidavis )
+  install( FILES ${DOC_FILES} DESTINATION ${CMAKE_INSTALL_DOCDIR} )
 endif()
 
 if( MSVC )
