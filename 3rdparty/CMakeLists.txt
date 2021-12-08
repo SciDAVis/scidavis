@@ -46,8 +46,8 @@ endif()
 option( BUILD_QWTPLOT3D "Build QwtPlot3D using own code" OFF )
 
 if( NOT BUILD_QWTPLOT3D )
-  find_library ( QWTPLOT3D_LIBRARY
-    NAMES qwtplot3d-qt5
+find_library ( QWTPLOT3D_LIBRARY
+    NAMES qwtplot3d
     HINTS ${QT_LIBRARY_DIR}
   )
   if( NOT QWTPLOT3D_LIBRARY )
