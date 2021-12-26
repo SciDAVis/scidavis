@@ -32,7 +32,6 @@
 #endif
 #include <Python.h>
 #include <compile.h>
-#include <eval.h>
 #include <frameobject.h>
 #include <traceback.h>
 
@@ -181,13 +180,20 @@ QString PythonScripting::errorMsg()
         excit = (PyTracebackObject *)traceback;
         while (excit && (PyObject *)excit != Py_None) {
             frame = excit->tb_frame;
-            msg.append("at ").append(PYUNICODE_AsUTF8(frame->f_code->co_filename));
+            #if PY_VERSION_HEX >= 0x03090000
+                PyCodeObject *f_code = PyFrame_GetCode(frame);
+            #else
+                PyCodeObject *f_code = frame->f_code;
+                Py_INCREF(f_code);
+            #endif
+            msg.append("at ").append(PYUNICODE_AsUTF8(f_code->co_filename));
             msg.append(":").append(QString::number(excit->tb_lineno));
-            if (frame->f_code->co_name
-                && *(fname = PYUNICODE_AsUTF8(frame->f_code->co_name)) != '?')
+            if (f_code->co_name
+                && *(fname = PYUNICODE_AsUTF8(f_code->co_name)) != '?')
                 msg.append(" in ").append(fname);
             msg.append("\n");
             excit = excit->tb_next;
+            Py_DECREF(f_code);
         }
         Py_DECREF(traceback);
     }
