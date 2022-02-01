@@ -223,6 +223,12 @@ public slots:
     //! Clear the whole matrix (i.e. set all cells to 0.0)
     void clear();
     void transpose();
+
+    std::vector<std::vector<std::pair<double, bool>>>
+    getCells(const int startRow, const int endRow, const int startCol, const int endCol) const;
+
+    void setCells(const int startRow, const int startCol,
+                  const std::vector<std::vector<std::pair<double, bool>>> &values);
     void mirrorVertically();
     void mirrorHorizontally();
 
@@ -438,6 +444,13 @@ public:
     double yEnd() const;
     QString formula() const;
     void setFormula(const QString &formula);
+
+    std::vector<std::vector<std::pair<double, bool>>>
+    getCells(const int startRow, const int endRow, const int startCol, const int endCol) const;
+
+	void setCells(const int startRow, const int startCol,
+                const std::vector<std::vector<std::pair<double, bool>>> &values);
+
     void setXStart(double x);
     void setXEnd(double x);
     void setYStart(double y);

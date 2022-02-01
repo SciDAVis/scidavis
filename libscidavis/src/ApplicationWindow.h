@@ -167,6 +167,11 @@ public:
     bool batchMode() const { return m_batch; } ///< running a python batch script
     static QSettings &getSettings();
 
+    // propagates locale changed notification to all widgets
+    // better to have it protected, but it is need to be called
+    // from ConfigDialog.
+    void localeChanged();
+
 public slots:
     //! Copy the status bar text to the clipboard
     void copyStatusBarText();

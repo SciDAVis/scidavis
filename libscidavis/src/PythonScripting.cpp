@@ -38,8 +38,15 @@
 
 #include <iostream>
 
-#define str(x) xstr(x)
-#define xstr(x) #x
+// sorry for such meaningless macro names, but this way name collision is unlikely
+#define qwezstringify(x) x2strtr(x)
+#define x2strtr(x) #x
+
+const char* pythonHome = qwezstringify(PYTHONHOME);
+
+#undef qwezstringify
+#undef x2strtr
+
 
 #if PY_VERSION_HEX < 0x020400A1
 typedef struct _traceback
@@ -210,7 +217,7 @@ PythonScripting::PythonScripting(ApplicationWindow *parent, bool batch)
         // if we need to bundle Python libraries with the executable,
         // specify the library location here
 #ifdef PYTHONHOME
-        Py_SetPythonHome(Py_DecodeLocale(str(PYTHONHOME), NULL));
+        Py_SetPythonHome(Py_DecodeLocale(pythonHome, NULL));
 #endif
         //		PyEval_InitThreads ();
 #if PY_MAJOR_VERSION >= 3

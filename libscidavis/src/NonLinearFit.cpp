@@ -100,24 +100,25 @@ void NonLinearFit::setParametersList(const QStringList &lst)
         d_param_explain << "";
 }
 
-void NonLinearFit::calculateFitCurveData(const vector<double> &par, double *X, double *Y)
+bool NonLinearFit::calculateFitCurveData(const vector<double> &par, std::vector<double> &X,
+                                         std::vector<double> &Y)
 {
     for (unsigned i = 0; i < d_p; i++)
-        d_script->setDouble(par[i], d_param_names[i].toUtf8());
+        if (!d_script->setDouble(par[i], d_param_names[i].toUtf8()))
+            return false;
 
-    if (d_gen_function) {
-        double X0 = d_x[0];
-        double step = (d_x[d_n - 1] - X0) / (d_points - 1);
-        for (int i = 0; i < d_points; i++) {
-            X[i] = X0 + i * step;
-            d_script->setDouble(X[i], "x");
-            Y[i] = d_script->eval().toDouble();
-        }
-    } else {
-        for (int i = 0; i < d_points; i++) {
-            X[i] = d_x[i];
-            d_script->setDouble(X[i], "x");
-            Y[i] = d_script->eval().toDouble();
-        }
+    bool ok = false;
+    generateX(X);
+
+    for (int i = 0; i < d_points; i++) {
+        if (!d_script->setDouble(X[i], "x"))
+            return false;
+        auto y = d_script->eval();
+        if (y.isNull())
+            return false;
+        Y[i] = y.toDouble(&ok);
+        if (!ok)
+            return false;
     }
+    return true;
 }

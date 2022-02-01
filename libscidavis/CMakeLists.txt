@@ -366,6 +366,7 @@ target_link_libraries( libscidavis
   Qt5::PrintSupport
   Qt5::OpenGL
   Qt5::Svg
+  m
   )
 
 target_include_directories( libscidavis PUBLIC ${MUPARSER_INCLUDE_DIR} )
@@ -474,9 +475,19 @@ target_include_directories( libscidavis PUBLIC
 
 if( SCRIPTING_PYTHON )
 
-  set(scidavis_PyQt_HDR ${CMAKE_CURRENT_BINARY_DIR}/sipAPIscidavis.h)
   if( SIP_VERSION VERSION_GREATER_EQUAL 5 )
-    set( scidavis_SIP_HDR ${CMAKE_CURRENT_BINARY_DIR}/sip.h )
+    set( scidavis_SIP_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/python/scidavis )
+  else()
+    set( scidavis_SIP_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR} )
+  endif()
+
+  set(scidavis_PyQt_HDR ${scidavis_SIP_OUTPUT_DIR}/sipAPIscidavis.h)
+  if( SIP_VERSION VERSION_GREATER_EQUAL 5 )
+    set( scidavis_SIP_HDR ${CMAKE_CURRENT_BINARY_DIR}/python/sip.h )
+    target_include_directories( libscidavis PUBLIC
+      "${CMAKE_CURRENT_BINARY_DIR}/python"
+      "${scidavis_SIP_OUTPUT_DIR}"
+    )
   endif()
 
   set_source_files_properties(
@@ -486,54 +497,54 @@ if( SCRIPTING_PYTHON )
     )
 
   set(scidavis_PyQt_SRC
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidaviscmodule.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisApplicationWindow.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisGraph.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisArrowMarker.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisImageMarker.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisLegend.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisMultiLayer.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisTable.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisMatrix.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisMyWidget.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisScriptEdit.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisNote.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisPythonScript.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisPythonScripting.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisFolder.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisFit.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisExponentialFit.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisTwoExpFit.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisThreeExpFit.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisSigmoidalFit.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisGaussAmpFit.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisLorentzFit.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisNonLinearFit.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisPluginFit.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisMultiPeakFit.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisPolynomialFit.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisLinearFit.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisGaussFit.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisFilter.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisDifferentiation.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisIntegration.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisInterpolation.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisSmoothFilter.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisFFTFilter.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisFFT.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisCorrelation.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisConvolution.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisDeconvolution.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisAbstractAspect.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisColumn.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisQwtSymbol.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisQwtPlotCurve.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisQwtPlot.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisGrid.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisQList0100QDateTime.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisQList0101Folder.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisQList0101MyWidget.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/sipscidavisQList0101QwtPlotCurve.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidaviscmodule.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisApplicationWindow.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisGraph.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisArrowMarker.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisImageMarker.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisLegend.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisMultiLayer.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisTable.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisMatrix.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisMyWidget.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisScriptEdit.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisNote.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisPythonScript.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisPythonScripting.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisFolder.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisFit.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisExponentialFit.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisTwoExpFit.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisThreeExpFit.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisSigmoidalFit.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisGaussAmpFit.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisLorentzFit.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisNonLinearFit.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisPluginFit.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisMultiPeakFit.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisPolynomialFit.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisLinearFit.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisGaussFit.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisFilter.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisDifferentiation.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisIntegration.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisInterpolation.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisSmoothFilter.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisFFTFilter.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisFFT.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisCorrelation.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisConvolution.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisDeconvolution.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisAbstractAspect.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisColumn.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisQwtSymbol.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisQwtPlotCurve.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisQwtPlot.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisGrid.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisQList0100QDateTime.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisQList0101Folder.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisQList0101MyWidget.cpp
+    ${scidavis_SIP_OUTPUT_DIR}/sipscidavisQList0101QwtPlotCurve.cpp
     )
 
   set_source_files_properties(
@@ -543,18 +554,23 @@ if( SCRIPTING_PYTHON )
     )
 
   if( SIP_VERSION VERSION_GREATER_EQUAL 5 )
+    get_target_property(_qmake_executable Qt5::qmake IMPORTED_LOCATION)
     add_custom_command(
-      OUTPUT ${scidavis_SIP_HDR}
-      COMMAND sip-module --sip-h ${CMAKE_CURRENT_SOURCE_DIR}/src/scidavis.sip
+      OUTPUT ${scidavis_PyQt_HDR} ${scidavis_PyQt_SRC} ${scidavis_SIP_HDR}
+      COMMAND ${SIP_EXECUTABLE} --no-make --qmake=${_qmake_executable}
+        --include-dir=${PyQt_INCLUDE_DIRS}
+        --build-dir=${CMAKE_CURRENT_BINARY_DIR}/python
+      DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/scidavis.sip
+      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src
+      )
+  else()
+    add_custom_command(
+      OUTPUT ${scidavis_PyQt_HDR} ${scidavis_PyQt_SRC}
+      COMMAND ${SIP_EXECUTABLE} -c . -I${PyQt_INCLUDE_DIRS} ${PyQt_FLAGS}
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/scidavis.sip
+      DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/scidavis.sip
       )
   endif()
-
-  add_custom_command(
-    OUTPUT ${scidavis_PyQt_HDR} ${scidavis_PyQt_SRC}
-    COMMAND ${SIP_EXECUTABLE} -c . -I${PyQt_INCLUDE_DIRS} ${PyQt_FLAGS}
-      ${CMAKE_CURRENT_SOURCE_DIR}/src/scidavis.sip
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/scidavis.sip
-    )
 
   if( SIP_VERSION VERSION_GREATER_EQUAL 5 )
     add_custom_target(generate_PyQt_source

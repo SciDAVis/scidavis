@@ -78,8 +78,8 @@ private:
     //! The format string.
     QString d_format;
 
-    static const char *date_formats[];
-    static const char *time_formats[];
+    static const QStringList date_formats;
+    static const QStringList time_formats;
 
 public:
     virtual QDateTime dateTimeAt(int row) const;

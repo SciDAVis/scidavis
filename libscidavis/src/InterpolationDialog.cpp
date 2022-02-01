@@ -178,7 +178,7 @@ void InterpolationDialog::activateCurve(const QString &curveName)
         return;
 
     double start, end;
-    graph->range(graph->curveIndex(curveName), &start, &end);
+    graph->range(graph->curveIndex(curveName), start, end);
     boxStart->setText(QString::number(qMin(start, end), 'g', app->d_decimal_digits));
     boxEnd->setText(QString::number(qMax(start, end), 'g', app->d_decimal_digits));
 }

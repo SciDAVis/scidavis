@@ -630,11 +630,13 @@ public slots:
     void addFitCurve(QwtPlotCurve *c);
     void deleteFitCurves();
     QList<QwtPlotCurve *> fitCurvesList() { return d_fit_curves; };
-    /*! Set start and end to selected X range of curve index or, if there's no selection, to the curve's total range.
+    /*! Set start and end to to the curve's minimum and maximum.
      *
-     * \return the number of selected or total points
+     * \return the number of total points
      */
-    int range(int index, double *start, double *end);
+    int range(const int index, double& start, double& end) const;
+
+
 
     //!  Used for VerticalBars, HorizontalBars and Histograms
     void setBarsGap(int curve, int gapPercent, int offset);

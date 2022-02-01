@@ -3752,6 +3752,7 @@ bool ApplicationWindow::loadProject(const QString &fn)
             QStringList graph = s.split("\t");
             QString caption = graph[0];
             plot = multilayerPlot(caption);
+            plot->mdiArea()->setActiveSubWindow(plot);
             plot->setCols(graph[1].toInt());
             plot->setRows(graph[2].toInt());
 
@@ -13727,3 +13728,9 @@ QSettings &ApplicationWindow::getSettings()
 
 // initialize singleton
 static auto &SciDavisSettingsSingleton = ApplicationWindow::getSettings();
+
+void ApplicationWindow::localeChanged()
+{
+    foreach (QObject *obj, findChildren<QWidget *>())
+        QApplication::postEvent(obj, new QEvent(QEvent::LocaleChange));
+}

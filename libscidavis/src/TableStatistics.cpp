@@ -52,6 +52,7 @@ TableStatistics::TableStatistics(ScriptingEnv *env, QWidget *parent, Table *base
 
     d_future_table->action_cut_selection->setEnabled(false);
     d_future_table->action_paste_into_selection->setEnabled(false);
+    d_future_table->action_paste_into_selection_transposed->setEnabled(false);
     d_future_table->action_set_formula->setEnabled(false);
     d_future_table->action_clear_selection->setEnabled(false);
     d_future_table->action_recalculate->setEnabled(false);

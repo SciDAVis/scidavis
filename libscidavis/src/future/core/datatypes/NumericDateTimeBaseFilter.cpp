@@ -29,35 +29,37 @@
 #include "NumericDateTimeBaseFilter.h"
 #include <math.h>
 
-const QDateTime NumericDateTimeBaseFilter::zeroOffsetDate =
-        QDateTime(QDate::fromJulianDay(0), QTime(12, 0, 0, 0));
+const QDateTime NumericDateTimeBaseFilter::zeroOffsetDate = QDateTime::fromMSecsSinceEpoch(0);
 static const double milliSecondsInDay = 86400000.0;
 
 void NumericDateTimeBaseFilter::writeExtraAttributes(QXmlStreamWriter *writer) const
 {
-    writer->writeAttribute("base_datetime", m_date_time_0.toString("yyyy-dd-MM hh:mm:ss:zzz"));
+    writer->writeAttribute("base_datetime", QString::number(m_date_time_0.toMSecsSinceEpoch()));
     writer->writeAttribute("unit", QString::number(static_cast<int>(m_unit_interval)));
 }
 
 bool NumericDateTimeBaseFilter::load(XmlStreamReader *reader)
 {
     QXmlStreamAttributes attribs = reader->attributes();
-    QString base_datetimeStr =
-            attribs.value(reader->namespaceUri().toString(), "base_datetime").toString();
+    QString base_datetimeStr = attribs.value(reader->namespaceUri().toString(), "base_datetime").toString();
     QString unitStr = attribs.value(reader->namespaceUri().toString(), "unit").toString();
-
     if (AbstractSimpleFilter::load(reader)) {
         bool ok;
-        int unit = unitStr.toInt(&ok);
-        QDateTime base_datetime =
-                QDateTime::fromString(base_datetimeStr, "yyyy-dd-MM hh:mm:ss:zzz");
-
-        if (!base_datetime.isValid() || !ok)
-            reader->raiseError(tr("missing or invalid format attribute(s)"));
-        else {
-            setUnitInterval(static_cast<UnitInterval>(unit));
-            setBaseDateTime(base_datetime);
-        }
+        UnitInterval unit = static_cast<UnitInterval>(unitStr.toInt(&ok));
+        if (!ok)
+            {
+                reader->raiseError(tr("NumericDateTimeBaseFilter: invalid unit, defaulting to years"));
+                unit = UnitInterval::Year;
+            }
+        setUnitInterval(unit);
+        qint64 msecs = base_datetimeStr.toLongLong(&ok);
+        if (!ok)
+            {
+                reader->raiseError(tr("NumericDateTimeBaseFilter: invalid offset, defaulting to zero"));
+                msecs = 0;
+            }
+        QDateTime base_datetime = QDateTime::fromMSecsSinceEpoch(msecs);
+        setBaseDateTime(base_datetime);
     } else
         return false;
 

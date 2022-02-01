@@ -198,6 +198,7 @@ protected:
     bool eventFilter(QObject *watched, QEvent *event);
 
 protected:
+    void updateLocale();
     Ui::MatrixControlTabs ui;
     //! The matrix view (first part of the UI)
     MatrixViewWidget *d_view_widget;

@@ -728,9 +728,16 @@ void TableView::applyType()
                 break;
             }
             col->setColumnMode(new_mode, converter);
-            DateTime2StringFilter *filter =
-                    static_cast<DateTime2StringFilter *>(col->outputFilter());
-            filter->setFormat(format);
+            {
+                auto filter = dynamic_cast<DateTime2StringFilter *>(col->outputFilter());
+                if (nullptr != filter)
+                    filter->setFormat(format);
+            }
+            {
+                auto filter = dynamic_cast<String2DateTimeFilter *>(col->inputFilter());
+                if (nullptr != filter)
+                    filter->setFormat(format);
+            }
             col->endMacro();
         }
         break;

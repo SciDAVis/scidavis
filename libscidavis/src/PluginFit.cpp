@@ -148,21 +148,12 @@ bool PluginFit::load(const QString &pluginName)
     return true;
 }
 
-void PluginFit::calculateFitCurveData(const vector<double> &par, double *X, double *Y)
+bool PluginFit::calculateFitCurveData(const vector<double> &par, std::vector<double> &X,
+                                      std::vector<double> &Y)
 {
-    if (d_gen_function) {
-        double X0 = d_x[0];
-        double step = (d_x[d_n - 1] - X0) / (d_points - 1);
-        for (int i = 0; i < d_points; i++) {
-            X[i] = X0 + i * step;
-            // TODO: f_eval's signature should have const double*
-            Y[i] = f_eval(X[i], const_cast<double *>(&par[0]));
-        }
-    } else {
-        for (int i = 0; i < d_points; i++) {
-            X[i] = d_x[i];
-            // TODO second par should be const double*
-            Y[i] = f_eval(X[i], const_cast<double *>(&par[0]));
-        }
-    }
+    generateX(X);
+    for (int i = 0; i < d_points; i++)
+        // TODO second par should be const double*
+        Y[i] = f_eval(X[i], const_cast<double *>(&par[0]));
+    return true;
 }

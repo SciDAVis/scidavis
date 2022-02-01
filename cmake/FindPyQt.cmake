@@ -31,6 +31,7 @@ set( _PyQt_HINTS
   "${_Python3_PREFIX}/share/python3-sip"
   "${_Python3_PREFIX}/share/sip"
   "${Python3_SITELIB}"
+  "${Python3_SITEARCH}"
   )
   
 find_path( PyQt_INCLUDE_DIR

@@ -24,11 +24,8 @@ rewrite_dylibs()
             cp -f $dylib $MAC_DIST_DIR
             chmod u+rw $MAC_DIST_DIR/${dylib##*/}
             rewrite_dylibs $MAC_DIST_DIR/${dylib##*/}
-            echo "install_name_tool -change $dylib @executable_path/${dylib##*/} $target"
         fi
-        echo install_name_tool -change $dylib @executable_path/${dylib##*/} $target
         install_name_tool -change $dylib @executable_path/${dylib##*/} $target
-        echo install_name_tool -id @executable_path/${dylib##*/} $target
         install_name_tool -id @executable_path/${dylib##*/} $target
     done
     otool -L $target|grep usr/local|cut -f1 -d' '|while read dylib; do
@@ -38,7 +35,6 @@ rewrite_dylibs()
             chmod u+rw $MAC_DIST_DIR/${dylib##*/}
             rewrite_dylibs $MAC_DIST_DIR/${dylib##*/}
         fi
-        echo install_name_tool -change $dylib @executable_path/${dylib##*/} $target
         install_name_tool -change $dylib @executable_path/${dylib##*/} $target
     done
 }

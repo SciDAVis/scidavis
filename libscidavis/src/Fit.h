@@ -122,14 +122,22 @@ private:
     virtual void storeCustomFitResults(const std::vector<double> &par) { d_results = par; }
 
 protected:
+    //! Generates argument values wrt to d_gen_function
+    void generateX(std::vector<double> &X) const;
+
     //! Adds the result curve as a FunctionCurve to the plot, if d_gen_function = true
-    void insertFitFunctionCurve(const QString &name, double *x, double *y, int penWidth = 1);
+    void insertFitFunctionCurve(const QString &name, std::vector<double> &, std::vector<double> &,
+                                int penWidth = 1);
 
     //! Adds the result curve to the plot
     virtual void generateFitCurve(const std::vector<double> &);
 
     //! Calculates the data for the output fit curve and store itin the X an Y vectors
-    virtual void calculateFitCurveData(const std::vector<double> &, double *, double *) { }
+    virtual bool calculateFitCurveData(const std::vector<double> &, std::vector<double> &,
+                                       std::vector<double> &)
+    {
+        return false;
+    }
 
     //! Output string added to the result log
     virtual QString logFitInfo(const std::vector<double> &par, int iterations, int status,

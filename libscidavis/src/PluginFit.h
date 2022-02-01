@@ -46,7 +46,8 @@ public:
 private:
     void init();
     typedef double (*fitFunctionEval)(double, double *);
-    void calculateFitCurveData(const std::vector<double> &, double *, double *) override;
+    bool calculateFitCurveData(const std::vector<double> &, std::vector<double> &,
+                               std::vector<double> &) override;
     fitFunctionEval f_eval;
 };
 #endif

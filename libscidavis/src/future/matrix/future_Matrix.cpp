@@ -1478,6 +1478,30 @@ void Matrix::transpose()
     RESET_CURSOR;
 }
 
+std::vector<std::vector<std::pair<double, bool>>>
+Matrix::getCells(const int startRow, const int endRow, const int startCol, const int endCol) const
+{
+    return d_matrix_private->getCells(startRow, endRow, startCol, endCol);
+}
+
+void Matrix::setCells(
+        const int startRow, const int startCol,
+                      const std::vector<std::vector<std::pair<double, bool>>> &values)
+{
+    WAIT_CURSOR;
+    auto lastRow = startRow + values.size() - 1;
+    auto lastCol = startCol
+            + std::max_element(values.cbegin(), values.cend(),
+                               [](const std::vector<std::pair<double, bool>> &a,
+                                  const std::vector<std::pair<double, bool>> &b) {
+                                   return a.size() > b.size();
+                               })
+                      ->size() - 1;
+    exec(new MatrixSetCellsCmd(d_matrix_private, startRow, lastRow, startCol, lastCol, values));
+    RESET_CURSOR;
+
+}
+
 void Matrix::mirrorHorizontally()
 {
     WAIT_CURSOR;
@@ -1779,6 +1803,48 @@ void Matrix::Private::setFormula(const QString &formula)
 {
     d_formula = formula;
     emit d_owner->formulaChanged();
+}
+
+std::vector<std::vector<std::pair<double, bool>>> Matrix::Private::getCells(const int startRow,
+                                                                            const int endRow,
+                                                                            const int startCol,
+                                                                            const int endCol) const
+{
+    if (startRow > endRow || startCol > endCol || startCol < 0 || endCol > columnCount()
+        || startRow < 0 || endRow > rowCount())
+        return std::vector<std::vector<std::pair<double, bool>>>();
+
+    std::pair<double, bool> invalidValue(std::numeric_limits<double>::quiet_NaN(), false);
+    std::vector<std::vector<std::pair<double, bool>>> values(
+            endRow - startRow + 1,
+            std::vector<std::pair<double, bool>>(endCol - startCol + 1, invalidValue));
+    for (int row = startRow; row <= endRow; row++)
+        for (int col = startCol; col <= endCol; col++)
+            values[row - startRow][col - startCol] = std::make_pair(cell(row, col), true);
+    return values;
+}
+
+void Matrix::Private::setCells(const int startRow, const int startCol,
+                               const std::vector<std::vector<std::pair<double, bool>>> &values)
+{
+    blockChangeSignals(true);
+    for (size_t ii = 0u; values.size() > ii; ++ii) {
+        const auto &column = values[ii];
+        for (size_t jj = 0u; column.size() > jj; ++jj) {
+            const auto &pair = column[jj];
+            if (!pair.second)
+                continue;
+            setCell(startRow + ii, startCol + jj, pair.first);
+        }
+    }
+    blockChangeSignals(false);
+    auto endRow = startRow + values.size() - 1;
+    auto endCol = startCol + std::max_element(
+            values.cbegin(), values.cend(),
+            [](const std::vector<std::pair<double, bool>> &a,
+               const std::vector<std::pair<double, bool>> &b) 
+			{ return a.size() > b.size();})->size() - 1;
+    emit d_owner->dataChanged(startRow, startCol, endRow, endCol);
 }
 
 } // namespace

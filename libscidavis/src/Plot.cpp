@@ -93,6 +93,11 @@ Plot::Plot(QWidget *parent, QString) : QwtPlot(parent)
         }
     }
 
+    // set tick labels alignment [ScaleDraw() defaults to Qt::AlignLeft | Qt::AlignVCenter, good only for yLeft axis]
+    setAxisLabelAlignment(QwtPlot::yRight, Qt::AlignRight | Qt::AlignVCenter);
+    setAxisLabelAlignment(QwtPlot::xBottom, Qt::AlignHCenter | Qt::AlignBottom);
+    setAxisLabelAlignment(QwtPlot::xTop, Qt::AlignHCenter | Qt::AlignTop);
+
     QwtPlotLayout *pLayout = plotLayout();
     pLayout->setCanvasMargin(0);
     pLayout->setAlignCanvasToScales(true);

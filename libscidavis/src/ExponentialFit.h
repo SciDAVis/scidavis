@@ -45,7 +45,8 @@ public:
 private:
     void init();
     void storeCustomFitResults(const std::vector<double> &) override;
-    void calculateFitCurveData(const std::vector<double> &, double *, double *) override;
+    bool calculateFitCurveData(const std::vector<double> &, std::vector<double> &,
+                               std::vector<double> &) override;
 
     bool is_exp_growth;
 };
@@ -63,7 +64,8 @@ public:
 private:
     void init();
     void storeCustomFitResults(const std::vector<double> &) override;
-    void calculateFitCurveData(const std::vector<double> &, double *, double *) override;
+    bool calculateFitCurveData(const std::vector<double> &, std::vector<double> &,
+                               std::vector<double> &) override;
 };
 
 class ThreeExpFit : public Fit
@@ -79,6 +81,7 @@ public:
 private:
     void init();
     void storeCustomFitResults(const std::vector<double> &par) override;
-    void calculateFitCurveData(const std::vector<double> &, double *, double *) override;
+    bool calculateFitCurveData(const std::vector<double> &, std::vector<double> &,
+                               std::vector<double> &) override;
 };
 #endif

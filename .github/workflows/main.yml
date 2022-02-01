@@ -108,7 +108,8 @@ jobs:
 
       - name: Install Python packages
         if: ${{ matrix.qt_ver == '5.15.2' }}
-        run: pip install sip==5.5.0 pyqt5 numpy
+        run: |
+         pip install sip==5.5.0 pyqt5==5.15.2  PyQt5-sip==12.8.1 numpy
 
       - name: Configuring
         run: |
@@ -154,7 +155,7 @@ jobs:
             mingw-w64-x86_64-gsl
             mingw-w64-x86_64-gl2ps
             mingw-w64-x86_64-gtest
-            mingw-w64-x86_64-sip5
+            mingw-w64-x86_64-sip4
             mingw-w64-x86_64-python-pyqt5
             mingw-w64-x86_64-python-numpy
 
@@ -198,8 +199,8 @@ jobs:
 
       - name: Install prerequisties
         run: |
-          brew install muparser gsl gl2ps googletest sip
-          pip install pyqt5 numpy
+         brew install muparser gsl gl2ps googletest
+         pip install pyqt5 numpy sip PyQt-builder
 
       - name: Configuring
         run: |

@@ -100,21 +100,13 @@ void ExponentialFit::storeCustomFitResults(const vector<double> &par)
         d_results[1] = 1.0 / d_results[1];
 }
 
-void ExponentialFit::calculateFitCurveData(const vector<double> &par, double *X, double *Y)
+bool ExponentialFit::calculateFitCurveData(const vector<double> &par, std::vector<double> &X,
+                                           std::vector<double> &Y)
 {
-    if (d_gen_function) {
-        double X0 = d_x[0];
-        double step = (d_x[d_n - 1] - X0) / (d_points - 1);
-        for (int i = 0; i < d_points; i++) {
-            X[i] = X0 + i * step;
-            Y[i] = par[0] * exp(-par[1] * X[i]) + par[2];
-        }
-    } else {
-        for (int i = 0; i < d_points; i++) {
-            X[i] = d_x[i];
-            Y[i] = par[0] * exp(-par[1] * X[i]) + par[2];
-        }
-    }
+    generateX(X);
+    for (int i = 0; i < d_points; i++)
+        Y[i] = par[0] * exp(-par[1] * X[i]) + par[2];
+    return true;
 }
 
 /*****************************************************************************
@@ -175,21 +167,13 @@ void TwoExpFit::storeCustomFitResults(const vector<double> &par)
     d_results[3] = 1.0 / d_results[3];
 }
 
-void TwoExpFit::calculateFitCurveData(const vector<double> &par, double *X, double *Y)
+bool TwoExpFit::calculateFitCurveData(const vector<double> &par, std::vector<double> &X,
+                                      std::vector<double> &Y)
 {
-    if (d_gen_function) {
-        double X0 = d_x[0];
-        double step = (d_x[d_n - 1] - X0) / (d_points - 1);
-        for (int i = 0; i < d_points; i++) {
-            X[i] = X0 + i * step;
-            Y[i] = par[0] * exp(-par[1] * X[i]) + par[2] * exp(-par[3] * X[i]) + par[4];
-        }
-    } else {
-        for (int i = 0; i < d_points; i++) {
-            X[i] = d_x[i];
-            Y[i] = par[0] * exp(-par[1] * X[i]) + par[2] * exp(-par[3] * X[i]) + par[4];
-        }
-    }
+    generateX(X);
+    for (int i = 0; i < d_points; i++)
+        Y[i] = par[0] * exp(-par[1] * X[i]) + par[2] * exp(-par[3] * X[i]) + par[4];
+    return true;
 }
 
 /*****************************************************************************
@@ -254,21 +238,12 @@ void ThreeExpFit::storeCustomFitResults(const vector<double> &par)
     d_results[5] = 1.0 / d_results[5];
 }
 
-void ThreeExpFit::calculateFitCurveData(const vector<double> &par, double *X, double *Y)
+bool ThreeExpFit::calculateFitCurveData(const vector<double> &par, std::vector<double> &X,
+                                        std::vector<double> &Y)
 {
-    if (d_gen_function) {
-        double X0 = d_x[0];
-        double step = (d_x[d_n - 1] - X0) / (d_points - 1);
-        for (int i = 0; i < d_points; i++) {
-            X[i] = X0 + i * step;
-            Y[i] = par[0] * exp(-X[i] * par[1]) + par[2] * exp(-X[i] * par[3])
-                    + par[4] * exp(-X[i] * par[5]) + par[6];
-        }
-    } else {
-        for (int i = 0; i < d_points; i++) {
-            X[i] = d_x[i];
-            Y[i] = par[0] * exp(-X[i] * par[1]) + par[2] * exp(-X[i] * par[3])
-                    + par[4] * exp(-X[i] * par[5]) + par[6];
-        }
-    }
+    generateX(X);
+    for (int i = 0; i < d_points; i++)
+        Y[i] = par[0] * exp(-X[i] * par[1]) + par[2] * exp(-X[i] * par[3])
+                + par[4] * exp(-X[i] * par[5]) + par[6];
+    return true;
 }

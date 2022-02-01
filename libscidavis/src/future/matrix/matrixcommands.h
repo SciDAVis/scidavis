@@ -387,6 +387,42 @@ private:
 ///////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
+// class MatrixSetCellsCmd
+///////////////////////////////////////////////////////////////////////////
+//! Set cell values for multiple cells at once
+class MatrixSetCellsCmd : public QUndoCommand
+{
+public:
+    MatrixSetCellsCmd(future::Matrix::Private *private_obj, int first_row, int last_row,
+                      int first_column, int last_column,
+                      const std::vector<std::vector<std::pair<double, bool>>> &values,
+                      QUndoCommand *parent = 0);
+
+    void redo() override;
+    void undo() override;
+
+private:
+    //! The private object to modify
+    future::Matrix::Private * const d_private_obj;
+    //! The index of the first row
+    const int d_first_row;
+    //! The index of the last row
+    const int d_last_row;
+    //! The index of the first column
+    const int d_first_column;
+    //! The index of the last column
+    const int d_last_column;
+    //! New cell values
+    const std::vector<std::vector<std::pair<double, bool>>> d_values;
+    //! Backup of the changed values
+    const std::vector<std::vector<std::pair<double, bool>>> d_old_values;
+};
+
+///////////////////////////////////////////////////////////////////////////
+// end of class MatrixSetCellsCmd
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
 // class MatrixTransposeCmd
 ///////////////////////////////////////////////////////////////////////////
 //! Transpose the matrix

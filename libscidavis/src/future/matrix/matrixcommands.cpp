@@ -532,3 +532,28 @@ void MatrixMirrorVerticallyCmd::undo()
 ///////////////////////////////////////////////////////////////////////////
 // end of class MatrixMirrorVerticallyCmd
 ///////////////////////////////////////////////////////////////////////////
+
+MatrixSetCellsCmd::MatrixSetCellsCmd(
+        future::Matrix::Private *private_obj, int first_row, int last_row, int first_column,
+        int last_column, const std::vector<std::vector<std::pair<double, bool>>> &values,
+        QUndoCommand *parent)
+    : QUndoCommand(parent), d_private_obj{ private_obj },
+      d_first_row{ first_row },
+      d_last_row{ last_row },
+      d_first_column{ first_column },
+      d_last_column{ last_column },
+      d_values{ values },
+      d_old_values{ private_obj->getCells(first_row, last_row, first_column, last_column) }
+{
+    setText(QObject::tr("%1: set values for multiple cells").arg(d_private_obj->name()));
+}
+
+void MatrixSetCellsCmd::redo() 
+{
+    d_private_obj->setCells(d_first_row, d_first_column, d_values);
+}
+
+void MatrixSetCellsCmd::undo() 
+{
+    d_private_obj->setCells(d_first_row, d_first_column, d_old_values);
+}

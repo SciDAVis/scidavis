@@ -45,7 +45,8 @@ public:
     void setFormula(const QString &s);
 
 private:
-    void calculateFitCurveData(const std::vector<double> &, double *, double *) override;
+    bool calculateFitCurveData(const std::vector<double> &, std::vector<double> &,
+                               std::vector<double> &) override;
     void init();
 };
 #endif

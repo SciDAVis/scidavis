@@ -50,7 +50,8 @@ public:
 
 private:
     void init();
-    void calculateFitCurveData(const std::vector<double> &, double *, double *) override;
+    bool calculateFitCurveData(const std::vector<double> &, std::vector<double> &,
+                               std::vector<double> &) override;
 
     int d_order;
     bool show_legend;
@@ -70,6 +71,7 @@ public:
 
 private:
     void init();
-    void calculateFitCurveData(const std::vector<double> &, double *, double *) override;
+    bool calculateFitCurveData(const std::vector<double> &, std::vector<double> &,
+                               std::vector<double> &) override;
 };
 #endif

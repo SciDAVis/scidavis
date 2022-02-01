@@ -56,7 +56,7 @@ private:
     void generateFitCurve(const std::vector<double> &) override;
     static QString peakFormula(int peakIndex, PeakProfile profile);
     //! Inserts a peak function curve into the plot
-    void insertPeakFunctionCurve(double *x, double *y, int peak);
+    void insertPeakFunctionCurve(std::vector<double> &x, std::vector<double> &y, int peak);
     void storeCustomFitResults(const std::vector<double> &) override;
 
     //! Used by the GaussFit and LorentzFit derived classes to calculate initial values for the parameters
@@ -117,6 +117,7 @@ public:
 
 private:
     void init();
-    void calculateFitCurveData(const std::vector<double> &, double *, double *) override;
+    bool calculateFitCurveData(const std::vector<double> &, std::vector<double> &,
+                               std::vector<double> &) override;
 };
 #endif

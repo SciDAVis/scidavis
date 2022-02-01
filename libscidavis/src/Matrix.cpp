@@ -87,6 +87,7 @@ void Matrix::init(int, int)
 
     birthdate = QLocale().toString(d_future_matrix->creationTime());
 
+    setMinimumSize(400, 300);
     // this is not very nice but works for the moment
     ui.gridLayout2->removeWidget(ui.formula_box);
     delete ui.formula_box;
@@ -413,6 +414,10 @@ bool Matrix::recalculate()
     saveCellsToMemory();
     double dx = fabs(xEnd() - xStart()) / (double)(numRows() - 1);
     double dy = fabs(yEnd() - yStart()) / (double)(numCols() - 1);
+    std::pair<double, bool> unsetValue(std::numeric_limits<double>::quiet_NaN(), false);
+    std::vector<std::vector<std::pair<double, bool>>> calculatedValues(
+            endRow - startRow + 1,
+            std::vector<std::pair<double, bool>>(endCol - startCol + 1, unsetValue));
     for (int row = startRow; row <= endRow; row++)
         for (int col = startCol; col <= endCol; col++) {
             if (!isCellSelected(row, col))
@@ -431,8 +436,9 @@ bool Matrix::recalculate()
                 QApplication::restoreOverrideCursor();
                 return false;
             }
-            setCell(row, col, ret.toDouble());
+            calculatedValues[row - startRow][col - startCol] = std::make_pair(ret.toDouble(), true);
         }
+    d_future_matrix->setCells(startRow, startCol, calculatedValues);
     forgetSavedCells();
 
     blockSignals(false);
@@ -691,11 +697,6 @@ void Matrix::freeMatrixData(double **data, int rows)
         delete[] data[i];
 
     delete[] data;
-}
-
-void Matrix::updateDecimalSeparators()
-{
-    this->update();
 }
 
 void Matrix::copy(Matrix *m)

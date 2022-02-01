@@ -261,7 +261,8 @@ public slots:
     void addRows();
     void cutSelection();
     void copySelection();
-    void pasteIntoSelection();
+    void pasteIntoSelection(const bool isTransposed = false);
+    void pasteIntoSelectionTransposed();
     void clearSelectedCells();
     void goToCell();
 #ifndef LEGACY_CODE_0_2_x
@@ -403,6 +404,7 @@ private:
     QAction *action_cut_selection;
     QAction *action_copy_selection;
     QAction *action_paste_into_selection;
+    QAction *action_paste_into_selection_transposed;
 #ifndef LEGACY_CODE_0_2_x
     QAction *action_mask_selection;
     QAction *action_unmask_selection;

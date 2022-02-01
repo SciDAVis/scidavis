@@ -99,29 +99,17 @@ QStringList PolynomialFit::generateParameterList(int order)
     return lst;
 }
 
-void PolynomialFit::calculateFitCurveData(const vector<double> &par, double *X, double *Y)
+bool PolynomialFit::calculateFitCurveData(const vector<double> &par, std::vector<double> &X,
+                                          std::vector<double> &Y)
 {
-    if (d_gen_function) {
-        double X0 = d_x[0];
-        double step = (d_x[d_n - 1] - X0) / (d_points - 1);
-        for (int i = 0; i < d_points; i++) {
-            X[i] = X0 + i * step;
-            double yi = 0.0;
-            for (unsigned j = 0; j < d_p; j++)
-                yi += par[j] * pow(X[i], j);
-
-            Y[i] = yi;
-        }
-    } else {
-        for (int i = 0; i < d_points; i++) {
-            X[i] = d_x[i];
-            double yi = 0.0;
-            for (unsigned j = 0; j < d_p; j++)
-                yi += par[j] * pow(X[i], j);
-
-            Y[i] = yi;
-        }
+    generateX(X);
+    for (int i = 0; i < d_points; i++) {
+        double yi = 0.0;
+        for (unsigned j = 0; j < d_p; j++)
+            yi += par[j] * pow(X[i], j);
+        Y[i] = yi;
     }
+    return true;
 }
 
 void PolynomialFit::fit()
@@ -129,7 +117,7 @@ void PolynomialFit::fit()
     if (d_init_err)
         return;
 
-    if (unsigned(d_p) > d_n) {
+    if (unsigned(d_p) > d_x.size()) {
         QMessageBox::critical(
                 (ApplicationWindow *)parent(), tr("Fit Error"),
                 tr("You need at least %1 data points for this fit operation. Operation aborted!")
@@ -137,21 +125,21 @@ void PolynomialFit::fit()
         return;
     }
 
-    gsl_matrix *X = gsl_matrix_alloc(d_n, d_p);
+    gsl_matrix *X = gsl_matrix_alloc(d_x.size(), d_p);
     gsl_vector *c = gsl_vector_alloc(d_p);
 
-    for (unsigned i = 0; i < d_n; i++) {
+    for (unsigned i = 0; i < d_x.size(); i++) {
         for (unsigned j = 0; j < d_p; j++)
             gsl_matrix_set(X, i, j, pow(d_x[i], j));
     }
 
-    gsl_vector_view y = gsl_vector_view_array(d_y, d_n);
+    gsl_vector_view y = gsl_vector_view_array(d_y.data(), d_y_errors.size());
 
-    gsl_vector *weights = gsl_vector_alloc(d_n);
-    for (unsigned i = 0; i < d_n; i++)
+    gsl_vector *weights = gsl_vector_alloc(d_y_errors.size());
+    for (unsigned i = 0; i < d_y_errors.size(); i++)
         gsl_vector_set(weights, i, 1.0 / pow(d_y_errors[i], 2));
 
-    gsl_multifit_linear_workspace *work = gsl_multifit_linear_alloc(d_n, d_p);
+    gsl_multifit_linear_workspace *work = gsl_multifit_linear_alloc(d_x.size(), d_p);
 
     if (d_y_error_source == UnknownErrors)
         gsl_multifit_linear(X, &y.vector, c, covar, &chi_2, work);
@@ -254,7 +242,7 @@ void LinearFit::fit()
     if (d_init_err)
         return;
 
-    if (d_p > d_n) {
+    if (d_p > d_x.size()) {
         QMessageBox::critical(
                 (ApplicationWindow *)parent(), tr("Fit Error"),
                 tr("You need at least %1 data points for this fit operation. Operation aborted!")
@@ -264,16 +252,16 @@ void LinearFit::fit()
 
     double c0, c1, cov00, cov01, cov11;
 
-    double *weights = new double[d_n];
-    for (unsigned i = 0; i < d_n; i++)
+    std::vector<double> weights(d_y_errors.size());
+    for (unsigned i = 0; i < d_y_errors.size(); i++)
         weights[i] = 1.0 / pow(d_y_errors[i], 2);
 
     if (d_y_error_source == UnknownErrors)
-        gsl_fit_linear(d_x, 1, d_y, 1, d_n, &c0, &c1, &cov00, &cov01, &cov11, &chi_2);
+        gsl_fit_linear(d_x.data(), 1, d_y.data(), 1, d_x.size(), &c0, &c1, &cov00, &cov01, &cov11,
+                       &chi_2);
     else
-        gsl_fit_wlinear(d_x, 1, weights, 1, d_y, 1, d_n, &c0, &c1, &cov00, &cov01, &cov11, &chi_2);
-
-    delete[] weights;
+        gsl_fit_wlinear(d_x.data(), 1, weights.data(), 1, d_y.data(), 1, d_x.size(), &c0, &c1, &cov00,
+                        &cov01, &cov11, &chi_2);
 
     d_results[0] = c0;
     d_results[1] = c1;
@@ -290,19 +278,11 @@ void LinearFit::fit()
     generateFitCurve(d_results);
 }
 
-void LinearFit::calculateFitCurveData(const vector<double> &par, double *X, double *Y)
+bool LinearFit::calculateFitCurveData(const vector<double> &par, std::vector<double> &X,
+                                      std::vector<double> &Y)
 {
-    if (d_gen_function) {
-        double X0 = d_x[0];
-        double step = (d_x[d_n - 1] - X0) / (d_points - 1);
-        for (int i = 0; i < d_points; i++) {
-            X[i] = X0 + i * step;
-            Y[i] = par[0] + par[1] * X[i];
-        }
-    } else {
-        for (int i = 0; i < d_points; i++) {
-            X[i] = d_x[i];
-            Y[i] = par[0] + par[1] * X[i];
-        }
-    }
+    generateX(X);
+    for (int i = 0; i < d_points; i++)
+        Y[i] = par[0] + par[1] * X[i];
+    return true;
 }

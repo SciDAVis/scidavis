@@ -145,5 +145,5 @@ EOF
 candle scidavis.wxs
 echo "light scidavis.wixobj"
 light -ext WixUIExtension -dWixUILicenseRtf=license.rtf scidavis.wixobj
-signtool sign -t http://timestamp.comodoca.com/rfc3161 scidavis.msi
+signtool sign -t http://timestamp.sectigo.com scidavis.msi
 mv scidavis.msi scidavis.$version-win-dist.msi

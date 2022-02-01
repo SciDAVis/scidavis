@@ -54,6 +54,7 @@
 #include "PlotCurve.h"
 #include "ApplicationWindow.h"
 #include "core/column/Column.h"
+#include "MultiLayer.h"
 
 #include <QApplication>
 #include <QBitmap>
@@ -2751,19 +2752,17 @@ int Graph::curveIndex(QwtPlotCurve *c) const
     return plotItemIndex(c);
 }
 
-int Graph::range(int index, double *start, double *end)
+int Graph::range(const int index, double& start, double& end) const
 {
     if (d_range_selector && d_range_selector->selectedCurve() == curve(index)) {
-        *start = d_range_selector->minXValue();
-        *end = d_range_selector->maxXValue();
+        start = d_range_selector->minXValue();
+        end = d_range_selector->maxXValue();
         return d_range_selector->dataSize();
     } else {
-        QwtPlotCurve *c = curve(index);
-        if (!c)
-            return 0;
-
-        *start = c->x(0);
-        *end = c->x(c->dataSize() - 1);
+    QwtPlotCurve *c = curve(index);
+        if (!c) return 0;
+        start = c->minXValue();
+        end = c->maxXValue();
         return c->dataSize();
     }
 }
@@ -3850,9 +3849,12 @@ bool Graph::addFunctionCurve(ApplicationWindow *parent, int type, const QStringL
     c_keys[n_curves - 1] = d_plot->insertCurve(c);
 
     addLegendItem(c->legend());
-    updatePlot();
+    auto ml = qobject_cast<MultiLayer *>(parent->d_workspace.activeSubWindow());
+    if (ml &&  ml->status() != MyWidget::Minimized) {
+        updatePlot();
 
-    emit modifiedGraph();
+        emit modifiedGraph();
+    }
     return true;
 }
 

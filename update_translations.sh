@@ -8,6 +8,6 @@ cp scidavis/translations/*.ts scidavis/oldtranslations/
 # run lupdate to generate new files
 lupdate -noobsolete scidavis.pro
 # run python script to merge translated lines from old translations into new
-python translation_updater.py scidavis/oldtranslations scidavis/translations
+python3 translation_updater.py scidavis/oldtranslations scidavis/translations
 # remove temporary directory
 rm -rf scidavis/oldtranslations

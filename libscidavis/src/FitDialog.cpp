@@ -527,7 +527,7 @@ void FitDialog::activateCurve(const QString &curveName)
         return;
 
     double start, end;
-    d_graph->range(d_graph->curveIndex(curveName), &start, &end);
+    d_graph->range(d_graph->curveIndex(curveName), start, end);
     boxFrom->setText(QLocale().toString(qMin(start, end), 'g', 15));
     boxTo->setText(QLocale().toString(qMax(start, end), 'g', 15));
 }
@@ -561,7 +561,7 @@ void FitDialog::saveUserFunction()
     }
     if (editBox->toPlainText().contains(boxName->text())) {
         QMessageBox::critical(this, tr("Input function error"),
-                              tr("You can't define functions recursevely!"));
+                              tr("You can't define functions recursively!"));
         editBox->setFocus();
         return;
     }

@@ -77,33 +77,25 @@ void SigmoidalFit::init()
     d_formula = "(A1-A2)/(1+exp((x-x0)/dx))+A2";
 }
 
-void SigmoidalFit::calculateFitCurveData(const vector<double> &par, double *X, double *Y)
+bool SigmoidalFit::calculateFitCurveData(const vector<double> &par, std::vector<double> &X,
+                                         std::vector<double> &Y)
 {
-    if (d_gen_function) {
-        double X0 = d_x[0];
-        double step = (d_x[d_n - 1] - X0) / (d_points - 1);
-        for (int i = 0; i < d_points; i++) {
-            X[i] = X0 + i * step;
-            Y[i] = (par[0] - par[1]) / (1 + exp((X[i] - par[2]) / par[3])) + par[1];
-        }
-    } else {
-        for (int i = 0; i < d_points; i++) {
-            X[i] = d_x[i];
-            Y[i] = (par[0] - par[1]) / (1 + exp((X[i] - par[2]) / par[3])) + par[1];
-        }
-    }
+    generateX(X);
+    for (int i = 0; i < d_points; i++)
+        Y[i] = (par[0] - par[1]) / (1 + exp((X[i] - par[2]) / par[3])) + par[1];
+    return true;
 }
 
 void SigmoidalFit::guessInitialValues()
 {
-    gsl_vector_view x = gsl_vector_view_array(d_x, d_n);
-    gsl_vector_view y = gsl_vector_view_array(d_y, d_n);
+    gsl_vector_view x = gsl_vector_view_array(d_x.data(), d_x.size());
+    gsl_vector_view y = gsl_vector_view_array(d_y.data(), d_y.size());
 
     double min_out, max_out;
     gsl_vector_minmax(&y.vector, &min_out, &max_out);
 
     gsl_vector_set(d_param_init, 0, min_out);
     gsl_vector_set(d_param_init, 1, max_out);
-    gsl_vector_set(d_param_init, 2, gsl_vector_get(&x.vector, d_n / 2));
+    gsl_vector_set(d_param_init, 2, gsl_vector_get(&x.vector, d_x.size() / 2));
     gsl_vector_set(d_param_init, 3, 1.0);
 }

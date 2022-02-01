@@ -326,7 +326,7 @@ SOURCES += src/future/core/AbstractAspect.cpp \
 SOURCES += ../3rdparty/minigzip/minigzip.c
 
 ###############################################################
-#### Origin OPJ import via liborigin2
+#### Origin OPJ import via liborigin
 ###############################################################
 liborigin {
 	HEADERS += src/importOPJ.h
