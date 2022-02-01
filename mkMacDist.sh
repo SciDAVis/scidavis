@@ -90,7 +90,8 @@ EOF
 
 macdeployqt $BUNDLE
 
-codesign -s "Developer ID Application" --deep --force $BUNDLE
+find $BUNDLE/Contents/Resources \( -name "*.dylib" -o -name "*.so" -o -name "*a" \) -exec codesign -s "Developer ID Application" --options runtime --timestamp --force {} \; -print
+codesign -s "Developer ID Application" --options runtime --timestamp --deep --force $BUNDLE
 if [ $? -ne 0 ]; then
     echo "try running this script on the Mac GUI desktop, not ssh shell"
     exit 1
