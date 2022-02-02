@@ -163,12 +163,13 @@ int main(int argc, char **argv)
     QCoreApplication::setOrganizationName("SciDAVis");
     QCoreApplication::setApplicationName("SciDAVis");
 
+    Application app(argc, argv);
+
 #ifdef __APPLE__
     // set python home to bundle specific directory
-    setenv("PYTHONHOME",(QCoreApplication::applicationDirPath()+"../Resources").toStdString().c_str(),true);
+    setenv("PYTHONHOME",(QCoreApplication::applicationDirPath()+"/../Resources").toStdString().c_str(),true);
 #endif
     
-    Application app(argc, argv);
     ApplicationWindow::getSettings();
     
     QStringList args = app.arguments();
