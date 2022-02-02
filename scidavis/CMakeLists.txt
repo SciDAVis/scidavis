@@ -25,12 +25,12 @@ set( TS_FILES
   )
 qt5_create_translation( QM_FILES "${CMAKE_SOURCE_DIR}/libscidavis" ${TS_FILES} )
 
-set( MACOSX_BUNDLE_PLIST scidavis/scidavis.app/Contents/Info.plist )
-set( MACOSX_BUNDLE_ICON scidavis/scidavis.app/Contents/Resources/scidavis.icns )
+#set( MACOSX_BUNDLE_PLIST scidavis/scidavis.app/Contents/Info.plist )
+#set( MACOSX_BUNDLE_ICON scidavis/scidavis.app/Contents/Resources/scidavis.icns )
 
 add_executable( scidavis
   WIN32
-  MACOSX_BUNDLE
+#  MACOSX_BUNDLE
   "src/main.cpp"
   "${RESOURCES}"
   "${QM_FILES}"
