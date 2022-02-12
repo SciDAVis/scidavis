@@ -89,6 +89,8 @@ cat >$BUNDLE/Contents/Info.plist <<EOF
 EOF
 
 macdeployqt $BUNDLE
+# macdeployqt fails to fix up python references
+rewrite_dylibs $MAC_DIST_DIR/scidavis
 
 find $BUNDLE/Contents/Resources \( -name "*.dylib" -o -name "*.so" -o -name "*a" \) -exec codesign -s "Developer ID Application" --options runtime --timestamp --force {} \; -print
 codesign -s "Developer ID Application" --options runtime --timestamp --deep --force $BUNDLE
