@@ -39,8 +39,6 @@ set( TS_FILES
   )
 
 qt5_create_translation( QM_FILES "${CMAKE_SOURCE_DIR}/libscidavis" ${TS_FILES} )
-# SciDAVis expects qm files to be in the translations directory. qt5_create_translation puts them somewhere else
-file( COPY ${QM_FILES} DESTINATION translations)
 
 #set( MACOSX_BUNDLE_PLIST scidavis/scidavis.app/Contents/Info.plist )
 #set( MACOSX_BUNDLE_ICON scidavis/scidavis.app/Contents/Resources/scidavis.icns )
@@ -52,6 +50,9 @@ add_executable( scidavis
   "${RESOURCES}"
   "${QM_FILES}"
   )
+
+# SciDAVis expects qm files to be in the translations directory. qt5_create_translation puts them somewhere else
+add_custom_command(TARGET scidavis COMMAND cp ${QM_FILES} translations)
 
 target_link_libraries( scidavis libscidavis )
 
