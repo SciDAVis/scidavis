@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ja_JP">
+<TS version="2.1" language="en_US">
 <context>
     <name>AbstractAspect</name>
     <message>
@@ -278,7 +278,7 @@
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="517"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11234"/>
         <source>Add &amp;Text</source>
-        <translation type="unfinished"></translation>
+        <translation>テキストの追加(&amp;T)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="518"/>
@@ -426,19 +426,19 @@
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="734"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="774"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル(&amp;F)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="735"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="825"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>編集(&amp;E)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="736"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="847"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>表示(&amp;V)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="737"/>
@@ -450,7 +450,7 @@
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="738"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="866"/>
         <source>&amp;Graph</source>
-        <translation type="unfinished"></translation>
+        <translation>グラフ(&amp;G)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="739"/>
@@ -484,7 +484,7 @@
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="920"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="1095"/>
         <source>&amp;Analysis</source>
-        <translation type="unfinished"></translation>
+        <translation>分析(&amp;A)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="744"/>
@@ -502,13 +502,13 @@
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="747"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="982"/>
         <source>For&amp;mat</source>
-        <translation type="unfinished"></translation>
+        <translation>フォーマット(&amp;M)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="748"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="990"/>
         <source>&amp;Windows</source>
-        <translation type="unfinished"></translation>
+        <translation>ウィンドウ(&amp;W)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="749"/>
@@ -516,13 +516,13 @@
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10641"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11129"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>ヘルプ(&amp;H)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="751"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="777"/>
         <source>&amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation>新規作成(&amp;N)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="752"/>
@@ -534,25 +534,25 @@
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="753"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="807"/>
         <source>&amp;Export Graph</source>
-        <translation type="unfinished"></translation>
+        <translation>グラフのエクスポート(&amp;E)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="755"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="1050"/>
         <source>Special Line/Symb&amp;ol</source>
-        <translation type="unfinished"></translation>
+        <translation>特殊な直線/シンボル</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="756"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="1068"/>
         <source>Statistical &amp;Graphs</source>
-        <translation type="unfinished"></translation>
+        <translation>統計用グラフ(&amp;G)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="757"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="1074"/>
         <source>Pa&amp;nel</source>
-        <translation type="unfinished"></translation>
+        <translation>パネル(&amp;n)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="758"/>
@@ -590,7 +590,7 @@
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="7803"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="7918"/>
         <source>Fit E&amp;xponential Decay</source>
-        <translation type="unfinished"></translation>
+        <translation>指数減衰フィッティング(&amp;X)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="764"/>
@@ -1158,7 +1158,7 @@ in file %2.</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10387"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10971"/>
         <source>&amp;All</source>
-        <translation type="unfinished"></translation>
+        <translation>全て(&amp;A)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="4830"/>
@@ -1622,7 +1622,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10397"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10981"/>
         <source>&amp;Print</source>
-        <translation type="unfinished"></translation>
+        <translation>印刷(&amp;P)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="7853"/>
@@ -1835,7 +1835,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10254"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10859"/>
         <source>New &amp;Project</source>
-        <translation type="unfinished"></translation>
+        <translation>新規プロジェクト(&amp;N)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10255"/>
@@ -1871,7 +1871,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10266"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10871"/>
         <source>New &amp;Table</source>
-        <translation type="unfinished"></translation>
+        <translation>新規テーブル(&amp;T)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10267"/>
@@ -1919,7 +1919,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10285"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10888"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>開く(&amp;O)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10286"/>
@@ -1949,7 +1949,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10296"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10898"/>
         <source>&amp;Save Project</source>
-        <translation type="unfinished"></translation>
+        <translation>プロジェクトの保存(&amp;S)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10297"/>
@@ -1990,7 +1990,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10318"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10914"/>
         <source>&amp;Undo</source>
-        <translation type="unfinished"></translation>
+        <translation>元に戻す(&amp;U)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10319"/>
@@ -2002,7 +2002,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10323"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10918"/>
         <source>&amp;Redo</source>
-        <translation type="unfinished"></translation>
+        <translation>やり直す(&amp;R)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10324"/>
@@ -2079,7 +2079,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10367"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10953"/>
         <source>Add La&amp;yer</source>
-        <translation type="unfinished"></translation>
+        <translation>レイヤーの追加(&amp;Y)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10368"/>
@@ -2110,7 +2110,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10382"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10966"/>
         <source>&amp;Current</source>
-        <translation type="unfinished"></translation>
+        <translation>現在の物のみ(&amp;C)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10383"/>
@@ -2158,7 +2158,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10408"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10990"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>終了(&amp;Q)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10409"/>
@@ -2194,7 +2194,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10425"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11000"/>
         <source>&amp;Preferences...</source>
-        <translation type="unfinished"></translation>
+        <translation>設定...(&amp;P)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10429"/>
@@ -2248,7 +2248,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10446"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11018"/>
         <source>New &amp;Legend</source>
-        <translation type="unfinished"></translation>
+        <translation>新規凡例(&amp;L)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10447"/>
@@ -2272,7 +2272,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10454"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11026"/>
         <source>Add &amp;Image</source>
-        <translation type="unfinished"></translation>
+        <translation>画像の追加(&amp;I)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10455"/>
@@ -2284,7 +2284,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10461"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11030"/>
         <source>&amp;Line</source>
-        <translation type="unfinished"></translation>
+        <translation>直線(&amp;L)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10465"/>
@@ -2292,13 +2292,13 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11033"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11076"/>
         <source>&amp;Scatter</source>
-        <translation type="unfinished"></translation>
+        <translation>点のみ(&amp;S)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10469"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11036"/>
         <source>Line + S&amp;ymbol</source>
-        <translation type="unfinished"></translation>
+        <translation>直線+点(&amp;Y)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10474"/>
@@ -2310,7 +2310,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10478"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11041"/>
         <source>&amp;Spline</source>
-        <translation type="unfinished"></translation>
+        <translation>スプライン(&amp;S)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10482"/>
@@ -2340,13 +2340,13 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10501"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11051"/>
         <source>&amp;Area</source>
-        <translation type="unfinished"></translation>
+        <translation>積み上げ面グラフ(&amp;A)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10505"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11054"/>
         <source>&amp;Pie</source>
-        <translation type="unfinished"></translation>
+        <translation>円グラフ(&amp;P)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10508"/>
@@ -2364,7 +2364,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10514"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11063"/>
         <source>&amp;Histogram</source>
-        <translation type="unfinished"></translation>
+        <translation>ヒストグラム(&amp;H)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10519"/>
@@ -2376,19 +2376,19 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10523"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11065"/>
         <source>&amp;Vertical 2 Layers</source>
-        <translation type="unfinished"></translation>
+        <translation>上下2段レイヤー(&amp;V)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10527"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11066"/>
         <source>&amp;Horizontal 2 Layers</source>
-        <translation type="unfinished"></translation>
+        <translation>左右2段レイヤー(&amp;H)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10530"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11067"/>
         <source>&amp;4 Layers</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;4レイヤー</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10534"/>
@@ -2400,37 +2400,37 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10537"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11070"/>
         <source>&amp;Ribbon</source>
-        <translation type="unfinished"></translation>
+        <translation>リボン(&amp;R)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10540"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11073"/>
         <source>&amp;Bars</source>
-        <translation type="unfinished"></translation>
+        <translation>縦棒(&amp;B)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10547"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11079"/>
         <source>&amp;Trajectory</source>
-        <translation type="unfinished"></translation>
+        <translation>軌跡(&amp;T)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10551"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11091"/>
         <source>Statistics on &amp;Columns</source>
-        <translation type="unfinished"></translation>
+        <translation>列に関する統計(&amp;C)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10555"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11094"/>
         <source>Statistics on &amp;Rows</source>
-        <translation type="unfinished"></translation>
+        <translation>行に関する統計(&amp;R)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10558"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11096"/>
         <source>&amp;Integrate ...</source>
-        <translation type="unfinished"></translation>
+        <translation>積分...(&amp;I)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10561"/>
@@ -2490,37 +2490,37 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10588"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11106"/>
         <source>&amp;Differentiate</source>
-        <translation type="unfinished"></translation>
+        <translation>微分(&amp;D)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10591"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11107"/>
         <source>Fit &amp;Linear</source>
-        <translation type="unfinished"></translation>
+        <translation>直線フィッティング(&amp;L)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10594"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11108"/>
         <source>Fit &amp;Polynomial ...</source>
-        <translation type="unfinished"></translation>
+        <translation>多項式フィッティング...(&amp;P)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10597"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11109"/>
         <source>&amp;First Order ...</source>
-        <translation type="unfinished"></translation>
+        <translation>一次...(&amp;F)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10600"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11110"/>
         <source>&amp;Second Order ...</source>
-        <translation type="unfinished"></translation>
+        <translation>二次...(&amp;S)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10603"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11111"/>
         <source>&amp;Third Order ...</source>
-        <translation type="unfinished"></translation>
+        <translation>三次...(&amp;T)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10606"/>
@@ -2538,13 +2538,13 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10612"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11114"/>
         <source>Fit &amp;Gaussian</source>
-        <translation type="unfinished"></translation>
+        <translation>ガウシアンフィッティング(&amp;G)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10615"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11115"/>
         <source>Fit Lorent&amp;zian</source>
-        <translation type="unfinished"></translation>
+        <translation>ローレシアンフィッティング(&amp;Z)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10618"/>
@@ -2562,7 +2562,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10622"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11120"/>
         <source>&amp;Plot ...</source>
-        <translation type="unfinished"></translation>
+        <translation>プロット...(&amp;P)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10625"/>
@@ -2586,7 +2586,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10634"/>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11124"/>
         <source>&amp;Title ...</source>
-        <translation type="unfinished"></translation>
+        <translation>タイトル...(&amp;T)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10637"/>
@@ -3074,7 +3074,7 @@ Are you sure you want to continue?</source>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10945"/>
         <source>Results &amp;Log</source>
-        <translation type="unfinished"></translation>
+        <translation>結果ログ(&amp;L)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="10946"/>
@@ -3992,7 +3992,7 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/ConfigDialog.cpp" line="1550"/>
         <source>English</source>
         <comment>translate this to the language of the translation file, NOT to the meaning of English!</comment>
-        <translation type="unfinished"></translation>
+        <translation>日本の</translation>
     </message>
 </context>
 <context>
@@ -6262,7 +6262,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../libscidavis/src/ExportDialog.cpp" line="49"/>
         <source>&amp;All</source>
-        <translation type="unfinished"></translation>
+        <translation>全て(&amp;A)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ExportDialog.cpp" line="53"/>
@@ -6323,7 +6323,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../libscidavis/src/ExportDialog.cpp" line="95"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>ヘルプ(&amp;H)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ExportDialog.cpp" line="116"/>
@@ -6434,12 +6434,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../libscidavis/src/FFTDialog.cpp" line="59"/>
         <source>&amp;Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>順変換(&amp;F)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/FFTDialog.cpp" line="61"/>
         <source>&amp;Inverse</source>
-        <translation type="unfinished"></translation>
+        <translation>逆変換(&amp;I)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/FFTDialog.cpp" line="72"/>
@@ -6907,15 +6907,15 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../libscidavis/src/Fit.cpp" line="335"/>
-        <source>SciDAVis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../libscidavis/src/Fit.cpp" line="335"/>
         <location filename="../../libscidavis/src/Fit.cpp" line="367"/>
         <location filename="../../libscidavis/src/Fit.cpp" line="393"/>
         <location filename="../../libscidavis/src/Fit.cpp" line="414"/>
         <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../libscidavis/src/Fit.cpp" line="335"/>
+        <source>SciDAVis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7809,7 +7809,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../libscidavis/src/Graph.cpp" line="4352"/>
         <source>&amp;Rescale to show all</source>
-        <translation type="unfinished"></translation>
+        <translation>全体表示可能にリサイズ(&amp;R)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/Graph.cpp" line="4353"/>
@@ -8343,7 +8343,7 @@ have the same number of rows.</source>
     <message>
         <location filename="../../libscidavis/src/ImportASCIIDialog.cpp" line="192"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>ヘルプ(&amp;H)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ImportASCIIDialog.cpp" line="248"/>
@@ -8448,7 +8448,7 @@ have the same number of rows.</source>
     <message>
         <location filename="../../libscidavis/src/IntDialog.cpp" line="75"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>ヘルプ(&amp;H)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/IntDialog.cpp" line="76"/>
@@ -10494,7 +10494,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../libscidavis/src/Plot3DDialog.cpp" line="241"/>
         <source>&amp;Line</source>
-        <translation type="unfinished"></translation>
+        <translation>直線(&amp;L)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/Plot3DDialog.cpp" line="243"/>
@@ -11935,6 +11935,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>QObject</name>
     <message>
+        <location filename="../src/future/lib/XmlStreamReader.cpp" line="67"/>
+        <source></source>
+        <comment>postfix for XML warning messages</comment>
+        <translation></translation>
+    </message>
+    <message>
         <location filename="../../libscidavis/src/ApplicationWindow.cpp" line="11709"/>
         <source>Released</source>
         <translation type="unfinished"></translation>
@@ -11947,6 +11953,11 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../libscidavis/src/future/core/AbstractFilter.cpp" line="122"/>
         <source>In%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../libscidavis/src/future/core/Project.cpp" line="156"/>
+        <source>General</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -12123,11 +12134,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../libscidavis/src/future/core/datatypes/Double2StringFilter.cpp" line="105"/>
         <source>set decimal digits to %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../libscidavis/src/future/core/Project.cpp" line="156"/>
-        <source>General</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -12495,7 +12501,7 @@ Released</source>
     <message>
         <location filename="../../libscidavis/src/ScriptEdit.cpp" line="77"/>
         <source>&amp;Print</source>
-        <translation type="unfinished"></translation>
+        <translation>印刷(&amp;P)</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/ScriptEdit.cpp" line="80"/>
