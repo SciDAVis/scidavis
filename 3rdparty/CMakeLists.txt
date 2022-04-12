@@ -30,8 +30,8 @@ endif()
 if( NOT BUILD_QWT )
   find_path ( QWT_INCLUDE_DIR
     NAMES qwt_plot.h
-    HINTS ${QT_INCLUDE_DIR} qwt5-qt5
-    PATH_SUFFIXES qwt5 qwt5-qt5 src
+    HINTS ${QT_INCLUDE_DIR}
+    PATH_SUFFIXES qwt5 qwt5-qt5
     REQUIRED
   )
   message( STATUS "Found Qwt5: ${QWT_LIBRARY}, with include: ${QWT_INCLUDE_DIR}" )
