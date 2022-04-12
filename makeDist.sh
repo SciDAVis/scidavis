@@ -17,10 +17,10 @@ git submodule|cut -f3 -d' '|while read s; do
     popd
     tar Af $name.tar /tmp/$$.tar
 done
-#if [ `ls scidavis/*.qm|wc -l` -gt 0 ]; then
-#    tar --transform="s/^/$name\//" -rf $name.tar scidavis/*.qm
+if [ `ls scidavis/*.qm|wc -l` -gt 0 ]; then
+    tar --transform="s/^/$name\//" -rf $name.tar scidavis/*.qm
     gzip -f $name.tar
-#else
-#    echo "Please build scidavis to generate translations"
-#fi
+else
+    echo "Please build scidavis to generate translations"
+fi
 rm /tmp/$$.tar
