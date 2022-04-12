@@ -8,22 +8,39 @@ if( WIN32 )
 endif()
 
 # Translation Files
-file( COPY translations DESTINATION . )
+#file( COPY translations DESTINATION . )
+#set( TS_FILES
+#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_de.ts"
+#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_es.ts"
+#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_fr.ts"
+#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_ru.ts"
+#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_ja.ts"
+#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_sv.ts"
+#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_pt-br.ts"
+#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_cs.ts"
+#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_cs-alt.ts"
+#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_pl.ts"
+#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_zh-cn.ts"
+#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_zh-tw.ts"
+#  )
 set( TS_FILES
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_de.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_es.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_fr.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_ru.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_ja.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_sv.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_pt-br.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_cs.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_cs-alt.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_pl.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_zh-cn.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_zh-tw.ts"
+  "translations/scidavis_de.ts"
+  "translations/scidavis_es.ts"
+  "translations/scidavis_fr.ts"
+  "translations/scidavis_ru.ts"
+  "translations/scidavis_ja.ts"
+  "translations/scidavis_sv.ts"
+  "translations/scidavis_pt-br.ts"
+  "translations/scidavis_cs.ts"
+  "translations/scidavis_cs-alt.ts"
+  "translations/scidavis_pl.ts"
+  "translations/scidavis_zh-cn.ts"
+  "translations/scidavis_zh-tw.ts"
   )
+
 qt5_create_translation( QM_FILES "${CMAKE_SOURCE_DIR}/libscidavis" ${TS_FILES} )
+# SciDAVis expects qm files to be in the translations directory. qt5_create_translation puts them somewhere else
+file( COPY ${QM_FILES} DESTINATION translations)
 
 #set( MACOSX_BUNDLE_PLIST scidavis/scidavis.app/Contents/Info.plist )
 #set( MACOSX_BUNDLE_ICON scidavis/scidavis.app/Contents/Resources/scidavis.icns )
