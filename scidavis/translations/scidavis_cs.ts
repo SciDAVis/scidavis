@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS language="cs_CZ" version="2.1">
 <context>
     <name>AbstractAspect</name>
     <message>
@@ -18,16 +16,16 @@
         <translation>Název aspektu chybí, nebo je prázdný</translation>
     </message>
     <message>
-        <source>Invalid creation time for &apos;%1&apos;. Using current time.</source>
-        <translation>Neplatná doba vytvoření pro &apos;%1&apos;. Místo ní se používá současný čas.</translation>
+        <source>Invalid creation time for '%1'. Using current time.</source>
+        <translation>Neplatná doba vytvoření pro '%1'. Místo ní se používá současný čas.</translation>
     </message>
     <message>
         <source>%1: add %2.</source>
         <translation>%1: přidat %2.</translation>
     </message>
     <message>
-        <source>Renaming &quot;%1&quot; to &quot;%2&quot; in order to avoid name collision.</source>
-        <translation>&quot;%1&quot; se přejmenovává na &quot;%2&quot;, z důvodu vyhnutí se střetu názvů.</translation>
+        <source>Renaming "%1" to "%2" in order to avoid name collision.</source>
+        <translation>"%1" se přejmenovává na "%2", z důvodu vyhnutí se střetu názvů.</translation>
     </message>
     <message>
         <source>%1: insert %2 at position %3.</source>
@@ -46,8 +44,8 @@
         <translation>Tabulátory (zarážky) a zalomení řádků v názvech předmětů nyní nejsou podporovány. Byly odstraněny.</translation>
     </message>
     <message>
-        <source>Intended name &quot;%1&quot; diverted to &quot;%2&quot; in order to avoid name collision.</source>
-        <translation>Zamýšlený název &quot;%1&quot; se změní na &quot;%2&quot;, z důvodu vyhnutí se střetu názvů.</translation>
+        <source>Intended name "%1" diverted to "%2" in order to avoid name collision.</source>
+        <translation>Zamýšlený název "%1" se změní na "%2", z důvodu vyhnutí se střetu názvů.</translation>
     </message>
     <message>
         <source>%1: remove all children.</source>
@@ -76,8 +74,8 @@
         <translation>neslučitelný typ filtru</translation>
     </message>
     <message>
-        <source>unknown element &apos;%1&apos;</source>
-        <translation>neznámý prvek: &apos;%1&apos;</translation>
+        <source>unknown element '%1'</source>
+        <translation>neznámý prvek: '%1'</translation>
     </message>
     <message>
         <source>no simple filter element found</source>
@@ -483,8 +481,8 @@
         <translation>Přejmenované okno</translation>
     </message>
     <message>
-        <source>The table &apos;%1&apos; already exists. It has been renamed &apos;%2&apos;.</source>
-        <translation>Tabulka &apos;%1&apos; již existuje. Byla přejmenována na &apos;%2&apos;.</translation>
+        <source>The table '%1' already exists. It has been renamed '%2'.</source>
+        <translation>Tabulka '%1' již existuje. Byla přejmenována na '%2'.</translation>
     </message>
     <message>
         <source>Notes</source>
@@ -527,12 +525,12 @@
         <translation>ASCII import se nezdařil</translation>
     </message>
     <message>
-        <source>Numeric data cannot be imported into non-numeric column &quot;%1&quot;.</source>
-        <translation>Číselná data se nepodařilo zavést do ne-číselného sloupce &quot;%1&quot;.</translation>
+        <source>Numeric data cannot be imported into non-numeric column "%1".</source>
+        <translation>Číselná data se nepodařilo zavést do ne-číselného sloupce "%1".</translation>
     </message>
     <message>
-        <source>Non-numeric data cannot be imported into non-text column &quot;%1&quot;.</source>
-        <translation>Ne-číselná data se nepodařilo zavést do ne-textového sloupce &quot;%1&quot;.</translation>
+        <source>Non-numeric data cannot be imported into non-text column "%1".</source>
+        <translation>Ne-číselná data se nepodařilo zavést do ne-textového sloupce "%1".</translation>
     </message>
     <message>
         <source>new_by_import</source>
@@ -547,7 +545,7 @@
         <translation>Soubor: &lt;b&gt;%1&lt;/b&gt; je nynější soubor!</translation>
     </message>
     <message>
-        <source>The file: &lt;b&gt;%1&lt;/b&gt; doesn&apos;t exist!</source>
+        <source>The file: &lt;b&gt;%1&lt;/b&gt; doesn't exist!</source>
         <translation>Soubor: &lt;b&gt;%1&lt;/b&gt; neexistuje!</translation>
     </message>
     <message>
@@ -571,11 +569,11 @@
         <translation>Soubor: &lt;p&gt;&lt;b&gt; %1 &lt;/b&gt;&lt;p&gt; je nynější soubor!</translation>
     </message>
     <message>
-        <source>zlib can&apos;t open %1.</source>
+        <source>zlib can't open %1.</source>
         <translation>zlib nemůže otevřít %1.</translation>
     </message>
     <message>
-        <source>Can&apos;t create temporary file for writing uncompressed copy of %1.</source>
+        <source>Can't create temporary file for writing uncompressed copy of %1.</source>
         <translation>Nemůže vytvořit dočasný soubor pro zápis rozbalené kopie %1.</translation>
     </message>
     <message>
@@ -603,13 +601,13 @@
         <translation>SciDAVis</translation>
     </message>
     <message>
-        <source>The file &quot;%1&quot; was created using &quot;%2&quot; as scripting language.
+        <source>The file "%1" was created using "%2" as scripting language.
 
-Initializing support for this language FAILED; I&apos;m using &quot;%3&quot; instead.
+Initializing support for this language FAILED; I'm using "%3" instead.
 Various parts of this file may not be displayed as expected.</source>
-        <translation>Soubor &quot;%1&quot; byl vytvořen &quot;%2&quot; jako skriptovací jazyk.
+        <translation>Soubor "%1" byl vytvořen "%2" jako skriptovací jazyk.
 
-Inicializace podpory pro tento jazyk SELHALA; Místo toho se používá &quot;%3&quot;.
+Inicializace podpory pro tento jazyk SELHALA; Místo toho se používá "%3".
 Různé části tohoto souboru se nemusí zobrazovat tak, jak se očekává.</translation>
     </message>
     <message>
@@ -622,9 +620,9 @@ Různé části tohoto souboru se nemusí zobrazovat tak, jak se očekává.</tr
     </message>
     <message>
         <source>Invalid WindowLabel line:
-&apos;%1&apos;
+'%1'
 in file %2.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Script Error</source>
@@ -635,8 +633,8 @@ in file %2.</source>
         <translation>Chyba ve skriptu</translation>
     </message>
     <message>
-        <source>Scripting language &quot;%1&quot; failed to initialize.</source>
-        <translation>Skriptovací jazyk &quot;%1&quot; se nepodařilo inicializovat.</translation>
+        <source>Scripting language "%1" failed to initialize.</source>
+        <translation>Skriptovací jazyk "%1" se nepodařilo inicializovat.</translation>
     </message>
     <message>
         <source>Open Template File</source>
@@ -1147,8 +1145,8 @@ Jste si jist, že chcete pokračovat?</translation>
         <translation>Chyba při zavádění obrázku</translation>
     </message>
     <message>
-        <source>Import of image &apos;%1&apos; failed</source>
-        <translation>Zavedení obrázku &apos;%1&apos; se nepodařilo</translation>
+        <source>Import of image '%1' failed</source>
+        <translation>Zavedení obrázku '%1' se nepodařilo</translation>
     </message>
     <message>
         <source>Guess best origin for the new layer?</source>
@@ -2409,7 +2407,7 @@ Jste si jist, že chcete pokračovat?</translation>
     </message>
     <message>
         <source>show about dialog and exit</source>
-        <translation>Ukázat dialog &quot;O programu&quot; a ukončit</translation>
+        <translation>Ukázat dialog "O programu" a ukončit</translation>
     </message>
     <message>
         <source>show command line options</source>
@@ -2460,7 +2458,7 @@ Jste si jist, že chcete pokračovat?</translation>
         <translation>&lt;b&gt;%1&lt;/b&gt; Je adresářem. Zadejte, prosím, název souboru!</translation>
     </message>
     <message>
-        <source>You don&apos;t have the permission to open this file: &lt;b&gt;%1&lt;/b&gt;</source>
+        <source>You don't have the permission to open this file: &lt;b&gt;%1&lt;/b&gt;</source>
         <translation>Nemáte oprávnění pro otevření tohoto souboru: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
@@ -2488,9 +2486,9 @@ Jste si jist, že chcete pokračovat?</translation>
         <translation>Chyba při přejmenovávání souborů se zálohou</translation>
     </message>
     <message>
-        <source>&lt;html&gt;%1&lt;br&gt;&lt;br&gt;Data was written to &lt;em&gt;%2&lt;/em&gt;, but saving the original file as &lt;em&gt;%3&lt;/em&gt;					and moving the new file to &lt;em&gt;%4&lt;/em&gt; failed. In case you wonder why the original file hasn&apos;t					been simply replaced, see here:					&lt;a href=&quot;http://bugs.launchpad.net/ubuntu/+source/linux/+bug/317781/comments/54&quot;&gt;					http://bugs.launchpad.net/ubuntu/+source/linux/+bug/317781/comments/54&lt;/a&gt;.&lt;/html&gt;</source>
+        <source>&lt;html&gt;%1&lt;br&gt;&lt;br&gt;Data was written to &lt;em&gt;%2&lt;/em&gt;, but saving the original file as &lt;em&gt;%3&lt;/em&gt;					and moving the new file to &lt;em&gt;%4&lt;/em&gt; failed. In case you wonder why the original file hasn't					been simply replaced, see here:					&lt;a href="http://bugs.launchpad.net/ubuntu/+source/linux/+bug/317781/comments/54"&gt;					http://bugs.launchpad.net/ubuntu/+source/linux/+bug/317781/comments/54&lt;/a&gt;.&lt;/html&gt;</source>
         <translation>&lt;html&gt;%1&lt;br&gt;&lt;br&gt;Data byla zapsána do souboru &lt;em&gt;%2&lt;/em&gt;, ale uložení původního souboru jako &lt;em&gt;%3&lt;/em&gt; a přesunutí nového souboru do &lt;em&gt;%4&lt;/em&gt; se nezdařilo. Pokud se divíte, že původní soubor nebyl jednoduše nahrazen, naleznete informace o této věci zde:
-&lt;a href=&quot;http://bugs.launchpad.net/ubuntu/+source/linux/+bug/317781/comments/54&quot;&gt;http://bugs.launchpad.net/ubuntu/+source/linux/+bug/317781/comments/54&lt;/a&gt;.&lt;/html&gt;</translation>
+&lt;a href="http://bugs.launchpad.net/ubuntu/+source/linux/+bug/317781/comments/54"&gt;http://bugs.launchpad.net/ubuntu/+source/linux/+bug/317781/comments/54&lt;/a&gt;.&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Save project as</source>
@@ -2593,8 +2591,8 @@ Jste si jist, že chcete pokračovat?</translation>
         <translation>Smazat složku?</translation>
     </message>
     <message>
-        <source>Delete folder &apos;%1&apos; and all the windows it contains?</source>
-        <translation>Odstranit složku &apos;%1&apos; a všechna okna, jež obsahuje?</translation>
+        <source>Delete folder '%1' and all the windows it contains?</source>
+        <translation>Odstranit složku '%1' a všechna okna, jež obsahuje?</translation>
     </message>
     <message>
         <source>Note</source>
@@ -2613,8 +2611,8 @@ Jste si jist, že chcete pokračovat?</translation>
         <translation>Nebyla nalezena žádná shoda</translation>
     </message>
     <message>
-        <source>Sorry, no match found for string: &apos;%1&apos;</source>
-        <translation>Promiňte, ale nebyla nalezena žádná shoda pro řetězec znaků: &apos;%1&apos;</translation>
+        <source>Sorry, no match found for string: '%1'</source>
+        <translation>Promiňte, ale nebyla nalezena žádná shoda pro řetězec znaků: '%1'</translation>
     </message>
     <message>
         <source>Cannot move an object to itself!</source>
@@ -2629,8 +2627,8 @@ Jste si jist, že chcete pokračovat?</translation>
         <translation>Přesunutí složky bylo přeskočeno</translation>
     </message>
     <message>
-        <source>The destination folder already contains a folder called &apos;%1&apos;! Folder skipped!</source>
-        <translation>Cílová složka již obsahuje složku nazvanou &apos;%1&apos;! Složka byla přeskočena!</translation>
+        <source>The destination folder already contains a folder called '%1'! Folder skipped!</source>
+        <translation>Cílová složka již obsahuje složku nazvanou '%1'! Složka byla přeskočena!</translation>
     </message>
     <message>
         <source>SciDAVis will now try to determine whether a new version of SciDAVis is available. Please modify your firewall settings in order to allow SciDAVis to connect to the internet.</source>
@@ -2665,8 +2663,8 @@ Jste si jist, že chcete pokračovat?</translation>
         <translation>Neplatný soubor s verzí</translation>
     </message>
     <message>
-        <source>The version file (contents: &quot;%1&quot;) could not be decoded into a valid version number.</source>
-        <translation>Soubor s verzí (obsah: &quot;%1&quot;) se nepodařilo přeměnit na platné číslo verze.</translation>
+        <source>The version file (contents: "%1") could not be decoded into a valid version number.</source>
+        <translation>Soubor s verzí (obsah: "%1") se nepodařilo přeměnit na platné číslo verze.</translation>
     </message>
     <message>
         <source>This will clear the contents of all the data associated with the table. Are you sure?</source>
@@ -3080,8 +3078,8 @@ Jste si jist, že chcete pokračovat?</translation>
         <translation>Chyba v zadání vzorce</translation>
     </message>
     <message>
-        <source>Valid variables are &apos;x&apos; for Top/Bottom axes and &apos;y&apos; for Left/Right axes!</source>
-        <translation>Platnými proměnnými jsou &apos;x&apos; pro osy nahoře/dole a  &apos;y&apos; pro osy vlevo/vpravo!</translation>
+        <source>Valid variables are 'x' for Top/Bottom axes and 'y' for Left/Right axes!</source>
+        <translation>Platnými proměnnými jsou 'x' pro osy nahoře/dole a  'y' pro osy vlevo/vpravo!</translation>
     </message>
     <message>
         <source>millisec.</source>
@@ -3113,105 +3111,6 @@ Jste si jist, že chcete pokračovat?</translation>
     <message>
         <source>enter your text here</source>
         <translation>Svůj text napište sem</translation>
-    </message>
-</context>
-<context>
-    <name>ColorBox</name>
-    <message>
-        <source>black</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>red</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>green</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>blue</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>cyan</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>magenta</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>yellow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>dark yellow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>navy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>purple</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>wine</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>olive</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>dark cyan</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>royal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>orange</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>violet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>pink</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>white</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>light gray</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>gray</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>light yellow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>light cyan</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>light magenta</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>dark gray</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3276,8 +3175,8 @@ Jste si jist, že chcete pokračovat?</translation>
         <translation>Přiřazení sloupce k nákresu je neplatné</translation>
     </message>
     <message>
-        <source>unknown element &apos;%1&apos;</source>
-        <translation>neznámý prvek: &apos;%1&apos;</translation>
+        <source>unknown element '%1'</source>
+        <translation>neznámý prvek: '%1'</translation>
     </message>
     <message>
         <source>no column element found</source>
@@ -3574,12 +3473,12 @@ Dají se použít následující zvláštní kódy:
         <translation>Výchozí číselný formát</translation>
     </message>
     <message>
-        <source>Consider &apos;,&apos; and &apos;.&apos; interchangeable on input in numerical columns</source>
-        <translation type="unfinished"></translation>
+        <source>Consider ',' and '.' interchangeable on input in numerical columns</source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Convert numerical columns to text columns when pasting non-numeric values</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Decimal</source>
@@ -3867,44 +3766,44 @@ Dají se použít následující zvláštní kódy:
         <translation>Typ</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Apply new type and format to all selected columns&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Použij nový typ a nový formát na všechny vybrané sloupce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Apply new type and format to all selected columns&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Použij nový typ a nový formát na všechny vybrané sloupce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Type:</source>
         <translation>Typ:</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select the column type&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vyber typ sloupce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Select the column type&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Vyber typ sloupce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Format:</source>
         <translation>Formát:</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Choose the display format&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vyber formát zobrazení.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Choose the display format&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Vyber formát zobrazení.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Decimal Digits:</source>
         <translation>Desetinná místa:</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Enter the number of displayed decimal digits&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Zadej počet zobrazených desetinných míst.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Enter the number of displayed decimal digits&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Zadej počet zobrazených desetinných míst.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Numbers are</source>
@@ -3915,11 +3814,11 @@ p, li { white-space: pre-wrap; }
         <translation>od</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Information about the selected type and format&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Informace o vybraném typu a formátu.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Information about the selected type and format&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Informace o vybraném typu a formátu.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Formula</source>
@@ -3930,47 +3829,47 @@ p, li { white-space: pre-wrap; }
         <translation>Vzorec:</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Apply the formula to all selected cells&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Apply the formula to all selected cells&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Použij vzorec na všechny vybrané buňky.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Použij vzorec na všechny vybrané buňky.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select a column reference to insert into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vyber odkaz na sloupec pro vložení do vzorce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Select a column reference to insert into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Vyber odkaz na sloupec pro vložení do vzorce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Insert the column reference into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vlož odkaz na sloupec do vzorce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Insert the column reference into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Vlož odkaz na sloupec do vzorce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Add</source>
         <translation>Přidat</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select a function to insert into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vyber funkci pro vložení do vzorce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Select a function to insert into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Vyber funkci pro vložení do vzorce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Bitstream Vera Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Sans Serif&apos;;&quot;&gt;Insert the function into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;￼&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Bitstream Vera Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Sans Serif&apos;;&quot;&gt;Vlož funkci do vzorce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Bitstream Vera Sans'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif';"&gt;Insert the function into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"&gt;￼&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Bitstream Vera Sans'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif';"&gt;Vlož funkci do vzorce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -3996,16 +3895,21 @@ p, li { white-space: pre-wrap; }
         <translation>Záznam s údaji o odpovědi %1 neexistuje!</translation>
     </message>
     <message>
-        <source>The response dataset &apos;%1&apos; must be less then half the size of the signal dataset &apos;%2&apos;!</source>
-        <translation>Záznam s údaji o odpovědi &apos;%1&apos; musí být menší než poloviční oproti souboru s daty signálu &apos;%2&apos;!</translation>
+        <source>The response dataset '%1' must be less then half the size of the signal dataset '%2'!</source>
+        <translation>Záznam s údaji o odpovědi '%1' musí být menší než poloviční oproti souboru s daty signálu '%2'!</translation>
     </message>
     <message>
-        <source>The response dataset &apos;%1&apos; must contain an odd number of points!</source>
-        <translation>Záznam s údaji o odpovědi &apos;%1&apos; musí obsahovat lichý počet bodů!</translation>
+        <source>The response dataset '%1' must contain an odd number of points!</source>
+        <translation>Záznam s údaji o odpovědi '%1' musí obsahovat lichý počet bodů!</translation>
     </message>
     <message>
-        <source>Could not allocate memory, operation aborted!</source>
-        <translation type="vanished">Nepodařilo se přidělit dostatek paměti. Operace zrušena!</translation>
+        <source>Could not allocate memory, operation aborted!
+</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Allocator returned: </source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Index</source>
@@ -4014,15 +3918,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Plot</source>
         <translation>Nákres</translation>
-    </message>
-    <message>
-        <source>Could not allocate memory, operation aborted!
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Allocator returned: </source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4044,8 +3939,13 @@ p, li { white-space: pre-wrap; }
         <translation>Záznam s údaji %1 neexistuje!</translation>
     </message>
     <message>
-        <source>Could not allocate memory, operation aborted!</source>
-        <translation type="vanished">Nepodařilo se přidělit dostatek paměti. Operace zrušena!</translation>
+        <source>Could not allocate memory, operation aborted!
+</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Allocator returned: </source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Error in GSL forward FFT operation!</source>
@@ -4058,15 +3958,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Plot</source>
         <translation>Nákres</translation>
-    </message>
-    <message>
-        <source>Could not allocate memory, operation aborted!
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Allocator returned: </source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4430,7 +4321,7 @@ p, li { white-space: pre-wrap; }
         <translation>Varování</translation>
     </message>
     <message>
-        <source>The curve &lt;b&gt; %1 &lt;/b&gt; doesn&apos;t exist anymore! Operation aborted!</source>
+        <source>The curve &lt;b&gt; %1 &lt;/b&gt; doesn't exist anymore! Operation aborted!</source>
         <translation>Křivka &lt;b&gt; %1 &lt;/b&gt; již více neexistuje! Operace zrušena!</translation>
     </message>
 </context>
@@ -4588,11 +4479,11 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Could not allocate memory, operation aborted!
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Allocator returned: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>
@@ -4724,6 +4615,23 @@ p, li { white-space: pre-wrap; }
         <translation>Nejprve, prosím, přiřaďte křivku!</translation>
     </message>
     <message>
+        <source>Warning</source>
+        <translation>Varování</translation>
+    </message>
+    <message>
+        <source>At least one of the axis is not numerical!</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Could not allocate memory, operation aborted!
+</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Allocator returned: </source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <source>You need at least %1 points in order to perform this operation!</source>
         <translation>Pro provedení této operace potřebujete alespoň %1 bodů!</translation>
     </message>
@@ -4740,8 +4648,8 @@ p, li { white-space: pre-wrap; }
         <translation>Chyba v názvu barvy</translation>
     </message>
     <message>
-        <source>The color name &apos;%1&apos; is not valid, a default color (red) will be used instead!</source>
-        <translation>Název barvy &apos;%1&apos; je neplatný. Místo ní bude použita výchozí barva (červená)!</translation>
+        <source>The color name '%1' is not valid, a default color (red) will be used instead!</source>
+        <translation>Název barvy '%1' je neplatný. Místo ní bude použita výchozí barva (červená)!</translation>
     </message>
     <message>
         <source>1</source>
@@ -4756,23 +4664,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>of</source>
         <translation>z</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="unfinished">Varování</translation>
-    </message>
-    <message>
-        <source>At least one of the axis is not numerical!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Could not allocate memory, operation aborted!
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Allocator returned: </source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4972,8 +4863,21 @@ p, li { white-space: pre-wrap; }
         <translation>Funkce</translation>
     </message>
     <message>
+        <source>SciDAVis</source>
+        <translation>SciDAVis</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Chyba</translation>
+    </message>
+    <message>
+        <source>Could not allocate memory, operation aborted!
+</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Allocator returned: </source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>The curve %1 has no associated Y error bars.</source>
@@ -4996,7 +4900,7 @@ p, li { white-space: pre-wrap; }
         <translation>Chyba při umístění</translation>
     </message>
     <message>
-        <source>You didn&apos;t specify a valid data set for this fit operation. Operation aborted!</source>
+        <source>You didn't specify a valid data set for this fit operation. Operation aborted!</source>
         <translation>Nestanovil jste platný záznam s údaji pro operaci umístění. Operace zrušena!</translation>
     </message>
     <message>
@@ -5017,28 +4921,15 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Fit failed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>An error occurred during fit!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Fit</source>
         <translation>Umístění</translation>
-    </message>
-    <message>
-        <source>SciDAVis</source>
-        <translation type="unfinished">SciDAVis</translation>
-    </message>
-    <message>
-        <source>Could not allocate memory, operation aborted!
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Allocator returned: </source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5324,8 +5215,8 @@ p, li { white-space: pre-wrap; }
         <translation> je názvem vestavěné funkce programu SciDAVis&lt;p&gt;Pro svou funkci musíte vybrat jiný název!</translation>
     </message>
     <message>
-        <source>You can&apos;t define functions recursively!</source>
-        <translation type="unfinished"></translation>
+        <source>You can't define functions recursively!</source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Fit with selected &amp;user function</source>
@@ -5352,7 +5243,7 @@ p, li { white-space: pre-wrap; }
         <translation>Varování</translation>
     </message>
     <message>
-        <source>The curve &lt;b&gt; %1 &lt;/b&gt; doesn&apos;t exist anymore! Operation aborted!</source>
+        <source>The curve &lt;b&gt; %1 &lt;/b&gt; doesn't exist anymore! Operation aborted!</source>
         <translation>Křivka &lt;b&gt; %1 &lt;/b&gt; již více neexistuje! Operace zrušena!</translation>
     </message>
     <message>
@@ -5559,15 +5450,15 @@ p, li { white-space: pre-wrap; }
         <translation>Vnitřní chyba</translation>
     </message>
     <message>
-        <source>&lt;html&gt;Failed to set axis labels on Graph %1. Maybe you&apos;re trying to open a corrupted project file; or there&apos;s some problem within SciDAVis. Please report this as a bug (together with detailed instructions how to reproduce this message or the corrupted file).&lt;p&gt;&lt;a href=&quot;https://sourceforge.net/tracker/?group_id=199120&amp;atid=968214&gt;&quot;&gt;bug tracker: https://sourceforge.net/tracker/?group_id=199120&amp;atid=968214&lt;/a&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;Nastavení popisů os v nákresu %1 se nepodařilo. Je možné, že se pokoušíte otevřít soubor s projektem, který je poškozen; nebo je nějaký problém ve SciDAVisu . Nahlašte to, prosím, jako chybu (společně s podrobnými údaji o tom, jakým způsobem se dá toto hlášení nebo poškozený soubor vytvořit znovu).&lt;p&gt;&lt;a href=&quot;https://sourceforge.net/tracker/?group_id=199120&amp;atid=968214&gt;&quot;&gt;stopař slídící po chybách: https://sourceforge.net/tracker/?group_id=199120&amp;atid=968214&lt;/a&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;Failed to set axis labels on Graph %1. Maybe you're trying to open a corrupted project file; or there's some problem within SciDAVis. Please report this as a bug (together with detailed instructions how to reproduce this message or the corrupted file).&lt;p&gt;&lt;a href="https://sourceforge.net/tracker/?group_id=199120&amp;atid=968214&gt;"&gt;bug tracker: https://sourceforge.net/tracker/?group_id=199120&amp;atid=968214&lt;/a&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;Nastavení popisů os v nákresu %1 se nepodařilo. Je možné, že se pokoušíte otevřít soubor s projektem, který je poškozen; nebo je nějaký problém ve SciDAVisu . Nahlašte to, prosím, jako chybu (společně s podrobnými údaji o tom, jakým způsobem se dá toto hlášení nebo poškozený soubor vytvořit znovu).&lt;p&gt;&lt;a href="https://sourceforge.net/tracker/?group_id=199120&amp;atid=968214&gt;"&gt;stopař slídící po chybách: https://sourceforge.net/tracker/?group_id=199120&amp;atid=968214&lt;/a&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Error</source>
         <translation>Chyba</translation>
     </message>
     <message>
-        <source>Couldn&apos;t change the axis type to the requested format!</source>
+        <source>Couldn't change the axis type to the requested format!</source>
         <translation>Formát popisu os se nepodařilo změnit na ten, který je požadován!</translation>
     </message>
     <message>
@@ -6022,15 +5913,15 @@ Dají se použít následující zvláštní kódy:
         <source>By checking this option all white spaces will be 
 removed from the beginning and the end of 
 the lines in the ASCII file.</source>
-        <comment>when translating this check the what&apos;s this functions and tool tips to place the &apos;
-&apos;s correctly</comment>
+        <comment>when translating this check the what's this functions and tool tips to place the '
+'s correctly</comment>
         <translation>Zaškrtnutím této volby, budou všechny 
 mezery odstraněny ze začátků a konců řádků 
 v ASCII souboru.</translation>
     </message>
     <message>
         <source>Warning: checking this option leads to column 
-overlaping if the columns in the ASCII file don&apos;t 
+overlaping if the columns in the ASCII file don't 
 have the same number of rows.</source>
         <translation>Varování: zaškrtnutí této volby vede k překrývání 
 sloupců, jestliže sloupce v ASCII souboru nemají 
@@ -6040,8 +5931,8 @@ stejný počet řádků.</translation>
         <source>To avoid this problem you should precisely 
 define the column separator using TAB and 
 SPACE characters.</source>
-        <comment>when translating this check the what&apos;s this functions and tool tips to place the &apos;
-&apos;s correctly</comment>
+        <comment>when translating this check the what's this functions and tool tips to place the '
+'s correctly</comment>
         <translation>Abyste se vyhnul tomuto problému, měl byste 
 přesně určit oddělovač sloupců s pomocí znaků 
 pro TAB(ULÁTOR) a MEZERNÍK.</translation>
@@ -6056,8 +5947,8 @@ removed from the beginning and the end of the
 lines and each sequence of internal 
 whitespaces (including the TAB character) will 
 be replaced with a single space.</source>
-        <comment>when translating this check the what&apos;s this functions and tool tips to place the &apos;
-&apos;s correctly</comment>
+        <comment>when translating this check the what's this functions and tool tips to place the '
+'s correctly</comment>
         <translation>Zaškrtnutím této volby, budou všechny mezery 
 odstraněny ze začátků a konců řádků 
 a každá posloupnost vnitřních prázdných míst 
@@ -6066,10 +5957,10 @@ jednoduchou mezerou</translation>
     </message>
     <message>
         <source>Warning: checking this option leads to column 
-overlaping if the columns in the ASCII file don&apos;t 
+overlaping if the columns in the ASCII file don't 
 have the same number of rows.</source>
-        <comment>when translating this check the what&apos;s this functions and tool tips to place the &apos;
-&apos;s correctly</comment>
+        <comment>when translating this check the what's this functions and tool tips to place the '
+'s correctly</comment>
         <translation>Varování: zaškrtnutí této volby vede k překrývání 
 sloupců, jestliže sloupce v ASCII souboru nemají 
 stejný počet řádků.</translation>
@@ -6127,7 +6018,7 @@ stejný počet řádků.</translation>
         <translation>Zaškrtnutím této volby budou všechny mezery ze začátků a konců řádků odstraněny a všechny mezery mezi sloupci (včetně znaku pro TABULÁTOR) budou nahrazeny jednoduchou mezerou.</translation>
     </message>
     <message>
-        <source>Warning: using these two last options leads to column overlaping if the columns in the ASCII file don&apos;t have the same number of rows.</source>
+        <source>Warning: using these two last options leads to column overlaping if the columns in the ASCII file don't have the same number of rows.</source>
         <translation>Varování: použití těchto dvou posledních voleb vede k překrývání sloupců, jestliže sloupce v ASCII souboru nemají stejný počet řádků.</translation>
     </message>
     <message>
@@ -6194,7 +6085,7 @@ stejný počet řádků.</translation>
         <translation>Varování</translation>
     </message>
     <message>
-        <source>The curve &lt;b&gt; %1 &lt;/b&gt; doesn&apos;t exist anymore! Operation aborted!</source>
+        <source>The curve &lt;b&gt; %1 &lt;/b&gt; doesn't exist anymore! Operation aborted!</source>
         <translation>Křivka &lt;b&gt; %1 &lt;/b&gt; již více neexistuje! Operace zrušena!</translation>
     </message>
     <message>
@@ -6205,13 +6096,13 @@ stejný počet řádků.</translation>
         <source>Please give a number larger or equal to the minimum value of X, for the lower limit.
  If you do not know that value, type min in the box.</source>
         <translation>Zadejte, prosím, číslo, které je větší, nebo je rovné nejnižší hodnotě x, pro spodní mez.
-Pokud toto číslo neznáte, zadejte v zadávacím poli &apos;min&apos;.</translation>
+Pokud toto číslo neznáte, zadejte v zadávacím poli 'min'.</translation>
     </message>
     <message>
         <source>Please give a number smaller or equal to the maximum value of X, for the lower limit.
  If you do not know that value, type max in the box.</source>
         <translation>Zadejte, prosím, číslo, které je menší, nebo je rovné nejvyšší hodnotě x, pro spodní mez.
-Pokud toto číslo neznáte, zadejte v zadávacím poli &apos;max&apos;.</translation>
+Pokud toto číslo neznáte, zadejte v zadávacím poli 'max'.</translation>
     </message>
     <message>
         <source>Start limit error</source>
@@ -6221,7 +6112,7 @@ Pokud toto číslo neznáte, zadejte v zadávacím poli &apos;max&apos;.</transl
         <source>Please give a number larger or equal to the minimum value of X, for the upper limit.
  If you do not know that value, type min in the box.</source>
         <translation>Zadejte, prosím, číslo, které je větší, nebo je rovné nejnižší hodnotě x, pro horní mez.
-Pokud toto číslo neznáte, zadejte v zadávacím poli &apos;min&apos;.</translation>
+Pokud toto číslo neznáte, zadejte v zadávacím poli 'min'.</translation>
     </message>
     <message>
         <source>End limit error</source>
@@ -6251,7 +6142,7 @@ The limits must be within the range of x; If you do not know the maximum (minimu
 Das Programm integriert die Kurve durch einen iterativen Algorithmus. Die Toleranz bestimmt das Abbruchkriterium.
 Da man manchmal zu viel Genauigkeit fordert, sorgt die maximale Zahl von Iterationen für einen garantierten Abbruch des Algorithmus.
 WICHTIG
-Die Grenzen müssen innerhalb des X-Bereichs sein. Fall diese Werte nicht bekannt sind, kann &apos;min&apos; bzw. &apos;max&apos; in die Eingabefelder geschrieben werden.</translation>
+Die Grenzen müssen innerhalb des X-Bereichs sein. Fall diese Werte nicht bekannt sind, kann 'min' bzw. 'max' in die Eingabefelder geschrieben werden.</translation>
     </message>
 </context>
 <context>
@@ -6435,7 +6326,7 @@ Die Grenzen müssen innerhalb des X-Bereichs sein. Fall diese Werte nicht bekann
         <translation>Varování</translation>
     </message>
     <message>
-        <source>The curve &lt;b&gt; %1 &lt;/b&gt; doesn&apos;t exist anymore! Operation aborted!</source>
+        <source>The curve &lt;b&gt; %1 &lt;/b&gt; doesn't exist anymore! Operation aborted!</source>
         <translation>Křivka &lt;b&gt; %1 &lt;/b&gt; již více neexistuje! Operace zrušena!</translation>
     </message>
     <message>
@@ -6594,7 +6485,7 @@ Die Grenzen müssen innerhalb des X-Bereichs sein. Fall diese Werte nicht bekann
         <translation>Chyba v zadání sloupců</translation>
     </message>
     <message>
-        <source>The number of columns you&apos;ve entered is greater than the number of graphs (%1)!</source>
+        <source>The number of columns you've entered is greater than the number of graphs (%1)!</source>
         <translation>Počet sloupců, který jste zadal, je větší než počet nákresů (%1)!</translation>
     </message>
     <message>
@@ -6602,7 +6493,7 @@ Die Grenzen müssen innerhalb des X-Bereichs sein. Fall diese Werte nicht bekann
         <translation>Chyba v zadání řádků</translation>
     </message>
     <message>
-        <source>The number of rows you&apos;ve entered is greater than the number of graphs (%1)!</source>
+        <source>The number of rows you've entered is greater than the number of graphs (%1)!</source>
         <translation>Počet řádků, který jste zadal, je větší než počet nákresů (%1)!</translation>
     </message>
 </context>
@@ -6840,40 +6731,40 @@ Die Grenzen müssen innerhalb des X-Bereichs sein. Fall diese Werte nicht bekann
         <translation>Formát</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Apply new type and format to all selected columns&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Použij nový typ a nový formát na všechny vybrané sloupce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Apply new type and format to all selected columns&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Použij nový typ a nový formát na všechny vybrané sloupce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Format:</source>
         <translation>Formát:</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Choose the display format&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vyber formát zobrazení.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Choose the display format&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Vyber formát zobrazení.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Decimal Digits:</source>
         <translation>Desetinná místa:</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Enter the number of displayed decimal digits&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Zadej počet zobrazených desetinných míst.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Enter the number of displayed decimal digits&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Zadej počet zobrazených desetinných míst.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Information about the selected type and format&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Informace o vybraném typu a formátu.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Information about the selected type and format&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Informace o vybraném typu a formátu.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Formula</source>
@@ -6884,46 +6775,46 @@ p, li { white-space: pre-wrap; }
         <translation>Vzorec:</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Apply the formula to all selected cells&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Apply the formula to all selected cells&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Použij vzorec na všechny vybrané buňky.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Použij vzorec na všechny vybrané buňky.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select a column reference to insert into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vyber odkaz na sloupec pro vložení do vzorce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Select a column reference to insert into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Vyber odkaz na sloupec pro vložení do vzorce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Insert the column reference into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vlož odkaz na sloupec do vzorce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Insert the column reference into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Vlož odkaz na sloupec do vzorce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Add</source>
         <translation>Přidat</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select a function to insert into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vyber funkci pro vložení do vzorce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Select a function to insert into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Vyber funkci pro vložení do vzorce.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Inset the function into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;￼&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Funkci vložit do vzorce&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Inset the function into the formula&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name="qrichtext" content="1" /&gt;&lt;style type="text/css"&gt;￼p, li { white-space: pre-wrap; }￼&lt;/style&gt;&lt;/head&gt;&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;"&gt;￼&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"&gt;Funkci vložit do vzorce&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -6969,7 +6860,7 @@ p, li { white-space: pre-wrap; }
         <translation>col() pracuje jen u tabulek!</translation>
     </message>
     <message>
-        <source>There&apos;s no column %1 in table %2!</source>
+        <source>There's no column %1 in table %2!</source>
         <translation>Není žádný sloupec s názvem %1 v tabulce %2!</translation>
     </message>
     <message>
@@ -6977,7 +6868,7 @@ p, li { white-space: pre-wrap; }
         <translation>tablecol() pracuje jen u tabulek!</translation>
     </message>
     <message>
-        <source>Couldn&apos;t find a table named %1.</source>
+        <source>Couldn't find a table named %1.</source>
         <translation>Nepodařilo se nalézt žádnou tabulku s názvem %1.</translation>
     </message>
     <message>
@@ -6985,11 +6876,11 @@ p, li { white-space: pre-wrap; }
         <translation>cell() pracuje jen u tabulek a matic!</translation>
     </message>
     <message>
-        <source>There&apos;s no row %1 in matrix %2!</source>
+        <source>There's no row %1 in matrix %2!</source>
         <translation>Není žádný řádek s názvem %1 v matici %2!</translation>
     </message>
     <message>
-        <source>There&apos;s no column %1 in matrix %2!</source>
+        <source>There's no column %1 in matrix %2!</source>
         <translation>Není žádný sloupec s názvem %1 v matici %2!</translation>
     </message>
     <message>
@@ -6997,7 +6888,7 @@ p, li { white-space: pre-wrap; }
         <translation>V této souvislosti není přístup k hodnotám v tabulkách (ještě) podporován.</translation>
     </message>
     <message>
-        <source>There&apos;s no column named %1 in table %2!</source>
+        <source>There's no column named %1 in table %2!</source>
         <translation>Není žádný sloupec s názvem %1 v tabulce %2!</translation>
     </message>
     <message>
@@ -7186,7 +7077,7 @@ největší celé číslo menší nebo rovno x.</translation>
     <message>
         <source>(e1)?(e2):(e3):
  if e1 then e2 else e3.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>ln(x):
@@ -7288,7 +7179,7 @@ největší celé číslo menší nebo rovno x.</translation>
     </message>
     <message>
         <source>w0(x):
- Compute the principal branch of Lambert&apos;s W function, W_0(x).
+ Compute the principal branch of Lambert's W function, W_0(x).
  W is defined as a solution to the equation W(x)*exp(W(x))=x.
  For x&lt;0, there are two real-valued branches; this function computes the one where W&gt;-1 for x&lt;0 (also see wm1(x)).</source>
         <translation>w0(x):
@@ -7298,7 +7189,7 @@ největší celé číslo menší nebo rovno x.</translation>
     </message>
     <message>
         <source>wm1(x):
- Compute the secondary branch of Lambert&apos;s W function, W_{-1}(x).
+ Compute the secondary branch of Lambert's W function, W_{-1}(x).
  W is defined as a solution to the equation W(x)*exp(W(x))=x.
  For x&lt;0, there are two real-valued branches; this function computes the one where W&lt;-1 for x&lt;0. (also see w0(x)).</source>
         <translation>wm1(x):
@@ -7458,12 +7349,12 @@ největší celé číslo menší nebo rovno x.</translation>
 <context>
     <name>MultiPeakFitTool</name>
     <message>
-        <source>Move cursor and click to select a point and double-click/press &apos;Enter&apos; to set the position of a peak!</source>
-        <translation>Posuňte ukazovátko a klepněte pro výběr bodu a dvakrát klepněte/stiskněte &apos;Enter&apos; pro stanovení polohy vrcholu!</translation>
+        <source>Move cursor and click to select a point and double-click/press 'Enter' to set the position of a peak!</source>
+        <translation>Posuňte ukazovátko a klepněte pro výběr bodu a dvakrát klepněte/stiskněte 'Enter' pro stanovení polohy vrcholu!</translation>
     </message>
     <message>
-        <source>Peak %1 selected! Click to select a point and double-click/press &apos;Enter&apos; to set the position of the next peak!</source>
-        <translation>Vrchol %1 byl vybrán. Klepněte pro výběr bodu a dvakrát klepněte/stiskněte &apos;Enter&apos; pro stanovení polohy dalšího vrcholu!</translation>
+        <source>Peak %1 selected! Click to select a point and double-click/press 'Enter' to set the position of the next peak!</source>
+        <translation>Vrchol %1 byl vybrán. Klepněte pro výběr bodu a dvakrát klepněte/stiskněte 'Enter' pro stanovení polohy dalšího vrcholu!</translation>
     </message>
 </context>
 <context>
@@ -7527,16 +7418,12 @@ největší celé číslo menší nebo rovno x.</translation>
 <context>
     <name>NumericDateTimeBaseFilter</name>
     <message>
-        <source>missing or invalid format attribute(s)</source>
-        <translation type="vanished">chybějící nebo neplatný formát atributů</translation>
-    </message>
-    <message>
         <source>NumericDateTimeBaseFilter: invalid unit, defaulting to years</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>NumericDateTimeBaseFilter: invalid offset, defaulting to zero</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>
@@ -7603,7 +7490,7 @@ největší celé číslo menší nebo rovno x.</translation>
     </message>
     <message>
         <source>Codepage</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>
@@ -8850,7 +8737,7 @@ největší celé číslo menší nebo rovno x.</translation>
         <translation>Varování</translation>
     </message>
     <message>
-        <source>The curve &lt;b&gt; %1 &lt;/b&gt; doesn&apos;t exist anymore! Operation aborted!</source>
+        <source>The curve &lt;b&gt; %1 &lt;/b&gt; doesn't exist anymore! Operation aborted!</source>
         <translation>Křivka &lt;b&gt; %1 &lt;/b&gt; již více neexistuje! Operace zrušena!</translation>
     </message>
 </context>
@@ -8884,8 +8771,8 @@ největší celé číslo menší nebo rovno x.</translation>
         <translation>neplatná nebo chybějící verze projektu</translation>
     </message>
     <message>
-        <source>unknown element &apos;%1&apos;</source>
-        <translation>neznámý prvek: &apos;%1&apos;</translation>
+        <source>unknown element '%1'</source>
+        <translation>neznámý prvek: '%1'</translation>
     </message>
     <message>
         <source>no scidavis_project element found</source>
@@ -8926,15 +8813,15 @@ největší celé číslo menší nebo rovno x.</translation>
         <translation>Nepodařilo se vyvést SciDAVis-API</translation>
     </message>
     <message>
-        <source>Accessing SciDAVis functions or objects from Python code won&apos;t work.Probably your version of SIP differs from the one SciDAVis was compiled against;try updating SIP or recompiling SciDAVis.</source>
+        <source>Accessing SciDAVis functions or objects from Python code won't work.Probably your version of SIP differs from the one SciDAVis was compiled against;try updating SIP or recompiling SciDAVis.</source>
         <translation>Přístup k funkcím a objektům z pythonovského kódu u programu SciDAVis není možný. Pravděpodobně je nainstalována jiná verze SIP než ta, která byla použita při sestavení programu SciDAVis; Aktualizace SIP nebo nové sestavení programu SciDAVis by problém odstranilo.</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <source></source>
-        <translation></translation>
+        <source />
+        <translation />
     </message>
     <message>
         <source>Released</source>
@@ -9065,12 +8952,12 @@ největší celé číslo menší nebo rovno x.</translation>
         <translation>formát data/přesného času nastaven na %1</translation>
     </message>
     <message>
-        <source>%1: set numeric format to &apos;%2&apos;</source>
-        <translation>%1: číselný formát nastaven na &apos;%2&apos;</translation>
+        <source>%1: set numeric format to '%2'</source>
+        <translation>%1: číselný formát nastaven na '%2'</translation>
     </message>
     <message>
-        <source>set numeric format to &apos;%1&apos;</source>
-        <translation>číselný formát nastaven na &apos;%1&apos;</translation>
+        <source>set numeric format to '%1'</source>
+        <translation>číselný formát nastaven na '%1'</translation>
     </message>
     <message>
         <source>%1: set decimal digits to %2</source>
@@ -9189,7 +9076,7 @@ největší celé číslo menší nebo rovno x.</translation>
     </message>
     <message>
         <source>%1: set values for multiple cells</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>ASCII table</source>
@@ -9389,8 +9276,8 @@ Vydáno</translation>
         <translation>Chyba při otevírání souboru</translation>
     </message>
     <message>
-        <source>Could not open file &quot;%1&quot; for reading.</source>
-        <translation>Nepodařilo se otevřít soubor &quot;%1&quot; pro čtení.</translation>
+        <source>Could not open file "%1" for reading.</source>
+        <translation>Nepodařilo se otevřít soubor "%1" pro čtení.</translation>
     </message>
     <message>
         <source>Save Text to File</source>
@@ -9431,8 +9318,8 @@ Vydáno</translation>
         <translation>Chyba ve skriptu</translation>
     </message>
     <message>
-        <source>Scripting language &quot;%1&quot; failed to initialize.</source>
-        <translation>Skriptovací jazyk &quot;%1&quot; se nepodařilo inicializovat.</translation>
+        <source>Scripting language "%1" failed to initialize.</source>
+        <translation>Skriptovací jazyk "%1" se nepodařilo inicializovat.</translation>
     </message>
 </context>
 <context>
@@ -9765,17 +9652,6 @@ Vydáno</translation>
     <message>
         <source>%1: apply formula to column</source>
         <translation>%1: vzorec použit na sloupec</translation>
-    </message>
-</context>
-<context>
-    <name>TableConfigPage</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
-    </message>
-    <message>
-        <source>TODO</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -10203,8 +10079,8 @@ dvojnásobná přesnost
 <context>
     <name>TranslateCurveTool</name>
     <message>
-        <source>Curve selected! Move cursor and click to choose a point and double-click/press &apos;Enter&apos; to finish!</source>
-        <translation>Křivka byla vybrána! Pohněte ukazovátkem a klepněte pro výběr bodu a dvakrát klepněte/stiskněte &apos;Enter&apos;pro dokončení!</translation>
+        <source>Curve selected! Move cursor and click to choose a point and double-click/press 'Enter' to finish!</source>
+        <translation>Křivka byla vybrána! Pohněte ukazovátkem a klepněte pro výběr bodu a dvakrát klepněte/stiskněte 'Enter'pro dokončení!</translation>
     </message>
     <message>
         <source>Warning</source>
@@ -10249,8 +10125,8 @@ dvojnásobná přesnost
 <context>
     <name>future::Folder</name>
     <message>
-        <source>unknown element &apos;%1&apos;</source>
-        <translation>neznámý prvek: &apos;%1&apos;</translation>
+        <source>unknown element '%1'</source>
+        <translation>neznámý prvek: '%1'</translation>
     </message>
     <message>
         <source>no folder element found</source>
@@ -10265,12 +10141,12 @@ dvojnásobná přesnost
         <translation>Sloupec %1</translation>
     </message>
     <message>
-        <source>creation of aspect from element &apos;%1&apos; failed</source>
-        <translation>Vytvoření hlediska z prvku &apos;%1&apos; se nezdařilo</translation>
+        <source>creation of aspect from element '%1' failed</source>
+        <translation>Vytvoření hlediska z prvku '%1' se nezdařilo</translation>
     </message>
     <message>
-        <source>no plugin to load element &apos;%1&apos; found</source>
-        <translation>nenalezen žádný přídavný modul pro nahrání prvku &apos;%1&apos;</translation>
+        <source>no plugin to load element '%1' found</source>
+        <translation>nenalezen žádný přídavný modul pro nahrání prvku '%1'</translation>
     </message>
 </context>
 <context>
@@ -10448,16 +10324,16 @@ dvojnásobná přesnost
         <translation>Chyba při zavádění obrázku</translation>
     </message>
     <message>
-        <source>Import of image &apos;%1&apos; failed</source>
-        <translation>Zavedení obrázku &apos;%1&apos; se nepodařilo</translation>
+        <source>Import of image '%1' failed</source>
+        <translation>Zavedení obrázku '%1' se nepodařilo</translation>
     </message>
     <message>
         <source>invalid row or column count</source>
         <translation>neplatný počet řádků nebo sloupců</translation>
     </message>
     <message>
-        <source>unknown element &apos;%1&apos;</source>
-        <translation>neznámý prvek: &apos;%1&apos;</translation>
+        <source>unknown element '%1'</source>
+        <translation>neznámý prvek: '%1'</translation>
     </message>
     <message>
         <source>no matrix element found</source>
@@ -10639,7 +10515,7 @@ dvojnásobná přesnost
     </message>
     <message>
         <source>Paste transposed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>&amp;Mask</source>
@@ -10872,8 +10748,8 @@ dvojnásobná přesnost
         <translation>Sloupec %1</translation>
     </message>
     <message>
-        <source>unknown element &apos;%1&apos;</source>
-        <translation>neznámý prvek: &apos;%1&apos;</translation>
+        <source>unknown element '%1'</source>
+        <translation>neznámý prvek: '%1'</translation>
     </message>
     <message>
         <source>columns attribute and number of read columns do not match</source>
