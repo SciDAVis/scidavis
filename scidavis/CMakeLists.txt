@@ -8,35 +8,17 @@ if( WIN32 )
 endif()
 
 # Translation Files
-#file( COPY translations DESTINATION . )
-#set( TS_FILES
-#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_de.ts"
-#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_es.ts"
-#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_fr.ts"
-#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_ru.ts"
-#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_ja.ts"
-#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_sv.ts"
-#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_pt-br.ts"
-#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_cs.ts"
-#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_cs-alt.ts"
-#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_pl.ts"
-#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_zh-cn.ts"
-#  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_zh-tw.ts"
-#  )
-set( TS_FILES
-  "translations/scidavis_de.ts"
-  "translations/scidavis_es.ts"
-  "translations/scidavis_fr.ts"
-  "translations/scidavis_ru.ts"
-  "translations/scidavis_ja.ts"
-  "translations/scidavis_sv.ts"
-  "translations/scidavis_pt-br.ts"
-  "translations/scidavis_cs.ts"
-  "translations/scidavis_cs-alt.ts"
-  "translations/scidavis_pl.ts"
-  "translations/scidavis_zh-cn.ts"
-  "translations/scidavis_zh-tw.ts"
-  )
+# Copying these into the build directory is intended to prevent these
+# files from being overwritten by lupdate
+file( REMOVE_RECURSE ./translations-copy)
+set(languages de es fr ru ja pt-br cs cs-alt pl zh-cn zh-tw)
+foreach(i ${languages})
+   file( COPY translations/scidavis_${i}.ts DESTINATION ./translations-copy )
+   list(APPEND TS_FILES "${CMAKE_CURRENT_BINARY_DIR}/translations-copy/scidavis_${i}.ts")
+endforeach()
+
+message("a" "b" "c")
+message(${TS_FILES})
 
 qt5_create_translation( QM_FILES "${CMAKE_SOURCE_DIR}/libscidavis" ${TS_FILES} )
 
@@ -50,6 +32,8 @@ add_executable( scidavis
   "${RESOURCES}"
   "${QM_FILES}"
   )
+
+message(${QM_FILES})
 
 # SciDAVis expects qm files to be in the translations directory. qt5_create_translation puts them somewhere else
 add_custom_command(TARGET scidavis COMMAND cp ${QM_FILES} translations)
