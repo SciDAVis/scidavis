@@ -483,7 +483,7 @@ if( SCRIPTING_PYTHON )
   set(scidavis_PyQt_HDR ${scidavis_SIP_OUTPUT_DIR}/sipAPIscidavis.h)
   if( SIP_VERSION VERSION_GREATER_EQUAL 5 )
     set( scidavis_SIP_HDR ${CMAKE_CURRENT_BINARY_DIR}/python/sip.h )
-    target_include_directories( libscidavis PUBLIC
+    target_include_directories( libscidavis BEFORE PUBLIC
       "${CMAKE_CURRENT_BINARY_DIR}/python"
       "${scidavis_SIP_OUTPUT_DIR}"
     )
