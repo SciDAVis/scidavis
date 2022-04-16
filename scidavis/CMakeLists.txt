@@ -34,7 +34,7 @@ add_executable( scidavis
   )
 
 # SciDAVis expects qm files to be in the translations directory. qt5_create_translation puts them somewhere else
-add_custom_command(TARGET scidavis COMMAND mkdir translations && cp ${QM_FILES} translations)
+add_custom_command(TARGET scidavis COMMAND mkdir -p translations || cp ${QM_FILES} translations)
 
 target_link_libraries( scidavis libscidavis )
 
