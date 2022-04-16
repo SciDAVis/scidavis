@@ -17,9 +17,6 @@ foreach(i ${languages})
    list(APPEND TS_FILES "${CMAKE_CURRENT_BINARY_DIR}/translations-copy/scidavis_${i}.ts")
 endforeach()
 
-message("a" "b" "c")
-message(${TS_FILES})
-
 qt5_create_translation( QM_FILES "${CMAKE_SOURCE_DIR}/libscidavis" ${TS_FILES} )
 
 #set( MACOSX_BUNDLE_PLIST scidavis/scidavis.app/Contents/Info.plist )
@@ -35,6 +32,20 @@ add_executable( scidavis
 
 # SciDAVis expects qm files to be in the translations directory. qt5_create_translation puts them somewhere else
 add_custom_command(TARGET scidavis COMMAND mkdir -p translations || cp ${QM_FILES} translations)
+
+if( WIN32 )
+  target_compile_definitions( scidavis PUBLIC
+    TS_PATH="${CMAKE_INSTALL_PREFIX}/translations"
+    DOC_PATH="${CMAKE_INSTALL_PREFIX}"
+    PLUGIN_PATH="${CMAKE_INSTALL_PREFIX}/fitPlugins"
+    )
+else()
+  target_compile_definitions( scidavis PUBLIC
+     TS_PATH="${CMAKE_INSTALL_DATAROOTDIR}/scidavis/translations"
+     DOC_PATH="${CMAKE_INSTALL_DOCDIR}/scidavis"
+     PLUGIN_PATH="${CMAKE_INSTALL_LIBDIR}/scidavis/plugins"
+    )
+endif()
 
 target_link_libraries( scidavis libscidavis )
 

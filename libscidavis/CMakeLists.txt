@@ -409,9 +409,9 @@ if( WIN32 )
     )
 else()
   target_compile_definitions( libscidavis PUBLIC
-    TS_PATH="${CMAKE_INSTALL_PREFIX}/share/scidavis/translations"
-    DOC_PATH="${CMAKE_INSTALL_PREFIX}/share/doc/scidavis"
-    PLUGIN_PATH="${CMAKE_INSTALL_PREFIX}/lib/scidavis/plugins"
+     TS_PATH="${CMAKE_INSTALL_DATAROOTDIR}/scidavis/translations"
+     DOC_PATH="${CMAKE_INSTALL_DOCDIR}/scidavis"
+     PLUGIN_PATH="${CMAKE_INSTALL_LIBDIR}/scidavis/plugins"
     )
 endif()
 
