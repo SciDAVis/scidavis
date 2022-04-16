@@ -31,7 +31,7 @@ trap "fail" 1 2 3 15
 # insert test commands here
 cp $here/test/*.sciprj .
 cp $here/test/*.opj .
-$here/test/unittest
+$here/test/unittests
 if test $? -ne 0; then fail; fi
 
 PRETTY_NAME="openSUSE Tumbleweed"
