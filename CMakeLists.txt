@@ -1,5 +1,4 @@
 cmake_minimum_required( VERSION 3.16 )
-include(GNUInstallDirs)
 
 # Target platform is Windows 10
 if( CMAKE_GENERATOR STREQUAL "Visual Studio 15 2017" OR
@@ -13,7 +12,8 @@ project( scidavis
   VERSION 2.3.0
   DESCRIPTION "SciDAVis is a free application for Scientific Data Analysis and Visualization."
   HOMEPAGE_URL "https://scidavis.sourceforge.net"
-  LANGUAGES CXX C )
+  LANGUAGES CXX C)
+include(GNUInstallDirs)
 
 set( CMAKE_CXX_STANDARD 17)
 set( CMAKE_CXX_STANDARD_REQUIRED TRUE )

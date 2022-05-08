@@ -53,7 +53,7 @@ pushd scidavis
 id=0
 fid=0
 # add in plain files
-for i in appicons.qrc icons.qrc scidavis.rc; do
+for i in appicons.qrc icons.qrc scidavis.rc *.qm; do
 	if [ ! -d $i ]; then
 	    let fid++
 	    cat >>$scidavisWxs <<EOF
@@ -146,4 +146,4 @@ candle scidavis.wxs
 echo "light scidavis.wixobj"
 light -ext WixUIExtension -dWixUILicenseRtf=license.rtf scidavis.wixobj
 signtool sign -t http://timestamp.sectigo.com scidavis.msi
-mv scidavis.msi scidavis.$version-win-dist.msi
+mv scidavis.msi scidavis-$version-win-dist.msi

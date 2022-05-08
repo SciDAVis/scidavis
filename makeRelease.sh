@@ -40,5 +40,5 @@ echo "$version" >doc/version.tex
 date=`date +%Y-%m-%d`
 sed -i "s/<release version=.*$/<release version=\"$version\" date=\"$date\">/" scidavis/scidavis.appdata.xml
 
-git commit -a -m "Release $fullversion"
+git commit --no-verify -a -m "Release $fullversion"
 git tag -a -m "" $fullversion

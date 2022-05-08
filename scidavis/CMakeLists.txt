@@ -8,29 +8,44 @@ if( WIN32 )
 endif()
 
 # Translation Files
-file( COPY translations DESTINATION . )
-set( TS_FILES
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_de.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_es.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_fr.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_ru.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_ja.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_sv.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_pt-br.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_cs.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_cs-alt.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_pl.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_zh-cn.ts"
-  "${CMAKE_CURRENT_BINARY_DIR}/translations/scidavis_zh-tw.ts"
-  )
+# Copying these into the build directory is intended to prevent these
+# files from being overwritten by lupdate
+file( REMOVE_RECURSE ./translations-copy)
+set(languages de es fr ru ja pt-br cs cs-alt pl zh-cn zh-tw)
+foreach(i ${languages})
+   file( COPY translations/scidavis_${i}.ts DESTINATION ./translations-copy )
+   list(APPEND TS_FILES "${CMAKE_CURRENT_BINARY_DIR}/translations-copy/scidavis_${i}.ts")
+endforeach()
+
 qt5_create_translation( QM_FILES "${CMAKE_SOURCE_DIR}/libscidavis" ${TS_FILES} )
+
+#set( MACOSX_BUNDLE_PLIST scidavis/scidavis.app/Contents/Info.plist )
+#set( MACOSX_BUNDLE_ICON scidavis/scidavis.app/Contents/Resources/scidavis.icns )
 
 add_executable( scidavis
   WIN32
+#  MACOSX_BUNDLE
   "src/main.cpp"
   "${RESOURCES}"
   "${QM_FILES}"
   )
+
+# SciDAVis expects qm files to be in the translations directory. qt5_create_translation puts them somewhere else
+add_custom_command(TARGET scidavis COMMAND mkdir -p translations || cp ${QM_FILES} translations)
+
+if( WIN32 )
+  target_compile_definitions( scidavis PUBLIC
+    TS_PATH="${CMAKE_INSTALL_PREFIX}/translations"
+    DOC_PATH="${CMAKE_INSTALL_PREFIX}"
+    PLUGIN_PATH="${CMAKE_INSTALL_PREFIX}/fitPlugins"
+    )
+else()
+  target_compile_definitions( scidavis PUBLIC
+     TS_PATH="${CMAKE_INSTALL_DATAROOTDIR}/scidavis/translations"
+     DOC_PATH="${CMAKE_INSTALL_DOCDIR}/scidavis"
+     PLUGIN_PATH="${CMAKE_INSTALL_LIBDIR}/scidavis/plugins"
+    )
+endif()
 
 target_link_libraries( scidavis libscidavis )
 
@@ -76,9 +91,11 @@ if (NOT CMAKE_CROSS_COMPILING)
       install( TARGETS scidavis RUNTIME DESTINATION . )
       install( FILES ${QM_FILES} DESTINATION translations )
     else()
-      install( TARGETS scidavis RUNTIME DESTINATION bin )
+      install( TARGETS scidavis RUNTIME DESTINATION bin  BUNDLE DESTINATION .)
       install( FILES ${QM_FILES}  DESTINATION share/scidavis/translations )
-    endif()
+      install( SCRIPT bundle.cmake)
+      
+endif()
     
     if( RUNTIME_DIR )
       set( EXCLUDE_DLL "system32/*" "shell32*" "kernel32*" )

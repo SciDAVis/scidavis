@@ -1,4 +1,4 @@
-<TS version="2.1" language="cs_CZ">
+<TS language="cs_CZ" version="2.1">
 <context>
     <name>AbstractAspect</name>
     <message>
@@ -3903,8 +3903,13 @@ p, li { white-space: pre-wrap; }
         <translation>Záznam s údaji o odpovědi '%1' musí obsahovat lichý počet bodů!</translation>
     </message>
     <message>
-        <source>Could not allocate memory, operation aborted!</source>
-        <translation>Nepodařilo se přidělit dostatek paměti. Operace zrušena!</translation>
+        <source>Could not allocate memory, operation aborted!
+</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Allocator returned: </source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Index</source>
@@ -3934,8 +3939,13 @@ p, li { white-space: pre-wrap; }
         <translation>Záznam s údaji %1 neexistuje!</translation>
     </message>
     <message>
-        <source>Could not allocate memory, operation aborted!</source>
-        <translation>Nepodařilo se přidělit dostatek paměti. Operace zrušena!</translation>
+        <source>Could not allocate memory, operation aborted!
+</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Allocator returned: </source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Error in GSL forward FFT operation!</source>
@@ -4466,6 +4476,15 @@ p, li { white-space: pre-wrap; }
         <source>s</source>
         <translation>s</translation>
     </message>
+    <message>
+        <source>Could not allocate memory, operation aborted!
+</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Allocator returned: </source>
+        <translation type="unfinished" />
+    </message>
 </context>
 <context>
     <name>FFTDialog</name>
@@ -4594,6 +4613,23 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Please assign a curve first!</source>
         <translation>Nejprve, prosím, přiřaďte křivku!</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation>Varování</translation>
+    </message>
+    <message>
+        <source>At least one of the axis is not numerical!</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Could not allocate memory, operation aborted!
+</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Allocator returned: </source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>You need at least %1 points in order to perform this operation!</source>
@@ -4827,8 +4863,21 @@ p, li { white-space: pre-wrap; }
         <translation>Funkce</translation>
     </message>
     <message>
+        <source>SciDAVis</source>
+        <translation>SciDAVis</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Chyba</translation>
+    </message>
+    <message>
+        <source>Could not allocate memory, operation aborted!
+</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Allocator returned: </source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>The curve %1 has no associated Y error bars.</source>
@@ -7369,8 +7418,12 @@ největší celé číslo menší nebo rovno x.</translation>
 <context>
     <name>NumericDateTimeBaseFilter</name>
     <message>
-        <source>missing or invalid format attribute(s)</source>
-        <translation>chybějící nebo neplatný formát atributů</translation>
+        <source>NumericDateTimeBaseFilter: invalid unit, defaulting to years</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>NumericDateTimeBaseFilter: invalid offset, defaulting to zero</source>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>

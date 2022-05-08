@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pt_BR">
+<TS language="pt_BR" version="2.1">
 <context>
     <name>AbstractAspect</name>
     <message>
@@ -87,7 +85,7 @@
 <context>
     <name>ApplicationWindow</name>
     <message>
-        <source></source>
+        <source />
         <translation>Definir esquema</translation>
     </message>
     <message>
@@ -3121,105 +3119,6 @@ Aviso: esta operação irá reorganizar as camadas existentes!</translation>
     </message>
 </context>
 <context>
-    <name>ColorBox</name>
-    <message>
-        <source>black</source>
-        <translation>preto</translation>
-    </message>
-    <message>
-        <source>red</source>
-        <translation>vermelho</translation>
-    </message>
-    <message>
-        <source>green</source>
-        <translation>verde</translation>
-    </message>
-    <message>
-        <source>blue</source>
-        <translation>azul</translation>
-    </message>
-    <message>
-        <source>cyan</source>
-        <translation>ciano</translation>
-    </message>
-    <message>
-        <source>magenta</source>
-        <translation>magenta</translation>
-    </message>
-    <message>
-        <source>yellow</source>
-        <translation>amarelo</translation>
-    </message>
-    <message>
-        <source>dark yellow</source>
-        <translation>amarelo escuro</translation>
-    </message>
-    <message>
-        <source>navy</source>
-        <translation>azul marinho</translation>
-    </message>
-    <message>
-        <source>purple</source>
-        <translation>roxo</translation>
-    </message>
-    <message>
-        <source>wine</source>
-        <translation>vinho</translation>
-    </message>
-    <message>
-        <source>olive</source>
-        <translation>azeitona</translation>
-    </message>
-    <message>
-        <source>dark cyan</source>
-        <translation>ciano escuro</translation>
-    </message>
-    <message>
-        <source>royal</source>
-        <translation>royal</translation>
-    </message>
-    <message>
-        <source>orange</source>
-        <translation>laranja</translation>
-    </message>
-    <message>
-        <source>violet</source>
-        <translation>violeta</translation>
-    </message>
-    <message>
-        <source>pink</source>
-        <translation>rosa</translation>
-    </message>
-    <message>
-        <source>white</source>
-        <translation>branco</translation>
-    </message>
-    <message>
-        <source>light gray</source>
-        <translation>cinza claro</translation>
-    </message>
-    <message>
-        <source>gray</source>
-        <translation>cinza</translation>
-    </message>
-    <message>
-        <source>light yellow</source>
-        <translation>amarelo claro</translation>
-    </message>
-    <message>
-        <source>light cyan</source>
-        <translation>ciano claro</translation>
-    </message>
-    <message>
-        <source>light magenta</source>
-        <translation>magenta claro</translation>
-    </message>
-    <message>
-        <source>dark gray</source>
-        <translation>cinza escuro</translation>
-    </message>
-</context>
-<context>
     <name>ColorMapEditor</name>
     <message>
         <source>Level</source>
@@ -4037,8 +3936,13 @@ p, li { white-space: pre-wrap; }
         <translation>O conjunto resposta '%1' deve conter um número ímpar de pontos!</translation>
     </message>
     <message>
-        <source>Could not allocate memory, operation aborted!</source>
-        <translation>Memória insuficiente, operação cancelada!</translation>
+        <source>Could not allocate memory, operation aborted!
+</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Allocator returned: </source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Index</source>
@@ -4068,8 +3972,13 @@ p, li { white-space: pre-wrap; }
         <translation>O conjunto de dados %1 não existe!</translation>
     </message>
     <message>
-        <source>Could not allocate memory, operation aborted!</source>
-        <translation>Memória insuficiente, operação cancelada!</translation>
+        <source>Could not allocate memory, operation aborted!
+</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Allocator returned: </source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Error in GSL forward FFT operation!</source>
@@ -4600,6 +4509,15 @@ p, li { white-space: pre-wrap; }
         <source>s</source>
         <translation>s</translation>
     </message>
+    <message>
+        <source>Could not allocate memory, operation aborted!
+</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Allocator returned: </source>
+        <translation type="unfinished" />
+    </message>
 </context>
 <context>
     <name>FFTDialog</name>
@@ -4728,6 +4646,23 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Please assign a curve first!</source>
         <translation>Por favor, selecione uma coluna primeiro!</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation>Atenção</translation>
+    </message>
+    <message>
+        <source>At least one of the axis is not numerical!</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Could not allocate memory, operation aborted!
+</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Allocator returned: </source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>You need at least %1 points in order to perform this operation!</source>
@@ -4961,8 +4896,21 @@ p, li { white-space: pre-wrap; }
         <translation>Função</translation>
     </message>
     <message>
+        <source>SciDAVis</source>
+        <translation>SciDAVis</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Erro</translation>
+    </message>
+    <message>
+        <source>Could not allocate memory, operation aborted!
+</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Allocator returned: </source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>The curve %1 has no associated Y error bars.</source>
@@ -7527,10 +7475,6 @@ s-ésimo zero positivo x_s da função regular cilíndrica de Bessel de ordem n,
 <context>
     <name>NumericDateTimeBaseFilter</name>
     <message>
-        <source>missing or invalid format attribute(s)</source>
-        <translation type="vanished">falta(m) atributo(s) ou estão em formato inválido</translation>
-    </message>
-    <message>
         <source>NumericDateTimeBaseFilter: invalid unit, defaulting to years</source>
         <translation>NumericDateTimeBaseFilter: unidade inválida, mudando para anos</translation>
     </message>
@@ -9763,17 +9707,6 @@ Atualizado</translation>
     <message>
         <source>%1: apply formula to column</source>
         <translation>%1: aplicar fórmula à coluna</translation>
-    </message>
-</context>
-<context>
-    <name>TableConfigPage</name>
-    <message>
-        <source>Form</source>
-        <translation>Formulário</translation>
-    </message>
-    <message>
-        <source>TODO</source>
-        <translation>AFAZER</translation>
     </message>
 </context>
 <context>
