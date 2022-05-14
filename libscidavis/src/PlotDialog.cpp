@@ -1549,7 +1549,9 @@ void PlotDialog::setActiveCurve(CurveTreeItem *item)
         style = 6;
     boxConnect->setCurrentIndex(style);
 
+    penWidget->blockSignals(true);
     penWidget->setPen(c->pen());
+    penWidget->blockSignals(false);
     fillGroupBox->blockSignals(true);
     fillGroupBox->setChecked(c->brush().style() != Qt::NoBrush);
     fillGroupBox->blockSignals(false);
