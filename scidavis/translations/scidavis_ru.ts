@@ -4146,13 +4146,13 @@ Are you sure you want to continue?</source>
         <location filename="../../libscidavis/src/AxesDialog.cpp" line="153" />
         <location filename="../../libscidavis/src/AxesDialog.cpp" line="452" />
         <source>Major Ticks</source>
-        <translation>Шаг основной разметки</translation>
+        <translation>Шагов основной разметки</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/AxesDialog.cpp" line="160" />
         <location filename="../../libscidavis/src/AxesDialog.cpp" line="461" />
         <source>Minor Ticks</source>
-        <translation>Шаг дополнительной разметки</translation>
+        <translation>Шагов дополнительной разметки</translation>
     </message>
     <message>
         <location filename="../../libscidavis/src/AxesDialog.cpp" line="181" />
