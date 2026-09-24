@@ -36,6 +36,7 @@ See [INSTALL.md](INSTALL.md).
 
 Also consider using a prebuilt package, available for [PC and Mac](https://sourceforge.net/projects/scidavis/files/SciDAVis/) or [Linux](http://software.opensuse.org//download.html?project=home%3Ahpcoder1&package=scidavis).
 
+Note: the domain scidavis.org is not affiliated with this codebase, and it is uncertain whether the Windows and Mac prebuilt packages delivered by that website are identical to the official versions that can be obtained from the SourceForge File Release System linked to above. Official packages are signed by High Performance Coders. Please be careful not to install malware on your computer.
 
 # User Manual
 
